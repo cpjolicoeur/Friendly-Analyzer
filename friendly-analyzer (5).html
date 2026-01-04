@@ -422,17 +422,20 @@
       border-color: #EEFF00;
     }
 
-    .match-header {
+    .match-main {
       padding: 16px 20px;
-      cursor: pointer;
+    }
+
+    .match-top-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 16px;
       flex-wrap: wrap;
+      margin-bottom: 16px;
     }
 
-    .match-info {
+    .match-basic-info {
       display: flex;
       gap: 20px;
       align-items: center;
@@ -468,48 +471,67 @@
       font-size: 20px;
       color: #EEFF00;
       transition: transform 0.3s ease;
+      cursor: pointer;
+      padding: 4px 8px;
+      user-select: none;
     }
 
     .match-item.expanded .match-toggle {
       transform: rotate(180deg);
     }
 
-    .match-details {
-      display: none;
-      padding: 0 20px 20px;
-      border-top: 1px solid rgba(148, 163, 184, 0.2);
-    }
-
-    .match-item.expanded .match-details {
-      display: block;
-    }
-
-    .match-stats-grid {
+    .match-stats-preview {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
       margin-top: 16px;
     }
 
-    .team-stats {
-      background: rgba(15, 23, 42, 0.8);
+    .team-stats-preview {
+      background: rgba(30, 41, 59, 0.8);
       padding: 16px;
       border-radius: 10px;
       border: 1px solid rgba(148, 163, 184, 0.2);
     }
 
-    .team-stats h4 {
+    .team-stats-preview h4 {
       color: #EEFF00;
       margin-bottom: 12px;
-      font-size: 14px;
+      font-size: 15px;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .team-overall {
+      font-size: 20px;
+      font-weight: 800;
+      color: #FFF76B;
+    }
+
+    .formation-display {
+      background: rgba(15, 23, 42, 0.6);
+      padding: 8px 12px;
+      border-radius: 6px;
+      text-align: center;
+      font-size: 13px;
+      color: #cbd5e1;
+      margin-bottom: 12px;
+    }
+
+    .formation-type {
+      font-weight: 700;
+      color: #EEFF00;
+      font-size: 14px;
     }
 
     .stat-row {
       display: flex;
       justify-content: space-between;
-      padding: 8px 0;
+      padding: 6px 0;
       border-bottom: 1px solid rgba(148, 163, 184, 0.1);
       font-size: 13px;
     }
@@ -525,6 +547,98 @@
     .stat-row .value {
       color: #f1f5f9;
       font-weight: 600;
+    }
+
+    .match-details {
+      display: none;
+      padding: 20px;
+      border-top: 1px solid rgba(148, 163, 184, 0.2);
+      background: rgba(15, 23, 42, 0.4);
+    }
+
+    .match-item.expanded .match-details {
+      display: block;
+    }
+
+    .players-section-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #EEFF00;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    .players-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+      gap: 20px;
+    }
+
+    .team-players-card {
+      background: rgba(30, 41, 59, 0.8);
+      padding: 16px;
+      border-radius: 10px;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+    }
+
+    .team-players-card h5 {
+      color: #EEFF00;
+      margin-bottom: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .players-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 4px;
+      font-size: 11px;
+    }
+
+    .players-table th {
+      text-align: center;
+      padding: 8px 4px;
+      color: #94a3b8;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 9px;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+    }
+
+    .players-table th:first-child {
+      text-align: left;
+      padding-left: 8px;
+    }
+
+    .players-table tbody tr {
+      background: rgba(51, 65, 85, 0.5);
+      transition: all 0.2s ease;
+    }
+
+    .players-table tbody tr:hover {
+      background: rgba(71, 85, 105, 0.7);
+    }
+
+    .players-table td {
+      padding: 8px 4px;
+      text-align: center;
+      color: #e2e8f0;
+    }
+
+    .players-table td:first-child {
+      text-align: left;
+      padding-left: 8px;
+      font-weight: 600;
+      color: #f1f5f9;
+      border-top-left-radius: 6px;
+      border-bottom-left-radius: 6px;
+    }
+
+    .players-table td:last-child {
+      border-top-right-radius: 6px;
+      border-bottom-right-radius: 6px;
     }
 
     .footer {
@@ -579,6 +693,10 @@
       .overview-card {
         max-width: 100%;
       }
+
+      .players-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 768px) {
@@ -596,6 +714,10 @@
 
       .stat-grid {
         grid-template-columns: repeat(2, 1fr);
+      }
+
+      .match-stats-preview {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -767,44 +889,6 @@
       return match[1];
     }
 
-    async function fetchPlayerNames(clubId) {
-      try {
-        const response = await fetch(`${API_BASE}/clubs/${clubId}/players`);
-        if (!response.ok) {
-          console.error('Failed to fetch player names:', response.status);
-          return {};
-        }
-
-        const text = await response.text();
-        console.log('[Player Names] API Response length:', text.length);
-
-        const players = JSON.parse(text);
-        const nameMap = {};
-
-        if (Array.isArray(players)) {
-          players.forEach(player => {
-            if (player && player.id) {
-              const firstName = player.firstName || '';
-              const lastName = player.lastName || '';
-              const fullName = `${firstName} ${lastName}`.trim();
-              if (fullName) {
-                nameMap[String(player.id)] = fullName;
-              }
-            }
-          });
-          console.log('[Player Names] Loaded names for players:', Object.keys(nameMap).length);
-          console.log('[Player Names] Sample:', Object.entries(nameMap).slice(0, 3));
-        } else {
-          console.error('[Player Names] Response is not an array:', typeof players);
-        }
-
-        return nameMap;
-      } catch (e) {
-        console.error('[Player Names] Error:', e);
-        return {};
-      }
-    }
-
     async function fetchMatchIds(squadId, limit) {
       const url = `${API_BASE}/matches?squadId=${squadId}&past=true&limit=${limit}&onlyFriendliesHome=true`;
       const response = await fetch(url);
@@ -817,6 +901,102 @@
       const response = await fetch(url);
       if (!response.ok) throw new Error(`Failed to fetch match ${matchId}: ${response.status}`);
       return await response.json();
+    }
+
+    async function fetchMatchFormations(matchId) {
+      const url = `${API_BASE}/matches/${matchId}?withFormations=true`;
+      try {
+        const response = await fetch(url);
+        if (!response.ok) return null;
+        return await response.json();
+      } catch (e) {
+        console.warn(`Failed to fetch formations for match ${matchId}:`, e);
+        return null;
+      }
+    }
+
+    function extractPlayerNamesFromFormations(formationsData) {
+      const playerMap = {};
+
+      if (!formationsData) return playerMap;
+
+      const scanFormation = (formation) => {
+        if (!formation || !Array.isArray(formation.positions)) return;
+
+        formation.positions.forEach(pos => {
+          const p = pos?.player;
+          if (!p || !p.id) return;
+
+          const id = String(p.id);
+          const firstName = p.firstName || p.metadata?.firstName || '';
+          const lastName = p.lastName || p.metadata?.lastName || '';
+          const fullName = `${firstName} ${lastName}`.trim();
+
+          if (fullName) {
+            playerMap[id] = fullName;
+          }
+        });
+      };
+
+      scanFormation(formationsData.homeFormation);
+      scanFormation(formationsData.awayFormation);
+
+      return playerMap;
+    }
+
+    function computeXIOverall(formation, playerMap) {
+      if (!formation || !Array.isArray(formation.positions)) return 0;
+
+      const players = formation.positions
+        .map(pos => pos?.player)
+        .filter(p => p && p.id);
+
+      if (players.length === 0) return 0;
+
+      const ratings = players.map(p => {
+        const id = String(p.id);
+        const meta = playerMap[id];
+        if (meta && typeof meta.matchOverall === 'number') {
+          return meta.matchOverall;
+        }
+        return p.overall || p.metadata?.overallAtKickoff || p.metadata?.overall || 0;
+      });
+
+      const sum = ratings.reduce((acc, r) => acc + r, 0);
+      return sum;
+    }
+
+    function extractPlayerMapFromFormations(formationsJson) {
+      if (!formationsJson) return {};
+
+      const playerMap = {};
+
+      const scanFormation = (formation) => {
+        if (!formation || !Array.isArray(formation.positions)) return;
+
+        formation.positions.forEach(pos => {
+          const p = pos?.player;
+          if (!p || !p.id) return;
+
+          const id = String(p.id);
+          const firstName = p.firstName || p.metadata?.firstName || '';
+          const lastName = p.lastName || p.metadata?.lastName || '';
+          const name = `${firstName} ${lastName}`.trim() || `Player ${id}`;
+          const positions = p.positions || p.metadata?.positions || [];
+          const overall = p.overall || p.metadata?.overallAtKickoff || p.metadata?.overall || 0;
+
+          playerMap[id] = {
+            name,
+            positions: Array.isArray(positions) ? positions : [],
+            matchOverall: overall
+          };
+        });
+      };
+
+      scanFormation(formationsJson.homeFormation);
+      scanFormation(formationsJson.awayFormation);
+
+      return playerMap;
     }
 
     async function loadMatches() {
@@ -837,10 +1017,6 @@
         squadId = await fetchSquadIdFromClubId(clubId);
         console.log(`[Club ${clubId}] Found squad ID: ${squadId}`);
 
-        setStatus(`Fetching player names...`, 'loading');
-        playerNamesCache = await fetchPlayerNames(clubId);
-        console.log(`[Player Names Cache] Total names:`, Object.keys(playerNamesCache).length);
-
         setStatus(`Found squad ${squadId}! Loading match IDs...`, 'loading');
 
         const matchesData = await fetchMatchIds(squadId, limit);
@@ -850,17 +1026,28 @@
           return;
         }
 
-        setStatus(`Loading ${matchesData.length} match reports...`, 'loading');
+        setStatus(`Loading ${matchesData.length} match reports and formations...`, 'loading');
 
         const matchReports = [];
+        playerNamesCache = {};
+
         for (let i = 0; i < matchesData.length; i++) {
           try {
             const matchId = matchesData[i].id;
             const report = await fetchMatchReport(matchId);
+            const formations = await fetchMatchFormations(matchId);
+
+            // Extract player names from formations
+            if (formations) {
+              const names = extractPlayerNamesFromFormations(formations);
+              Object.assign(playerNamesCache, names);
+            }
+
             matchReports.push({
               matchId: matchId,
               date: matchesData[i].startDate || new Date().toISOString(),
-              report: report
+              report: report,
+              formations: formations
             });
 
             if ((i + 1) % 10 === 0 || i === matchesData.length - 1) {
@@ -871,9 +1058,12 @@
           }
         }
 
+        console.log(`[Player Names] Loaded ${Object.keys(playerNamesCache).length} player names from formations`);
+        console.log('[Player Names] Sample:', Object.entries(playerNamesCache).slice(0, 5));
+
         allMatches = matchReports;
         renderAll();
-        setStatus(`Successfully loaded ${allMatches.length} matches!`, 'success');
+        setStatus(`Successfully loaded ${allMatches.length} matches with ${Object.keys(playerNamesCache).length} player names!`, 'success');
 
       } catch (e) {
         console.error('Error loading matches:', e);
@@ -898,10 +1088,20 @@
 
       try {
         const report = await fetchMatchReport(matchIdInput);
+        const formations = await fetchMatchFormations(matchIdInput);
+
+        // Extract player names from formations
+        if (formations) {
+          const names = extractPlayerNamesFromFormations(formations);
+          Object.assign(playerNamesCache, names);
+          console.log(`[Add Match] Added ${Object.keys(names).length} new player names`);
+        }
+
         allMatches.push({
           matchId: matchIdInput,
           date: new Date().toISOString(),
-          report: report
+          report: report,
+          formations: formations
         });
 
         document.getElementById('match-id-input').value = '';
@@ -1078,11 +1278,9 @@
           const pid = String(player.playerId);
 
           if (!playerAggregates[pid]) {
-            // Get player name from cache, fallback to "Player ID"
+            // Get player name from cache
             const cachedName = playerNamesCache[pid];
             const playerName = cachedName || `Player ${pid}`;
-
-            console.log(`[Player Init] ID: ${pid}, Cached Name: "${cachedName}", Final Name: "${playerName}"`);
 
             playerAggregates[pid] = {
               playerId: pid,
@@ -1144,9 +1342,6 @@
           }
         });
       });
-
-      console.log('[Player Stats] Total unique players:', Object.keys(playerAggregates).length);
-      console.log('[Player Stats] Sample players:', Object.values(playerAggregates).slice(0, 3).map(p => ({ id: p.playerId, name: p.playerName })));
 
       return playerAggregates;
     }
@@ -1488,6 +1683,7 @@
       allMatches.forEach(match => {
         const home = match.report?.home;
         const away = match.report?.away;
+        const formations = match.formations;
 
         if (!home || !away) return;
 
@@ -1497,11 +1693,35 @@
         const homeStats = aggregateTeamStats(home.playersStats);
         const awayStats = aggregateTeamStats(away.playersStats);
 
+        // Get formation types and overall ratings
+        let homeFormationType = '-';
+        let awayFormationType = '-';
+        let homeXIOverall = 0;
+        let awayXIOverall = 0;
+
+        if (formations) {
+          const playerMap = extractPlayerMapFromFormations(formations);
+
+          if (formations.homeFormation) {
+            homeFormationType = formations.homeFormation.type || '-';
+            homeXIOverall = computeXIOverall(formations.homeFormation, playerMap);
+          }
+
+          if (formations.awayFormation) {
+            awayFormationType = formations.awayFormation.type || '-';
+            awayXIOverall = computeXIOverall(formations.awayFormation, playerMap);
+          }
+        }
+
         const matchDiv = document.createElement('div');
         matchDiv.className = 'match-item';
-        matchDiv.innerHTML = `
-          <div class="match-header">
-            <div class="match-info">
+
+        const matchMain = document.createElement('div');
+        matchMain.className = 'match-main';
+
+        matchMain.innerHTML = `
+          <div class="match-top-row">
+            <div class="match-basic-info">
               <div class="match-score">${homeGoals} - ${awayGoals}</div>
               <div class="match-teams">
                 <div style="font-weight: 600; color: #EEFF00;">Home vs Away</div>
@@ -1513,28 +1733,146 @@
               <span class="match-toggle">▼</span>
             </div>
           </div>
-          <div class="match-details">
-            <div class="match-stats-grid">
-              <div class="team-stats">
-                <h4>🏠 Home Team</h4>
-                ${renderTeamStats(homeStats)}
+
+          <div class="match-stats-preview">
+            <div class="team-stats-preview">
+              <h4>
+                🏠 Home Team
+                <span class="team-overall">${homeXIOverall}</span>
+              </h4>
+              <div class="formation-display">
+                <div class="formation-type">${homeFormationType}</div>
               </div>
-              <div class="team-stats">
-                <h4>✈️ Away Team</h4>
-                ${renderTeamStats(awayStats)}
+              ${renderTeamStatsPreview(homeStats)}
+            </div>
+            <div class="team-stats-preview">
+              <h4>
+                ✈️ Away Team
+                <span class="team-overall">${awayXIOverall}</span>
+              </h4>
+              <div class="formation-display">
+                <div class="formation-type">${awayFormationType}</div>
               </div>
+              ${renderTeamStatsPreview(awayStats)}
             </div>
           </div>
         `;
 
-        matchDiv.querySelector('.match-header').addEventListener('click', (e) => {
-          if (e.target.tagName !== 'BUTTON') {
-            matchDiv.classList.toggle('expanded');
-          }
+        matchDiv.appendChild(matchMain);
+
+        // Create expanded details section with player data
+        const matchDetails = document.createElement('div');
+        matchDetails.className = 'match-details';
+        matchDetails.innerHTML = `
+          <div class="players-section-title">📋 Match Players & Performance</div>
+          <div class="players-grid">
+            <div class="team-players-card">
+              <h5>🏠 Home Team Players</h5>
+              ${renderMatchPlayers(home.playersStats, playerNamesCache)}
+            </div>
+            <div class="team-players-card">
+              <h5>✈️ Away Team Players</h5>
+              ${renderMatchPlayers(away.playersStats, playerNamesCache)}
+            </div>
+          </div>
+        `;
+
+        matchDiv.appendChild(matchDetails);
+
+        // Add click handler to toggle
+        matchMain.querySelector('.match-toggle').addEventListener('click', (e) => {
+          e.stopPropagation();
+          matchDiv.classList.toggle('expanded');
         });
 
         container.appendChild(matchDiv);
       });
+    }
+
+    function renderTeamStatsPreview(stats) {
+      if (!stats) return '<p>No stats available</p>';
+
+      const passAcc = stats.passes > 0 ? ((stats.passesAccurate / stats.passes) * 100).toFixed(1) : '0';
+      const crossAcc = stats.crosses > 0 ? ((stats.crossesAccurate / stats.crosses) * 100).toFixed(1) : '0';
+
+      return `
+        <div class="stat-row"><span class="label">Goals</span><span class="value">${stats.goals}</span></div>
+        <div class="stat-row"><span class="label">Assists</span><span class="value">${stats.assists}</span></div>
+        <div class="stat-row"><span class="label">xG</span><span class="value">${stats.xG.toFixed(2)}</span></div>
+        <div class="stat-row"><span class="label">Shots</span><span class="value">${stats.shots}</span></div>
+        <div class="stat-row"><span class="label">Shots on Target</span><span class="value">${stats.shotsOnTarget}</span></div>
+        <div class="stat-row"><span class="label">Passes</span><span class="value">${stats.passes}</span></div>
+        <div class="stat-row"><span class="label">Pass Acc.</span><span class="value">${passAcc}%</span></div>
+        <div class="stat-row"><span class="label">Crosses</span><span class="value">${stats.crosses}</span></div>
+        <div class="stat-row"><span class="label">Cross Acc.</span><span class="value">${crossAcc}%</span></div>
+        <div class="stat-row"><span class="label">Fouls</span><span class="value">${stats.fouls}</span></div>
+        <div class="stat-row"><span class="label">Yellow Cards</span><span class="value">${stats.yellowCards}</span></div>
+        <div class="stat-row"><span class="label">Red Cards</span><span class="value">${stats.redCards}</span></div>
+        <div class="stat-row"><span class="label">Avg Rating</span><span class="value">${stats.avgRating}</span></div>
+      `;
+    }
+
+    function renderMatchPlayers(playersStats, namesCache) {
+      if (!playersStats || playersStats.length === 0) {
+        return '<p style="color: #94a3b8; padding: 10px;">No player data available</p>';
+      }
+
+      const sortedPlayers = [...playersStats].sort((a, b) => {
+        const posA = POSITION_ORDER.indexOf(a.position);
+        const posB = POSITION_ORDER.indexOf(b.position);
+        return (posA === -1 ? 999 : posA) - (posB === -1 ? 999 : posB);
+      });
+
+      let html = `
+        <table class="players-table">
+          <thead>
+            <tr>
+              <th>Player</th>
+              <th>Pos</th>
+              <th>Rating</th>
+              <th>G</th>
+              <th>A</th>
+              <th>xG</th>
+              <th>Shots</th>
+              <th>SoT</th>
+              <th>Passes</th>
+              <th>Pass%</th>
+              <th>YC</th>
+              <th>RC</th>
+            </tr>
+          </thead>
+          <tbody>
+      `;
+
+      sortedPlayers.forEach(player => {
+        const pid = String(player.playerId);
+        const name = namesCache[pid] || `Player ${pid}`;
+        const passAcc = player.passes > 0 ? ((player.passesAccurate / player.passes) * 100).toFixed(0) : '0';
+
+        html += `
+          <tr>
+            <td>${name}</td>
+            <td>${player.position || '-'}</td>
+            <td>${(player.rating || 0).toFixed(1)}</td>
+            <td>${player.goals || 0}</td>
+            <td>${player.assists || 0}</td>
+            <td>${(player.xG || 0).toFixed(1)}</td>
+            <td>${player.shots || 0}</td>
+            <td>${player.shotsOnTarget || 0}</td>
+            <td>${player.passes || 0}</td>
+            <td>${passAcc}%</td>
+            <td>${player.yellowCards || 0}</td>
+            <td>${player.redCards || 0}</td>
+          </tr>
+        `;
+      });
+
+      html += `
+          </tbody>
+        </table>
+      `;
+
+      return html;
     }
 
     function aggregateTeamStats(playersStats) {
@@ -1577,29 +1915,6 @@
       return stats;
     }
 
-    function renderTeamStats(stats) {
-      if (!stats) return '<p>No stats available</p>';
-
-      const passAcc = stats.passes > 0 ? ((stats.passesAccurate / stats.passes) * 100).toFixed(1) : '0';
-      const crossAcc = stats.crosses > 0 ? ((stats.crossesAccurate / stats.crosses) * 100).toFixed(1) : '0';
-
-      return `
-        <div class="stat-row"><span class="label">Goals</span><span class="value">${stats.goals}</span></div>
-        <div class="stat-row"><span class="label">Assists</span><span class="value">${stats.assists}</span></div>
-        <div class="stat-row"><span class="label">xG</span><span class="value">${stats.xG.toFixed(2)}</span></div>
-        <div class="stat-row"><span class="label">Shots</span><span class="value">${stats.shots}</span></div>
-        <div class="stat-row"><span class="label">Shots on Target</span><span class="value">${stats.shotsOnTarget}</span></div>
-        <div class="stat-row"><span class="label">Passes</span><span class="value">${stats.passes}</span></div>
-        <div class="stat-row"><span class="label">Pass Accuracy</span><span class="value">${passAcc}%</span></div>
-        <div class="stat-row"><span class="label">Crosses</span><span class="value">${stats.crosses}</span></div>
-        <div class="stat-row"><span class="label">Cross Accuracy</span><span class="value">${crossAcc}%</span></div>
-        <div class="stat-row"><span class="label">Fouls</span><span class="value">${stats.fouls}</span></div>
-        <div class="stat-row"><span class="label">Yellow Cards</span><span class="value">${stats.yellowCards}</span></div>
-        <div class="stat-row"><span class="label">Red Cards</span><span class="value">${stats.redCards}</span></div>
-        <div class="stat-row"><span class="label">Avg Rating</span><span class="value">${stats.avgRating}</span></div>
-      `;
-    }
-
     function renderAll() {
       if (allMatches.length > 0) {
         document.getElementById('overview-section').classList.add('visible');
@@ -1628,12 +1943,14 @@
         'Home SoT', 'Away SoT', 'Home Passes', 'Away Passes',
         'Home Pass Acc%', 'Away Pass Acc%', 'Home Fouls', 'Away Fouls',
         'Home YC', 'Away YC', 'Home RC', 'Away RC',
-        'Home Avg Rating', 'Away Avg Rating'
+        'Home Avg Rating', 'Away Avg Rating',
+        'Home Formation', 'Away Formation', 'Home XI Overall', 'Away XI Overall'
       ]);
 
       allMatches.forEach(match => {
         const home = match.report?.home;
         const away = match.report?.away;
+        const formations = match.formations;
 
         if (!home || !away) return;
 
@@ -1644,6 +1961,25 @@
 
         const homePassAcc = homeStats.passes > 0 ? ((homeStats.passesAccurate / homeStats.passes) * 100).toFixed(1) : '0';
         const awayPassAcc = awayStats.passes > 0 ? ((awayStats.passesAccurate / awayStats.passes) * 100).toFixed(1) : '0';
+
+        let homeFormationType = '-';
+        let awayFormationType = '-';
+        let homeXIOverall = 0;
+        let awayXIOverall = 0;
+
+        if (formations) {
+          const playerMap = extractPlayerMapFromFormations(formations);
+
+          if (formations.homeFormation) {
+            homeFormationType = formations.homeFormation.type || '-';
+            homeXIOverall = computeXIOverall(formations.homeFormation, playerMap);
+          }
+
+          if (formations.awayFormation) {
+            awayFormationType = formations.awayFormation.type || '-';
+            awayXIOverall = computeXIOverall(formations.awayFormation, playerMap);
+          }
+        }
 
         rows.push([
           match.matchId,
@@ -1668,7 +2004,11 @@
           homeStats.redCards,
           awayStats.redCards,
           homeStats.avgRating,
-          awayStats.avgRating
+          awayStats.avgRating,
+          homeFormationType,
+          awayFormationType,
+          homeXIOverall,
+          awayXIOverall
         ]);
       });
 
