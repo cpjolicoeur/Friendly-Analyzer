@@ -74,531 +74,456 @@
 
     .controls {
       max-width: 2200px;
-      margin: 0 auto 20px;
+      margin: 0 auto 30px;
       background: rgba(30, 41, 59, 0.85);
-      padding: 24px;
+      padding: 30px;
       border-radius: 16px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(238, 255, 0, 0.1);
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     }
 
-    .control-row {
+    .input-group {
       display: flex;
-      gap: 12px;
-      margin-bottom: 16px;
+      gap: 15px;
+      margin-bottom: 20px;
       flex-wrap: wrap;
-      align-items: end;
     }
 
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
+    .input-group input {
       flex: 1;
       min-width: 200px;
-    }
-
-    .form-label {
-      font-size: 13px;
-      font-weight: 600;
-      color: #cbd5e1;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .form-input {
       padding: 14px 18px;
-      font-size: 15px;
-      background: rgba(15, 23, 42, 0.8);
-      border: 2px solid rgba(148, 163, 184, 0.3);
+      border: 1px solid rgba(238, 255, 0, 0.2);
       border-radius: 10px;
+      background: rgba(15, 23, 42, 0.5);
       color: #f1f5f9;
-      transition: all 0.3s ease;
-      font-family: inherit;
+      font-size: 15px;
+      transition: all 0.2s;
     }
 
-    .form-input:focus {
+    .input-group input:focus {
       outline: none;
       border-color: #eeff00;
-      background: rgba(15, 23, 42, 0.95);
-      box-shadow: 0 0 0 3px rgba(238, 255, 0, 0.15);
+      box-shadow: 0 0 0 3px rgba(238, 255, 0, 0.1);
     }
 
-    .form-input::placeholder {
-      color: #94a3b8;
+    .input-group input::placeholder {
+      color: #64748b;
     }
 
     .btn {
-      padding: 14px 26px;
-      font-size: 14px;
-      font-weight: 600;
+      padding: 14px 24px;
       border: none;
       border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: all 0.2s;
       white-space: nowrap;
-      font-family: inherit;
-      letter-spacing: 0.3px;
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, #eeff00 0%, #fff76b 100%);
-      color: #1e293b;
-      box-shadow: 0 4px 14px rgba(238, 255, 0, 0.3);
+      background: linear-gradient(135deg, #eeff00 0%, #c9d900 100%);
+      color: #0f172a;
     }
 
     .btn-primary:hover:not(:disabled) {
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(238, 255, 0, 0.4);
+      box-shadow: 0 8px 16px rgba(238, 255, 0, 0.25);
+    }
+
+    .btn-primary:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
     }
 
     .btn-secondary {
       background: rgba(71, 85, 105, 0.8);
       color: #f1f5f9;
-      border: 1px solid rgba(148, 163, 184, 0.3);
+      border: 1px solid rgba(238, 255, 0, 0.2);
     }
 
     .btn-secondary:hover {
-      background: rgba(100, 116, 139, 0.9);
+      background: rgba(71, 85, 105, 1);
       border-color: #eeff00;
     }
 
-    .btn-success {
-      background: rgba(34, 197, 94, 0.8);
-      color: #fff;
-      border: 1px solid rgba(74, 222, 128, 0.3);
-    }
-
-    .btn-success:hover {
-      background: rgba(74, 222, 128, 0.9);
-    }
-
-    .btn-info {
-      background: rgba(59, 130, 246, 0.8);
-      color: #fff;
-      border: 1px solid rgba(96, 165, 250, 0.3);
-    }
-
-    .btn-info:hover {
-      background: rgba(96, 165, 250, 0.9);
-    }
-
     .btn-danger {
-      background: rgba(220, 38, 38, 0.8);
+      background: rgba(239, 68, 68, 0.8);
       color: #fff;
-      border: 1px solid rgba(239, 68, 68, 0.3);
-      padding: 6px 12px;
-      font-size: 12px;
+      border: 1px solid rgba(239, 68, 68, 0.4);
     }
 
     .btn-danger:hover {
-      background: rgba(239, 68, 68, 0.9);
+      background: rgba(239, 68, 68, 1);
     }
 
-    .btn-small {
-      padding: 4px 8px;
-      font-size: 10px;
-      border-radius: 6px;
+    .btn-export {
+      background: rgba(34, 197, 94, 0.8);
+      color: #fff;
+      border: 1px solid rgba(34, 197, 94, 0.4);
     }
 
-    .btn:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-
-    .analysis-actions {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      margin-top: 16px;
-      padding-top: 16px;
-      border-top: 1px solid rgba(148, 163, 184, 0.2);
-    }
-
-    .add-match-section {
-      margin-top: 16px;
-      padding-top: 16px;
-      border-top: 1px solid rgba(148, 163, 184, 0.2);
+    .btn-export:hover {
+      background: rgba(34, 197, 94, 1);
     }
 
     .status-container {
       max-width: 2200px;
-      margin: 0 auto 20px;
-      background: rgba(30, 41, 59, 0.85);
-      padding: 14px 24px;
-      border-radius: 12px;
-      text-align: center;
-      min-height: 52px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      margin: 0 auto 30px;
+      min-height: 50px;
     }
 
-    .status-text {
-      font-size: 14px;
-      color: #cbd5e1;
+    .status {
+      padding: 16px 24px;
+      border-radius: 10px;
+      font-size: 15px;
       font-weight: 500;
+      display: none;
+      align-items: center;
+      gap: 10px;
+      animation: slideIn 0.3s ease-out;
     }
 
-    .status-text.loading {
-      color: #eeff00;
-      font-weight: 600;
+    .status.show {
+      display: flex;
     }
 
-    .status-text.success {
-      color: #4ade80;
-      font-weight: 600;
+    .status.success {
+      background: rgba(34, 197, 94, 0.15);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      color: #86efac;
     }
 
-    .status-text.error {
-      color: #ef4444;
-      font-weight: 600;
+    .status.error {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #fca5a5;
     }
 
-    .overview-section {
+    .status.loading {
+      background: rgba(59, 130, 246, 0.15);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      color: #93c5fd;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .overview-section, .matches-section {
       max-width: 2200px;
-      margin: 0 auto 20px;
+      margin: 0 auto 30px;
       display: none;
     }
 
-    .overview-section.visible {
+    .overview-section.visible, .matches-section.visible {
       display: block;
     }
 
-    .record-summary {
+    .section-card {
       background: rgba(30, 41, 59, 0.85);
-      padding: 20px;
-      border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 30px;
+      border-radius: 16px;
+      border: 1px solid rgba(238, 255, 0, 0.1);
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-      margin-bottom: 20px;
-      text-align: center;
+      margin-bottom: 30px;
     }
 
-    .record-summary h3 {
-      font-size: 18px;
+    .section-title {
+      font-size: 24px;
       font-weight: 700;
       color: #eeff00;
-      margin-bottom: 14px;
+      margin-bottom: 8px;
     }
 
-    .record-stats {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      flex-wrap: wrap;
-    }
-
-    .record-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .record-label {
-      font-size: 11px;
+    .section-subtitle {
+      font-size: 14px;
       color: #94a3b8;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 6px;
-    }
-
-    .record-value {
-      font-size: 28px;
-      font-weight: 800;
-      color: #f1f5f9;
-    }
-
-    .record-item.wins .record-value {
-      color: #4ade80;
-    }
-
-    .record-item.draws .record-value {
-      color: #eeff00;
-    }
-
-    .record-item.losses .record-value {
-      color: #ef4444;
-    }
-
-    .team-overview-wrapper {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
       margin-bottom: 20px;
-      flex-wrap: wrap;
     }
 
-    .overview-card {
-      background: rgba(30, 41, 59, 0.85);
-      padding: 20px;
-      border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-      flex: 1;
-      min-width: 500px;
-      max-width: 700px;
-    }
-
-    .overview-title {
-      font-size: 18px;
-      font-weight: 700;
-      color: #eeff00;
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .overview-subtitle {
-      font-size: 12px;
-      color: #94a3b8;
-      margin-bottom: 16px;
-    }
-
-    .stat-grid {
+    .stats-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: 12px;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 15px;
     }
 
     .stat-item {
-      background: rgba(15, 23, 42, 0.8);
-      padding: 10px;
-      border-radius: 8px;
-      border: 1px solid rgba(148, 163, 184, 0.2);
+      background: rgba(15, 23, 42, 0.5);
+      padding: 16px;
+      border-radius: 10px;
+      border: 1px solid rgba(238, 255, 0, 0.1);
+      transition: all 0.2s;
+    }
+
+    .stat-item:hover {
+      border-color: rgba(238, 255, 0, 0.3);
+      transform: translateY(-2px);
     }
 
     .stat-label {
-      font-size: 10px;
+      font-size: 13px;
       color: #94a3b8;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 5px;
-      cursor: help;
+      margin-bottom: 8px;
+      font-weight: 500;
     }
 
     .stat-value {
-      font-size: 18px;
+      font-size: 22px;
       font-weight: 700;
-      color: #f1f5f9;
-    }
-
-    .xi-overall-summary {
-      margin-top: 10px;
-      padding-top: 10px;
-      border-top: 1px solid rgba(148, 163, 184, 0.3);
-      font-size: 12px;
-      color: #e2e8f0;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      justify-content: space-between;
-    }
-
-    .xi-overall-summary span {
-      display: inline-block;
-    }
-
-    .player-table-controls {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 12px;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .player-table-controls-left {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .player-table-controls-right {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .player-detail-card {
-      background: rgba(30, 41, 59, 0.85);
-      padding: 20px;
-      border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    }
-
-    .player-table-wrapper {
-      overflow-x: auto;
-      margin-top: 12px;
-    }
-
-    .player-detail-table {
-      width: 100%;
-      border-collapse: separate;
-      border-spacing: 0 4px;
-      font-size: 11px;
-      white-space: nowrap;
-    }
-
-    .player-detail-table th {
-      text-align: center;
-      padding: 8px 6px;
-      color: #94a3b8;
-      font-weight: 700;
-      text-transform: uppercase;
-      font-size: 9px;
-      border-bottom: 2px solid rgba(148, 163, 184, 0.2);
-      cursor: pointer;
-      user-select: none;
-      position: relative;
-    }
-
-    .player-detail-table th:first-child {
-      text-align: left;
-      padding-left: 10px;
-    }
-
-    .player-detail-table th:hover {
       color: #eeff00;
     }
 
-    .player-detail-table th[title] {
-      cursor: help;
+    .xi-summary {
+      margin-top: 20px;
+      padding: 16px;
+      background: rgba(15, 23, 42, 0.5);
+      border-radius: 10px;
+      border: 1px solid rgba(238, 255, 0, 0.1);
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
     }
 
-    .hide-col-btn {
-      display: inline-block;
-      margin-left: 4px;
-      color: #ef4444;
-      font-size: 10px;
-      cursor: pointer;
-      opacity: 0;
-      transition: opacity 0.2s;
+    .xi-summary span {
+      color: #cbd5e1;
+      font-size: 14px;
     }
 
-    .player-detail-table th:hover .hide-col-btn {
-      opacity: 1;
+    .xi-summary strong {
+      color: #eeff00;
     }
 
-    .player-detail-table tbody tr {
-      background: rgba(51, 65, 85, 0.7);
-      transition: all 0.2s ease;
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
     }
 
-    .player-detail-table tbody tr:hover {
-      background: rgba(71, 85, 105, 0.9);
-    }
-
-    .player-detail-table td {
-      padding: 10px 6px;
-      text-align: center;
-      color: #e2e8f0;
-    }
-
-    .player-detail-table td:first-child {
+    th, td {
+      padding: 14px 12px;
       text-align: left;
-      padding-left: 10px;
+      border-bottom: 1px solid rgba(71, 85, 105, 0.4);
+      font-size: 14px;
+    }
+
+    th {
+      background: rgba(15, 23, 42, 0.7);
+      color: #eeff00;
       font-weight: 600;
-      color: #f1f5f9;
-      border-top-left-radius: 6px;
-      border-bottom-left-radius: 6px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      cursor: pointer;
+      user-select: none;
     }
 
-    .player-detail-table td:last-child {
-      border-top-right-radius: 6px;
-      border-bottom-right-radius: 6px;
+    th:hover {
+      background: rgba(15, 23, 42, 0.9);
     }
 
-    .player-detail-table tr.hidden-row {
-      display: none;
+    td {
+      color: #cbd5e1;
     }
 
-    .player-detail-table th.hidden-col,
-    .player-detail-table td.hidden-col {
-      display: none;
+    tr:hover td {
+      background: rgba(15, 23, 42, 0.3);
     }
 
     .sort-indicator {
-      display: inline-block;
-      margin-left: 4px;
-      width: 8px;
+      margin-left: 6px;
+      font-size: 10px;
       color: #eeff00;
     }
 
-    .match-filter-controls {
+    .match-item {
+      background: rgba(15, 23, 42, 0.5);
+      border: 1px solid rgba(238, 255, 0, 0.1);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 20px;
+      transition: all 0.2s;
+    }
+
+    .match-item:hover {
+      border-color: rgba(238, 255, 0, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .match-header {
       display: flex;
-      gap: 8px;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
       flex-wrap: wrap;
+      gap: 15px;
     }
 
-    .filter-btn {
-      padding: 8px 16px;
-      font-size: 12px;
-      font-weight: 600;
-      border: 2px solid rgba(148, 163, 184, 0.3);
-      border-radius: 8px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      background: rgba(51, 65, 85, 0.6);
-      color: #cbd5e1;
-      font-family: inherit;
-    }
-
-    .filter-btn:hover {
-      border-color: #eeff00;
-      background: rgba(71, 85, 105, 0.8);
-    }
-
-    .filter-btn.active {
-      background: rgba(238, 255, 0, 0.2);
-      border-color: #eeff00;
-      color: #eeff00;
+    .match-title {
+      font-size: 20px;
       font-weight: 700;
+      color: #eeff00;
+    }
+
+    .match-date {
+      font-size: 14px;
+      color: #94a3b8;
+    }
+
+    .match-score {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
+    .team-name {
+      font-size: 18px;
+      font-weight: 600;
+      color: #cbd5e1;
+      min-width: 120px;
+    }
+
+    .score {
+      color: #eeff00;
+      font-size: 36px;
+    }
+
+    .match-stats {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .team-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .stat-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+      color: #cbd5e1;
+    }
+
+    .stat-row .label {
+      color: #94a3b8;
+      font-weight: 500;
+    }
+
+    .stat-divider {
+      width: 1px;
+      background: rgba(238, 255, 0, 0.1);
+    }
+
+    .footer {
+      max-width: 2200px;
+      margin: 40px auto 20px;
+      text-align: center;
+      color: #64748b;
+      font-size: 14px;
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top-color: #93c5fd;
+      animation: spin 1s ease-in-out infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .hide-row-btn {
+      background: rgba(239, 68, 68, 0.6);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 4px 8px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .hide-row-btn:hover {
+      background: rgba(239, 68, 68, 1);
+    }
+
+    .hide-col-btn {
+      background: none;
+      border: none;
+      color: #94a3b8;
+      cursor: pointer;
+      font-size: 14px;
+      padding: 0 4px;
+      transition: color 0.2s;
+    }
+
+    .hide-col-btn:hover {
+      color: #ef4444;
+    }
+
+    th.hidden-col, td.hidden-col {
+      display: none;
+    }
+
+    .restore-btn-container {
+      margin-top: 15px;
+      display: flex;
+      gap: 10px;
     }
 
     .modal {
       display: none;
       position: fixed;
-      z-index: 1000;
-      left: 0;
       top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
-      overflow: auto;
-      background-color: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(4px);
-    }
-
-    .modal.show {
-      display: flex;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1000;
       align-items: center;
       justify-content: center;
     }
 
+    .modal.show {
+      display: flex;
+    }
+
     .modal-content {
       background: rgba(30, 41, 59, 0.98);
-      padding: 32px;
-      border-radius: 16px;
       border: 1px solid rgba(238, 255, 0, 0.2);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-      max-width: 500px;
+      border-radius: 16px;
+      padding: 30px;
+      max-width: 600px;
       width: 90%;
       max-height: 80vh;
       overflow-y: auto;
-    }
-
-    .modal-content.wide {
-      max-width: 95%;
     }
 
     .modal-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
 
     .modal-title {
@@ -619,64 +544,33 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: all 0.2s ease;
+      border-radius: 6px;
+      transition: all 0.2s;
     }
 
     .modal-close:hover {
-      color: #eeff00;
+      background: rgba(239, 68, 68, 0.2);
+      color: #ef4444;
     }
 
     .modal-body {
       color: #cbd5e1;
     }
 
-    .modal-input {
-      width: 100%;
-      padding: 14px 18px;
-      font-size: 15px;
-      background: rgba(15, 23, 42, 0.8);
-      border: 2px solid rgba(148, 163, 184, 0.3);
-      border-radius: 10px;
-      color: #f1f5f9;
-      font-family: inherit;
-      margin-bottom: 20px;
-    }
-
-    .modal-input:focus {
-      outline: none;
-      border-color: #eeff00;
-      box-shadow: 0 0 0 3px rgba(238, 255, 0, 0.15);
-    }
-
-    .saved-analyses-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-bottom: 20px;
-      max-height: 400px;
-      overflow-y: auto;
-    }
-
     .saved-analysis-item {
-      background: rgba(51, 65, 85, 0.7);
-      padding: 16px;
+      background: rgba(15, 23, 42, 0.5);
+      border: 1px solid rgba(238, 255, 0, 0.1);
       border-radius: 10px;
-      border: 2px solid rgba(148, 163, 184, 0.2);
+      padding: 16px;
+      margin-bottom: 12px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      transition: all 0.2s ease;
-      cursor: pointer;
+      transition: all 0.2s;
     }
 
     .saved-analysis-item:hover {
-      border-color: #eeff00;
-      background: rgba(71, 85, 105, 0.9);
-    }
-
-    .saved-analysis-item.selected {
-      border-color: #eeff00;
-      background: rgba(238, 255, 0, 0.1);
+      border-color: rgba(238, 255, 0, 0.3);
     }
 
     .saved-analysis-info {
@@ -685,170 +579,90 @@
 
     .saved-analysis-name {
       font-size: 16px;
-      font-weight: 700;
-      color: #f1f5f9;
+      font-weight: 600;
+      color: #eeff00;
       margin-bottom: 4px;
     }
 
     .saved-analysis-meta {
-      font-size: 12px;
+      font-size: 13px;
       color: #94a3b8;
     }
 
+    .saved-analysis-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .comparison-checkbox {
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+    }
+
     .comparison-view {
-      display: none;
       max-width: 2200px;
-      margin: 0 auto;
+      margin: 0 auto 30px;
+      background: rgba(30, 41, 59, 0.85);
+      padding: 30px;
+      border-radius: 16px;
+      border: 1px solid rgba(238, 255, 0, 0.1);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      display: none;
     }
 
     .comparison-view.visible {
       display: block;
     }
 
-    .comparison-header {
-      background: rgba(30, 41, 59, 0.85);
-      padding: 20px;
-      border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-      margin-bottom: 15px;
-      text-align: center;
-    }
-
-    .comparison-header h2 {
-      font-size: 26px;
-      font-weight: 800;
-      color: #eeff00;
-      margin-bottom: 10px;
-    }
-
-    .comparison-names {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      flex-wrap: wrap;
-      margin-top: 12px;
-    }
-
-    .comparison-name-item {
-      font-size: 16px;
-      font-weight: 600;
-      color: #cbd5e1;
-    }
-
     .comparison-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-bottom: 20px;
+      gap: 30px;
     }
 
     .comparison-column {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .comparison-column-header {
-      background: rgba(30, 41, 59, 0.9);
-      padding: 12px 20px;
-      border-radius: 10px;
-      border: 2px solid rgba(238, 255, 0, 0.3);
-      margin-bottom: 10px;
-      text-align: center;
-      width: 100%;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-    }
-
-    .comparison-column-title {
-      font-size: 18px;
-      font-weight: 700;
-      color: #eeff00;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .comparison-column-content {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .comparison-column-content > * {
-      width: 100%;
-      max-width: 100%;
-    }
-
-    .comparison-player-table-controls {
-      display: flex;
-      justify-content: flex-end;
-      margin-bottom: 8px;
-    }
-
-    @media (max-width: 1200px) {
-      .comparison-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .matches-section {
-      max-width: 2200px;
-      margin: 0 auto 30px;
-      display: none;
-    }
-
-    .matches-section.visible {
-      display: block;
-    }
-
-    .matches-header {
-      background: rgba(30, 41, 59, 0.85);
-      padding: 20px 24px;
-      border-radius: 16px 16px 0 0;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-bottom: none;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .matches-header h2 {
-      font-size: 22px;
-      font-weight: 700;
-      color: #eeff00;
-    }
-
-    .matches-header-controls {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .matches-container {
-      background: rgba(30, 41, 59, 0.85);
-      padding: 0 24px 24px;
-      border-radius: 0 0 16px 16px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-top: none;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    }
-
-    .match-item {
-      background: rgba(51, 65, 85, 0.7);
-      margin-bottom: 12px;
+      background: rgba(15, 23, 42, 0.5);
+      padding: 20px;
       border-radius: 12px;
-      border: 1px solid rgba(148, 163, 184, 0.2);
-      overflow: hidden;
-      transition: all 0.2s ease;
-      cursor: pointer;
+      border: 1px solid rgba(238, 255, 0, 0.1);
     }
 
-    .match-item:hover {
+    .comparison-header {
+      font-size: 20px;
+      font-weight: 700;
+      color: #eeff00;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    .filter-buttons {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 10px 20px;
+      background: rgba(71, 85, 105, 0.6);
+      border: 1px solid rgba(238, 255, 0, 0.2);
+      border-radius: 8px;
+      color: #cbd5e1;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .filter-btn:hover {
+      background: rgba(71, 85, 105, 0.8);
+      border-color: rgba(238, 255, 0, 0.4);
+    }
+
+    .filter-btn.active {
+      background: linear-gradient(135deg, #eeff00 0%, #c9d900 100%);
+      color: #0f172a;
       border-color: #eeff00;
     }
 
@@ -856,350 +670,11 @@
       display: none;
     }
 
-    .match-main {
-      padding: 16px 20px;
-    }
-
-    .match-header-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 12px;
-      gap: 12px;
-    }
-
-    .match-title-section {
-      flex: 1;
-    }
-
-    .match-teams-title {
-      font-size: 18px;
-      font-weight: 700;
-      color: #eeff00;
-      margin-bottom: 4px;
-    }
-
-    .match-meta {
-      font-size: 12px;
-      color: #94a3b8;
-    }
-
-    .match-link {
-      color: #60a5fa;
-      text-decoration: none;
-      transition: color 0.2s;
-      margin-left: 8px;
-    }
-
-    .match-link:hover {
-      color: #eeff00;
-      text-decoration: underline;
-    }
-
-    .match-actions {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-    }
-
-    .match-toggle {
-      font-size: 20px;
-      color: #eeff00;
-      transition: transform 0.3s ease;
-      padding: 4px 8px;
-      user-select: none;
-      pointer-events: none;
-    }
-
-    .match-item.expanded .match-toggle {
-      transform: rotate(180deg);
-    }
-
-    .match-score-big {
-      font-size: 32px;
-      font-weight: 800;
-      color: #eeff00;
-      text-align: center;
-      margin-bottom: 12px;
-    }
-
-    .match-quick-stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 12px;
-      margin-top: 12px;
-    }
-
-    .quick-stat-card {
-      background: rgba(30, 41, 59, 0.8);
-      padding: 10px 14px;
-      border-radius: 8px;
-      border: 1px solid rgba(148, 163, 184, 0.2);
-    }
-
-    .quick-stat-label {
-      font-size: 11px;
-      color: #94a3b8;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 6px;
-      cursor: help;
-    }
-
-    .quick-stat-values {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 16px;
-      font-weight: 700;
-      color: #f1f5f9;
-    }
-
-    .quick-stat-home {
-      color: #eeff00;
-    }
-
-    .quick-stat-separator {
-      color: #64748b;
-      font-weight: 400;
-      font-size: 14px;
-    }
-
-    .quick-stat-away {
-      color: #94a3b8;
-    }
-
-    .match-details {
-      display: none;
-      padding: 20px;
-      border-top: 1px solid rgba(148, 163, 184, 0.2);
-      background: rgba(15, 23, 42, 0.4);
-    }
-
-    .match-item.expanded .match-details {
-      display: block;
-    }
-
-    .full-stats-title {
-      font-size: 18px;
-      font-weight: 700;
-      color: #eeff00;
-      margin-bottom: 16px;
-      text-align: center;
-    }
-
-    .full-stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-
-    .team-full-stats {
-      background: rgba(30, 41, 59, 0.8);
-      padding: 16px;
-      border-radius: 10px;
-      border: 1px solid rgba(148, 163, 184, 0.2);
-    }
-
-    .team-full-stats h4 {
-      color: #eeff00;
-      margin-bottom: 12px;
-      font-size: 15px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .stat-row {
-      display: flex;
-      justify-content: space-between;
-      padding: 6px 0;
-      border-bottom: 1px solid rgba(148, 163, 184, 0.1);
-      font-size: 13px;
-    }
-
-    .stat-row:last-child {
-      border-bottom: none;
-    }
-
-    .stat-row .label {
-      color: #94a3b8;
-      cursor: help;
-    }
-
-    .stat-row .value {
-      color: #f1f5f9;
-      font-weight: 600;
-    }
-
-    .players-section-title {
-      font-size: 18px;
-      font-weight: 700;
-      color: #eeff00;
-      margin-bottom: 16px;
-      text-align: center;
-    }
-
-    .team-players-card {
-      background: rgba(30, 41, 59, 0.8);
-      padding: 16px;
-      border-radius: 10px;
-      border: 1px solid rgba(148, 163, 184, 0.2);
-      margin-bottom: 16px;
-    }
-
-    .team-players-card h5 {
-      color: #eeff00;
-      margin-bottom: 12px;
-      font-size: 14px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .players-table {
-      width: 100%;
-      border-collapse: separate;
-      border-spacing: 0 4px;
-      font-size: 11px;
-    }
-
-    .players-table th {
-      text-align: center;
-      padding: 8px 4px;
-      color: #94a3b8;
-      font-weight: 700;
-      text-transform: uppercase;
-      font-size: 9px;
-      border-bottom: 1px solid rgba(148, 163, 184, 0.2);
-    }
-
-    .players-table th:first-child {
-      text-align: left;
-      padding-left: 8px;
-    }
-
-    .players-table th[title] {
-      cursor: help;
-    }
-
-    .players-table tbody tr {
-      background: rgba(51, 65, 85, 0.5);
-      transition: all 0.2s ease;
-    }
-
-    .players-table tbody tr:hover {
-      background: rgba(71, 85, 105, 0.7);
-    }
-
-    .players-table td {
-      padding: 8px 4px;
-      text-align: center;
-      color: #e2e8f0;
-    }
-
-    .players-table td:first-child {
-      text-align: left;
-      padding-left: 8px;
-      font-weight: 600;
-      color: #f1f5f9;
-      border-top-left-radius: 6px;
-      border-bottom-left-radius: 6px;
-    }
-
-    .players-table td:last-child {
-      border-top-right-radius: 6px;
-      border-bottom-right-radius: 6px;
-    }
-
-    .footer {
-      max-width: 2200px;
-      margin: 40px auto 0;
-      padding: 20px;
-      text-align: center;
-      color: #94a3b8;
-      font-size: 13px;
-      background: rgba(30, 41, 59, 0.6);
-      border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .footer-link {
-      color: #eeff00;
-      text-decoration: none;
-      font-weight: 600;
-      transition: all 0.2s ease;
-    }
-
-    .footer-link:hover {
-      color: #fff76b;
-    }
-
-    ::-webkit-scrollbar {
-      width: 10px;
-      height: 10px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: rgba(15, 23, 42, 0.5);
-      border-radius: 5px;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: rgba(148, 163, 184, 0.5);
-      border-radius: 5px;
-      transition: background 0.2s ease;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background: #eeff00;
-    }
-
-    @media (max-width: 1400px) {
-      .team-overview-wrapper {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .overview-card {
-        max-width: 100%;
-      }
-    }
-
     @media (max-width: 768px) {
-      body {
-        zoom: 0.6;
+      .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
       }
-
-      .header h1 {
-        font-size: 32px;
-      }
-
-      .control-row {
-        flex-direction: column;
-      }
-
-      .form-group {
-        width: 100%;
-      }
-
-      .stat-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .match-quick-stats {
-        grid-template-columns: 1fr;
-      }
-
-      .full-stats-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .record-stats {
-        gap: 20px;
-      }
-
+      
       .comparison-grid {
         grid-template-columns: 1fr;
       }
@@ -1209,203 +684,166 @@
 <body>
   <div class="header">
     <h1>⚽ MFL Friendly Match Analyzer</h1>
-    <p>Comprehensive team and player performance analysis across friendly matches</p>
+    <p>Analyze team performance across multiple friendly matches</p>
   </div>
 
   <div class="controls">
-    <div class="control-row">
-      <div class="form-group">
-        <label class="form-label">Club ID</label>
-        <input type="text" id="club-id" class="form-input" placeholder="Enter club ID (e.g., 4036)..." />
-      </div>
-
-      <div class="form-group">
-        <label class="form-label">Number of Games (Max 200)</label>
-        <input type="number" id="game-limit" class="form-input" placeholder="50" min="1" max="200" value="50" />
-      </div>
-
-      <button id="load-btn" class="btn btn-primary">Load Matches</button>
+    <div class="input-group">
+      <input type="text" id="club-id-input" placeholder="Enter Club ID" />
+      <input type="number" id="match-limit-input" placeholder="Number of matches (max 10)" value="5" min="1" max="10" />
+      <button class="btn btn-primary" id="analyze-btn">🔍 Analyze Matches</button>
+    </div>
+    <div class="input-group">
+      <input type="text" id="match-id-input" placeholder="Add individual Match ID" />
+      <button class="btn btn-secondary" id="add-match-btn">➕ Add Match</button>
+      <button class="btn btn-secondary" id="save-analysis-btn" disabled>💾 Save Analysis</button>
+      <button class="btn btn-secondary" id="load-analysis-btn">📂 Load Analysis</button>
+      <button class="btn btn-secondary" id="compare-btn">📊 Compare Analyses</button>
+      <button class="btn btn-export" id="export-btn">📥 Export to CSV</button>
     </div>
 
-    <div class="add-match-section">
-      <div class="control-row">
-        <div class="form-group">
-          <label class="form-label">Add Match by ID</label>
-          <input type="text" id="match-id-input" class="form-input" placeholder="Enter match ID..." />
-        </div>
-
-        <button id="add-match-btn" class="btn btn-secondary">Add Match</button>
-      </div>
-    </div>
-
-    <div class="analysis-actions">
-      <button id="save-analysis-btn" class="btn btn-success" disabled>💾 Save Analysis</button>
-      <button id="compare-analyses-btn" class="btn btn-info">📊 Compare Analyses</button>
+    <div class="filter-buttons">
+      <button class="filter-btn active" data-filter="all">All Matches</button>
+      <button class="filter-btn" data-filter="won">Won</button>
+      <button class="filter-btn" data-filter="lost">Lost</button>
+      <button class="filter-btn" data-filter="drawn">Drawn</button>
     </div>
   </div>
 
-  <div id="status-container" class="status-container">
-    <div id="status" class="status-text">Enter a club ID to start analyzing friendly matches</div>
-  </div>
-
-  <div id="save-modal" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="modal-title">Save Analysis</h3>
-        <button class="modal-close" onclick="closeSaveModal()">&times;</button>
-      </div>
-      <div class="modal-body">
-        <label class="form-label">Analysis Name</label>
-        <input type="text" id="analysis-name-input" class="modal-input" placeholder="e.g., Pre-Season Training, January 2026..." />
-        <button onclick="confirmSaveAnalysis()" class="btn btn-success" style="width: 100%">Save</button>
-      </div>
-    </div>
-  </div>
-
-  <div id="compare-modal" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="modal-title">Select Analyses to Compare</h3>
-        <button class="modal-close" onclick="closeCompareModal()">&times;</button>
-      </div>
-      <div class="modal-body">
-        <p style="margin-bottom: 16px; color: #94a3b8;">Select two saved analyses to compare side by side</p>
-        <div id="saved-analyses-list" class="saved-analyses-list"></div>
-        <button onclick="confirmCompareAnalyses()" class="btn btn-info" style="width: 100%" id="confirm-compare-btn" disabled>Compare Selected</button>
-      </div>
-    </div>
+  <div class="status-container">
+    <div class="status" id="status"></div>
   </div>
 
   <div id="comparison-view" class="comparison-view">
-    <div class="comparison-header">
-      <h2>📊 Analysis Comparison</h2>
-      <div class="comparison-names">
-        <div class="comparison-name-item" id="comparison-name-1">Analysis 1</div>
-        <div class="comparison-name-item">vs</div>
-        <div class="comparison-name-item" id="comparison-name-2">Analysis 2</div>
-      </div>
-      <div style="margin-top: 16px">
-        <button id="close-comparison-btn" class="btn btn-secondary">← Back to Main View</button>
-      </div>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+      <div class="section-title">Analysis Comparison</div>
+      <button class="btn btn-secondary" onclick="document.getElementById('comparison-view').classList.remove('visible')">✕ Close</button>
     </div>
-
-    <div id="comparison-content" class="comparison-grid"></div>
+    <div class="comparison-grid" id="comparison-grid"></div>
   </div>
 
-  <div id="overview-section" class="overview-section">
-    <div class="record-summary" id="record-summary">
-      <h3>📊 Match Record</h3>
-      <div class="record-stats">
-        <div class="record-item wins">
-          <div class="record-label">Wins</div>
-          <div class="record-value" id="win-percentage">0%</div>
-        </div>
-        <div class="record-item draws">
-          <div class="record-label">Draws</div>
-          <div class="record-value" id="draw-percentage">0%</div>
-        </div>
-        <div class="record-item losses">
-          <div class="record-label">Losses</div>
-          <div class="record-value" id="loss-percentage">0%</div>
-        </div>
-      </div>
+  <div class="overview-section" id="overview-section">
+    <div class="section-card">
+      <div class="section-title" id="record-title">Match Record</div>
+      <div id="match-record"></div>
     </div>
 
-    <div class="team-overview-wrapper">
-      <div class="overview-card">
-        <div class="overview-title">🏠 Home Team Performance</div>
-        <div class="overview-subtitle" id="home-overview-subtitle">Averages across all matches</div>
-        <div id="home-stats" class="stat-grid"></div>
-        <div id="home-xi-summary" class="xi-overall-summary"></div>
-      </div>
-
-      <div class="overview-card">
-        <div class="overview-title">✈️ Away Team Average Performance</div>
-        <div class="overview-subtitle" id="away-overview-subtitle">Opponent averages</div>
-        <div id="away-stats" class="stat-grid"></div>
-        <div id="away-xi-summary" class="xi-overall-summary"></div>
-      </div>
+    <div class="section-card">
+      <div class="section-title">Your Team (Home) Overview</div>
+      <div class="section-subtitle" id="home-overview-subtitle"></div>
+      <div class="stats-grid" id="home-stats"></div>
+      <div class="xi-summary" id="home-xi-summary"></div>
     </div>
 
-    <div class="player-detail-card">
-      <div class="overview-title">👥 Player Performance Detail</div>
-      <div class="overview-subtitle" id="player-detail-subtitle">Individual stats for all home players</div>
-      
-      <div class="player-table-controls">
-        <div class="player-table-controls-left">
-          <button id="restore-all-rows-btn" class="btn btn-secondary btn-small">↻ Restore All Rows</button>
-          <button id="restore-all-cols-btn" class="btn btn-secondary btn-small">↻ Restore All Columns</button>
-        </div>
-        <div class="player-table-controls-right">
-          <span style="color: #94a3b8; font-size: 11px;">Click column headers to sort • Hover headers to hide columns • Click row to hide</span>
-        </div>
-      </div>
+    <div class="section-card">
+      <div class="section-title">Opposition (Away) Overview</div>
+      <div class="section-subtitle" id="away-overview-subtitle"></div>
+      <div class="stats-grid" id="away-stats"></div>
+      <div class="xi-summary" id="away-xi-summary"></div>
+    </div>
 
-      <div class="player-table-wrapper">
-        <table id="player-detail-table" class="player-detail-table">
+    <div class="section-card">
+      <div class="section-title">Player Performance Detail</div>
+      <div class="section-subtitle" id="player-detail-subtitle"></div>
+      <div style="overflow-x: auto;">
+        <table id="player-detail-table">
           <thead>
             <tr>
               <th data-col="name">Player <span class="hide-col-btn" data-hide-col="name">✕</span></th>
-              <th data-col="positions" title="Position">Pos <span class="hide-col-btn" data-hide-col="positions">✕</span></th>
-              <th data-col="apps" title="Appearances">Apps <span class="hide-col-btn" data-hide-col="apps">✕</span></th>
-              <th data-col="rating" title="Average Rating">Rating <span class="hide-col-btn" data-hide-col="rating">✕</span></th>
-              <th data-col="goals" title="Goals">G <span class="hide-col-btn" data-hide-col="goals">✕</span></th>
-              <th data-col="assists" title="Assists">A <span class="hide-col-btn" data-hide-col="assists">✕</span></th>
-              <th data-col="goalContribution" title="Goal Contribution (Goals + Assists)">G+A <span class="hide-col-btn" data-hide-col="goalContribution">✕</span></th>
-              <th data-col="xg" title="Expected Goals">xG <span class="hide-col-btn" data-hide-col="xg">✕</span></th>
-              <th data-col="xgDiff" title="xG Overperformance (Goals - xG)">xG± <span class="hide-col-btn" data-hide-col="xgDiff">✕</span></th>
-              <th data-col="conversionRate" title="Goal Conversion Rate %">Conv% <span class="hide-col-btn" data-hide-col="conversionRate">✕</span></th>
-              <th data-col="xgPerShot" title="Expected Goals per Shot">xG/Shot <span class="hide-col-btn" data-hide-col="xgPerShot">✕</span></th>
-              <th data-col="shots" title="Shots">Shots <span class="hide-col-btn" data-hide-col="shots">✕</span></th>
-              <th data-col="sot" title="Shots on Target">SoT <span class="hide-col-btn" data-hide-col="sot">✕</span></th>
-              <th data-col="shotAcc" title="Shot Accuracy %">Shot% <span class="hide-col-btn" data-hide-col="shotAcc">✕</span></th>
-              <th data-col="chancesCreated" title="Chances Created">Chances <span class="hide-col-btn" data-hide-col="chancesCreated">✕</span></th>
-              <th data-col="keyPassRate" title="Key Pass Rate %">Key% <span class="hide-col-btn" data-hide-col="keyPassRate">✕</span></th>
-              <th data-col="passes" title="Passes">Passes <span class="hide-col-btn" data-hide-col="passes">✕</span></th>
-              <th data-col="passAcc" title="Pass Accuracy %">Pass% <span class="hide-col-btn" data-hide-col="passAcc">✕</span></th>
-              <th data-col="crosses" title="Crosses">Cross <span class="hide-col-btn" data-hide-col="crosses">✕</span></th>
-              <th data-col="crossAcc" title="Cross Accuracy %">Cross% <span class="hide-col-btn" data-hide-col="crossAcc">✕</span></th>
-              <th data-col="dribbles" title="Successful Dribbles">Drib <span class="hide-col-btn" data-hide-col="dribbles">✕</span></th>
-              <th data-col="dribbledPast" title="Dribbled Past">Drb Past <span class="hide-col-btn" data-hide-col="dribbledPast">✕</span></th>
-              <th data-col="defDuels" title="Defensive Duel Win %">Def% <span class="hide-col-btn" data-hide-col="defDuels">✕</span></th>
-              <th data-col="clearances" title="Clearances">Clear <span class="hide-col-btn" data-hide-col="clearances">✕</span></th>
-              <th data-col="blocks" title="Shots Blocked">Blocks <span class="hide-col-btn" data-hide-col="blocks">✕</span></th>
-              <th data-col="shotsIntercepted" title="Shots Intercepted (Offensive)">Sh Int <span class="hide-col-btn" data-hide-col="shotsIntercepted">✕</span></th>
-              <th data-col="progressive" title="Progressive Actions (Accurate Passes + Dribbles)">Prog <span class="hide-col-btn" data-hide-col="progressive">✕</span></th>
-              <th data-col="fouls" title="Fouls Committed">Fouls <span class="hide-col-btn" data-hide-col="fouls">✕</span></th>
-              <th data-col="foulsSuffered" title="Fouls Suffered">FS <span class="hide-col-btn" data-hide-col="foulsSuffered">✕</span></th>
-              <th data-col="yc" title="Yellow Cards">YC <span class="hide-col-btn" data-hide-col="yc">✕</span></th>
-              <th data-col="rc" title="Red Cards">RC <span class="hide-col-btn" data-hide-col="rc">✕</span></th>
-              <th data-col="ownGoals" title="Own Goals">OG <span class="hide-col-btn" data-hide-col="ownGoals">✕</span></th>
-              <th data-col="saves" title="Saves">Saves <span class="hide-col-btn" data-hide-col="saves">✕</span></th>
-              <th data-col="goalsConceded" title="Goals Conceded">GC <span class="hide-col-btn" data-hide-col="goalsConceded">✕</span></th>
+              <th data-col="position">Pos <span class="hide-col-btn" data-hide-col="position">✕</span></th>
+              <th data-col="appearances">Apps <span class="hide-col-btn" data-hide-col="appearances">✕</span></th>
+              <th data-col="rating">Rating <span class="hide-col-btn" data-hide-col="rating">✕</span></th>
+              <th data-col="goals">G <span class="hide-col-btn" data-hide-col="goals">✕</span></th>
+              <th data-col="assists">A <span class="hide-col-btn" data-hide-col="assists">✕</span></th>
+              <th data-col="goalContribution">G+A <span class="hide-col-btn" data-hide-col="goalContribution">✕</span></th>
+              <th data-col="xG">xG <span class="hide-col-btn" data-hide-col="xG">✕</span></th>
+              <th data-col="xgDiff">xG± <span class="hide-col-btn" data-hide-col="xgDiff">✕</span></th>
+              <th data-col="conversionRate">Conv% <span class="hide-col-btn" data-hide-col="conversionRate">✕</span></th>
+              <th data-col="xgPerShot">xG/Shot <span class="hide-col-btn" data-hide-col="xgPerShot">✕</span></th>
+              <th data-col="shots">Shots <span class="hide-col-btn" data-hide-col="shots">✕</span></th>
+              <th data-col="shotsOnTarget">SoT <span class="hide-col-btn" data-hide-col="shotsOnTarget">✕</span></th>
+              <th data-col="shotAccuracy">Shot% <span class="hide-col-btn" data-hide-col="shotAccuracy">✕</span></th>
+              <th data-col="chancesCreated">Chances <span class="hide-col-btn" data-hide-col="chancesCreated">✕</span></th>
+              <th data-col="keyPassRate">Key% <span class="hide-col-btn" data-hide-col="keyPassRate">✕</span></th>
+              <th data-col="passes">Passes <span class="hide-col-btn" data-hide-col="passes">✕</span></th>
+              <th data-col="passAccuracy">Pass% <span class="hide-col-btn" data-hide-col="passAccuracy">✕</span></th>
+              <th data-col="crosses">Cross <span class="hide-col-btn" data-hide-col="crosses">✕</span></th>
+              <th data-col="crossAccuracy">Cross% <span class="hide-col-btn" data-hide-col="crossAccuracy">✕</span></th>
+              <th data-col="dribbles">Drib <span class="hide-col-btn" data-hide-col="dribbles">✕</span></th>
+              <th data-col="dribbledPast">Drb Past <span class="hide-col-btn" data-hide-col="dribbledPast">✕</span></th>
+              <th data-col="defensiveDuelsWonRate">Def% <span class="hide-col-btn" data-hide-col="defensiveDuelsWonRate">✕</span></th>
+              <th data-col="clearances">Clear <span class="hide-col-btn" data-hide-col="clearances">✕</span></th>
+              <th data-col="blockedShots">Blocks <span class="hide-col-btn" data-hide-col="blockedShots">✕</span></th>
+              <th data-col="shotsIntercepted">Sh Int <span class="hide-col-btn" data-hide-col="shotsIntercepted">✕</span></th>
+              <th data-col="progressivePasses">Prog <span class="hide-col-btn" data-hide-col="progressivePasses">✕</span></th>
+              <th data-col="fouls">Fouls <span class="hide-col-btn" data-hide-col="fouls">✕</span></th>
+              <th data-col="foulsSuffered">FS <span class="hide-col-btn" data-hide-col="foulsSuffered">✕</span></th>
+              <th data-col="yellowCards">YC <span class="hide-col-btn" data-hide-col="yellowCards">✕</span></th>
+              <th data-col="redCards">RC <span class="hide-col-btn" data-hide-col="redCards">✕</span></th>
+              <th data-col="ownGoals">OG <span class="hide-col-btn" data-hide-col="ownGoals">✕</span></th>
+              <th data-col="saves">Saves <span class="hide-col-btn" data-hide-col="saves">✕</span></th>
+              <th data-col="goalsConceded">GC <span class="hide-col-btn" data-hide-col="goalsConceded">✕</span></th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody id="player-detail-body"></tbody>
         </table>
       </div>
+      <div class="restore-btn-container">
+        <button class="btn btn-secondary" id="restore-all-rows-btn">↺ Restore All Rows</button>
+        <button class="btn btn-secondary" id="restore-all-cols-btn">↺ Restore All Columns</button>
+      </div>
     </div>
   </div>
 
-  <div id="matches-section" class="matches-section">
-    <div class="matches-header">
-      <h2 id="matches-title">Match History</h2>
-      
-      <div class="matches-header-controls">
-        <div class="match-filter-controls">
-          <button class="filter-btn active" data-filter="all">All Matches</button>
-          <button class="filter-btn" data-filter="wins">Wins Only</button>
-          <button class="filter-btn" data-filter="draws">Draws Only</button>
-          <button class="filter-btn" data-filter="losses">Losses Only</button>
+  <div class="matches-section" id="matches-section">
+    <div class="section-card">
+      <div class="section-title" id="matches-title">Match History</div>
+      <div id="matches-container"></div>
+    </div>
+  </div>
+
+  <div class="modal" id="save-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title">Save Analysis</div>
+        <button class="modal-close" onclick="document.getElementById('save-modal').classList.remove('show')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="input-group" style="margin-bottom: 0;">
+          <input type="text" id="analysis-name-input" placeholder="Enter analysis name" />
+          <button class="btn btn-primary" id="confirm-save-btn">Save</button>
         </div>
-        <button id="download-csv-btn" class="btn btn-secondary">📥 Download CSV</button>
       </div>
     </div>
-    <div class="matches-container" id="matches-container"></div>
+  </div>
+
+  <div class="modal" id="load-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title">Load Saved Analysis</div>
+        <button class="modal-close" onclick="document.getElementById('load-modal').classList.remove('show')">&times;</button>
+      </div>
+      <div class="modal-body" id="saved-analyses-list"></div>
+    </div>
+  </div>
+
+  <div class="modal" id="compare-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title">Select Analyses to Compare</div>
+        <button class="modal-close" onclick="document.getElementById('compare-modal').classList.remove('show')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="margin-bottom: 16px; color: #94a3b8;">Select exactly 2 analyses to compare:</p>
+        <div id="compare-analyses-list"></div>
+        <button class="btn btn-primary" id="confirm-compare-btn" style="margin-top: 20px; width: 100%;">Compare Selected</button>
+      </div>
+    </div>
   </div>
 
   <div class="footer">
-    <p>Built for the MFL community. <a href="https://discord.com/users/rickyhyde" target="_blank" class="footer-link">Suggestions? Contact rickyhyde on Discord</a></p>
+    <p>MFL Friendly Match Analyzer</p>
   </div>
 
   <script>
@@ -1424,7 +862,7 @@
       left: { column: "rating", asc: false },
       right: { column: "rating", asc: false },
     };
-    
+
     let hiddenPlayerRows = new Set();
     let hiddenPlayerCols = new Set();
     let currentMatchFilter = "all";
@@ -1442,125 +880,76 @@
     }
 
     function saveSavedAnalyses() {
-      localStorage.setItem("mfl_saved_analyses", JSON.stringify(savedAnalyses));
-    }
-
-    function setStatus(msg, type = "") {
-      const el = document.getElementById("status");
-      if (el) {
-        el.textContent = msg;
-        el.className = "status-text " + type;
+      try {
+        localStorage.setItem("mfl_saved_analyses", JSON.stringify(savedAnalyses));
+      } catch (e) {
+        console.error("Failed to save analyses:", e);
       }
-    }
-
-    function openSaveModal() {
-      if (allMatches.length === 0) {
-        alert("No data to save. Please load matches first.");
-        return;
-      }
-      document.getElementById("save-modal").classList.add("show");
-      document.getElementById("analysis-name-input").value = "";
-      document.getElementById("analysis-name-input").focus();
-    }
-
-    function closeSaveModal() {
-      document.getElementById("save-modal").classList.remove("show");
-    }
-
-    function confirmSaveAnalysis() {
-      const name = document.getElementById("analysis-name-input").value.trim();
-      if (!name) {
-        alert("Please enter a name for this analysis");
-        return;
-      }
-
-      const analysisData = {
-        id: Date.now(),
-        name: name,
-        timestamp: new Date().toISOString(),
-        matchCount: allMatches.length,
-        record: calculateMatchRecord(),
-        teamStats: calculateTeamStats(),
-        playerStats: calculatePlayerStats(),
-      };
-
-      savedAnalyses.push(analysisData);
-      saveSavedAnalyses();
-
-      closeSaveModal();
-      setStatus(`Analysis "${name}" saved successfully!`, "success");
-    }
-
-    function openCompareModal() {
-      if (savedAnalyses.length < 2) {
-        alert("You need at least 2 saved analyses to compare. Please save some analyses first.");
-        return;
-      }
-
-      selectedAnalysesForComparison = [];
-      renderSavedAnalysesList();
-      document.getElementById("compare-modal").classList.add("show");
-      updateCompareButton();
-    }
-
-    function closeCompareModal() {
-      document.getElementById("compare-modal").classList.remove("show");
     }
 
     function renderSavedAnalysesList() {
-      const container = document.getElementById("saved-analyses-list");
-      container.innerHTML = "";
-
+      const list = document.getElementById("saved-analyses-list");
+      
       if (savedAnalyses.length === 0) {
-        container.innerHTML = '<p style="color: #94a3b8; text-align: center; padding: 20px;">No saved analyses yet</p>';
+        list.innerHTML = '<p style="color: #94a3b8; text-align: center; padding: 20px;">No saved analyses yet</p>';
         return;
       }
 
-      savedAnalyses.forEach((analysis) => {
-        const item = document.createElement("div");
-        item.className = "saved-analysis-item";
-        if (selectedAnalysesForComparison.includes(analysis.id)) {
-          item.classList.add("selected");
-        }
-
-        item.innerHTML = `
+      list.innerHTML = savedAnalyses.map(analysis => `
+        <div class="saved-analysis-item">
           <div class="saved-analysis-info">
             <div class="saved-analysis-name">${analysis.name}</div>
             <div class="saved-analysis-meta">
-              ${analysis.matchCount} matches | Saved: ${new Date(analysis.timestamp).toLocaleDateString()}
+              ${analysis.matches.length} matches • Saved ${new Date(analysis.timestamp).toLocaleDateString()}
             </div>
           </div>
-          <button class="btn btn-danger" onclick="event.stopPropagation(); deleteAnalysis(${analysis.id})">🗑️</button>
-        `;
-
-        item.addEventListener("click", (e) => {
-          if (e.target.closest(".btn-danger")) return;
-          toggleAnalysisSelection(analysis.id);
-        });
-
-        container.appendChild(item);
-      });
+          <div class="saved-analysis-actions">
+            <button class="btn btn-primary" onclick="loadAnalysis(${analysis.id})">Load</button>
+            <button class="btn btn-danger" onclick="event.stopPropagation(); deleteAnalysis(${analysis.id})">🗑️</button>
+          </div>
+        </div>
+      `).join("");
     }
 
-    function toggleAnalysisSelection(analysisId) {
-      const index = selectedAnalysesForComparison.indexOf(analysisId);
-
-      if (index > -1) {
-        selectedAnalysesForComparison.splice(index, 1);
-      } else {
-        if (selectedAnalysesForComparison.length >= 2) {
-          selectedAnalysesForComparison.shift();
-        }
-        selectedAnalysesForComparison.push(analysisId);
+    function renderCompareAnalysesList() {
+      const list = document.getElementById("compare-analyses-list");
+      
+      if (savedAnalyses.length < 2) {
+        list.innerHTML = '<p style="color: #94a3b8; text-align: center; padding: 20px;">You need at least 2 saved analyses to compare</p>';
+        document.getElementById("confirm-compare-btn").disabled = true;
+        return;
       }
 
-      renderSavedAnalysesList();
-      updateCompareButton();
-    }
+      list.innerHTML = savedAnalyses.map(analysis => `
+        <div class="saved-analysis-item">
+          <div class="saved-analysis-info">
+            <div class="saved-analysis-name">${analysis.name}</div>
+            <div class="saved-analysis-meta">
+              ${analysis.matches.length} matches • Saved ${new Date(analysis.timestamp).toLocaleDateString()}
+            </div>
+          </div>
+          <input type="checkbox" class="comparison-checkbox" data-analysis-id="${analysis.id}" 
+            ${selectedAnalysesForComparison.includes(analysis.id) ? 'checked' : ''} />
+        </div>
+      `).join("");
 
-    function updateCompareButton() {
-      const btn = document.getElementById("confirm-compare-btn");
-      btn.disabled = selectedAnalysesForComparison.length !== 2;
+      document.querySelectorAll(".comparison-checkbox").forEach(checkbox => {
+        checkbox.addEventListener("change", (e) => {
+          const id = parseInt(e.target.dataset.analysisId);
+          if (e.target.checked) {
+            if (selectedAnalysesForComparison.length < 2) {
+              selectedAnalysesForComparison.push(id);
+            } else {
+              e.target.checked = false;
+            }
+          } else {
+            selectedAnalysesForComparison = selectedAnalysesForComparison.filter(x => x !== id);
+          }
+          document.getElementById("confirm-compare-btn").disabled = selectedAnalysesForComparison.length !== 2;
+        });
+      });
+
+      document.getElementById("confirm-compare-btn").disabled = selectedAnalysesForComparison.length !== 2;
     }
 
     function deleteAnalysis(analysisId) {
@@ -1568,123 +957,89 @@
         return;
       }
 
-      savedAnalyses = savedAnalyses.filter((a) => a.id !== analysisId);
+      savedAnalyses = savedAnalyses.filter(a => a.id !== analysisId);
       saveSavedAnalyses();
       renderSavedAnalysesList();
+      renderCompareAnalysesList();
       setStatus("Analysis deleted", "success");
     }
 
-    function confirmCompareAnalyses() {
-      if (selectedAnalysesForComparison.length !== 2) {
-        alert("Please select exactly 2 analyses to compare");
+    function loadAnalysis(analysisId) {
+      const analysis = savedAnalyses.find(a => a.id === analysisId);
+      if (!analysis) {
+        setStatus("Analysis not found", "error");
         return;
       }
 
-      const analysis1 = savedAnalyses.find((a) => a.id === selectedAnalysesForComparison[0]);
-      const analysis2 = savedAnalyses.find((a) => a.id === selectedAnalysesForComparison[1]);
-
-      if (!analysis1 || !analysis2) {
-        alert("Error: Could not find selected analyses");
-        return;
-      }
-
-      closeCompareModal();
-      showComparisonView(analysis1, analysis2);
-    }
-
-    function closeComparisonView() {
+      allMatches = analysis.matches;
+      clubId = analysis.clubId;
+      squadId = analysis.squadId;
+      
+      document.getElementById("load-modal").classList.remove("show");
       document.getElementById("comparison-view").classList.remove("visible");
-      if (allMatches.length > 0) {
-        document.getElementById("overview-section").classList.add("visible");
-        document.getElementById("matches-section").classList.add("visible");
+      
+      renderAll();
+      setStatus(`Loaded analysis: ${analysis.name}`, "success");
+    }
+
+    function setStatus(message, type) {
+      const statusEl = document.getElementById("status");
+      statusEl.textContent = message;
+      statusEl.className = `status ${type} show`;
+      
+      if (type === "loading") {
+        statusEl.innerHTML = `<span class="spinner"></span> ${message}`;
+      }
+
+      if (type !== "loading") {
+        setTimeout(() => {
+          statusEl.classList.remove("show");
+        }, 3000);
       }
     }
 
-    function getPositionSortValue(positions) {
-      if (!positions || positions.size === 0) return 999;
-      let minIndex = 999;
-      positions.forEach((pos) => {
-        const index = POSITION_ORDER.indexOf(pos);
-        if (index !== -1 && index < minIndex) {
-          minIndex = index;
-        }
-      });
-      return minIndex;
-    }
+    function renderMatchRecord() {
+      const recordSummary = document.getElementById("match-record");
+      recordSummary.innerHTML = "";
 
-    function extractClubNames(formationsData) {
-      let homeName = "Home Team";
-      let awayName = "Away Team";
+      if (allMatches.length === 0) return;
 
-      if (formationsData) {
-        if (formationsData.home?.name) {
-          homeName = formationsData.home.name;
-        }
-        if (formationsData.away?.name) {
-          awayName = formationsData.away.name;
-        }
-      }
-
-      return { homeName, awayName };
-    }
-
-    function calculateMatchRecord() {
-      if (allMatches.length === 0) return { wins: 0, draws: 0, losses: 0 };
-
-      let wins = 0, draws = 0, losses = 0;
+      let won = 0, lost = 0, drawn = 0;
 
       allMatches.forEach((match) => {
         const home = match.report?.home;
         const away = match.report?.away;
-
         if (!home || !away) return;
 
         const homeGoals = home.playersStats?.reduce((sum, p) => sum + (p.goals || 0), 0) || 0;
         const awayGoals = away.playersStats?.reduce((sum, p) => sum + (p.goals || 0), 0) || 0;
 
-        if (homeGoals > awayGoals) {
-          wins++;
-        } else if (homeGoals === awayGoals) {
-          draws++;
-        } else {
-          losses++;
-        }
+        if (homeGoals > awayGoals) won++;
+        else if (homeGoals < awayGoals) lost++;
+        else drawn++;
       });
 
-      return { wins, draws, losses };
-    }
+      const recordDiv = document.createElement("div");
+      recordDiv.style.cssText = "display: flex; gap: 20px; flex-wrap: wrap; margin-top: 15px;";
 
-    // FIXED: Now adds wins/draws/losses counts to the Match Record tile
-    function renderMatchRecord() {
-      const record = calculateMatchRecord();
-      const total = allMatches.length;
-
-      if (total === 0) return;
-
-      const winPct = ((record.wins / total) * 100).toFixed(1);
-      const drawPct = ((record.draws / total) * 100).toFixed(1);
-      const lossPct = ((record.losses / total) * 100).toFixed(1);
-
-      document.getElementById("win-percentage").textContent = `${winPct}%`;
-      document.getElementById("draw-percentage").textContent = `${drawPct}%`;
-      document.getElementById("loss-percentage").textContent = `${lossPct}%`;
-      
-      const recordSummary = document.getElementById("record-summary");
-      const existingSummary = recordSummary.querySelector(".record-counts");
-      
-      if (existingSummary) {
-        existingSummary.remove();
-      }
-      
       const countsDiv = document.createElement("div");
-      countsDiv.className = "record-counts";
-      countsDiv.style.cssText = "margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(148, 163, 184, 0.2); display: flex; justify-content: center; gap: 30px; font-size: 13px; color: #cbd5e1;";
+      countsDiv.style.cssText = "display: flex; gap: 30px; background: rgba(15, 23, 42, 0.5); padding: 20px; border-radius: 10px; border: 1px solid rgba(238, 255, 0, 0.1);";
       countsDiv.innerHTML = `
-        <span><strong style="color: #4ade80;">Wins:</strong> ${record.wins}</span>
-        <span><strong style="color: #eeff00;">Draws:</strong> ${record.draws}</span>
-        <span><strong style="color: #ef4444;">Losses:</strong> ${record.losses}</span>
+        <div style="text-align: center;">
+          <div style="font-size: 32px; font-weight: 800; color: #22c55e;">${won}</div>
+          <div style="font-size: 14px; color: #94a3b8; margin-top: 4px;">Won</div>
+        </div>
+        <div style="text-align: center;">
+          <div style="font-size: 32px; font-weight: 800; color: #94a3b8;">${drawn}</div>
+          <div style="font-size: 14px; color: #94a3b8; margin-top: 4px;">Drawn</div>
+        </div>
+        <div style="text-align: center;">
+          <div style="font-size: 32px; font-weight: 800; color: #ef4444;">${lost}</div>
+          <div style="font-size: 14px; color: #94a3b8; margin-top: 4px;">Lost</div>
+        </div>
       `;
-      
+
+      recordDiv.appendChild(countsDiv);
       recordSummary.appendChild(countsDiv);
     }
     async function fetchSquadIdFromClubId(clubId) {
@@ -1706,214 +1061,106 @@
     }
 
     async function fetchMatchIds(squadId, limit) {
-      const url = `${API_BASE}/matches?squadId=${squadId}&past=true&limit=${limit}&onlyFriendliesHome=true`;
-      const response = await fetch(url);
-      if (!response.ok) throw new Error(`Failed to fetch matches: ${response.status}`);
-      return await response.json();
-    }
+  const url = `${API_BASE}/matches?squadId=${squadId}&past=true&limit=${limit}&onlyFriendliesHome=true`;
+  const response = await fetch(url);
+  if (!response.ok) throw new Error(`Failed to fetch matches: ${response.status}`);
+
+  const data = await response.json();
+  // API returns array directly, and uses 'id' not 'matchId'
+  return data.map((m) => m.id);
+}
+
 
     async function fetchMatchReport(matchId) {
-      const url = `${API_BASE}/matches/${matchId}/report`;
+      const url = `${API_BASE}/match/report/${matchId}`;
       const response = await fetch(url);
       if (!response.ok) throw new Error(`Failed to fetch match ${matchId}: ${response.status}`);
-      return await response.json();
+
+      const data = await response.json();
+      return data;
     }
 
-    async function fetchMatchFormations(matchId) {
-      const url = `${API_BASE}/matches/${matchId}?withFormations=true`;
-      try {
-        const response = await fetch(url);
-        if (!response.ok) return null;
-        return await response.json();
-      } catch (e) {
-        console.warn(`Failed to fetch formations for match ${matchId}:`, e);
+    async function fetchFormations(matchId) {
+      const url = `${API_BASE}/match/${matchId}/formations`;
+      const response = await fetch(url);
+      if (!response.ok) {
+        console.warn(`Failed to fetch formations for match ${matchId}`);
         return null;
       }
+
+      const data = await response.json();
+      return data;
     }
 
-    function extractPlayerNamesFromFormations(formationsData) {
-      const playerMap = {};
+    async function fetchPlayerName(playerId) {
+      if (playerNamesCache[playerId]) {
+        return playerNamesCache[playerId];
+      }
 
-      if (!formationsData) return playerMap;
+      try {
+        const url = `${API_BASE}/player/${playerId}`;
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`Failed to fetch player ${playerId}`);
 
-      const scanFormation = (formation) => {
-        if (!formation || !Array.isArray(formation.positions)) return;
-
-        formation.positions.forEach((pos) => {
-          const p = pos?.player;
-          if (!p || !p.id) return;
-
-          const id = String(p.id);
-          const firstName = p.firstName || p.metadata?.firstName || "";
-          const lastName = p.lastName || p.metadata?.lastName || "";
-          const fullName = `${firstName} ${lastName}`.trim();
-
-          if (fullName) {
-            playerMap[id] = fullName;
-          }
-        });
-      };
-
-      scanFormation(formationsData.homeFormation);
-      scanFormation(formationsData.awayFormation);
-
-      return playerMap;
+        const data = await response.json();
+        const name = data.name || `Player ${playerId}`;
+        playerNamesCache[playerId] = name;
+        return name;
+      } catch (e) {
+        console.error("Error fetching player name:", e);
+        return `Player ${playerId}`;
+      }
     }
 
     function computeXIOverall(formation, playerMap) {
-      if (!formation || !Array.isArray(formation.positions)) return 0;
-
-      const players = formation.positions.map((pos) => pos?.player).filter((p) => p && p.id);
-
-      if (players.length === 0) return 0;
-
-      const ratings = players.map((p) => {
-        const id = String(p.id);
-        const meta = playerMap[id];
-        if (meta && typeof meta.matchOverall === "number") {
-          return meta.matchOverall;
-        }
-        return p.overall || p.metadata?.overallAtKickoff || p.metadata?.overall || 0;
-      });
-
-      const sum = ratings.reduce((acc, r) => acc + r, 0);
-      return sum;
-    }
-
-    function extractPlayerMapFromFormations(formationsJson) {
-      if (!formationsJson) return {};
-
-      const playerMap = {};
-
-      const scanFormation = (formation) => {
-        if (!formation || !Array.isArray(formation.positions)) return;
-
-        formation.positions.forEach((pos) => {
-          const p = pos?.player;
-          if (!p || !p.id) return;
-
-          const id = String(p.id);
-          const firstName = p.firstName || p.metadata?.firstName || "";
-          const lastName = p.lastName || p.metadata?.lastName || "";
-          const name = `${firstName} ${lastName}`.trim() || `Player ${id}`;
-          const positions = p.positions || p.metadata?.positions || [];
-          const overall = p.overall || p.metadata?.overallAtKickoff || p.metadata?.overall || 0;
-
-          playerMap[id] = {
-            name,
-            positions: Array.isArray(positions) ? positions : [],
-            matchOverall: overall,
-          };
-        });
-      };
-
-      scanFormation(formationsJson.homeFormation);
-      scanFormation(formationsJson.awayFormation);
-
-      return playerMap;
-    }
-
-    async function loadMatches() {
-      const clubIdInput = document.getElementById("club-id").value.trim();
-      const limitInput = document.getElementById("game-limit").value;
-
-      if (!clubIdInput) {
-        setStatus("Please enter a club ID", "error");
-        return;
+      if (!formation || !formation.positions || formation.positions.length === 0) {
+        return null;
       }
 
-      clubId = clubIdInput;
-      const limit = Math.min(Math.max(1, parseInt(limitInput) || 50), 200);
+      const overalls = formation.positions
+        .map((p) => {
+          const player = playerMap[p.playerId];
+          return player ? player.overall : null;
+        })
+        .filter((o) => o != null);
 
-      setStatus(`Looking up squad ID for club ${clubId}...`, "loading");
+      if (overalls.length === 0) return null;
 
-      try {
-        squadId = await fetchSquadIdFromClubId(clubId);
-        console.log(`[Club ${clubId}] Found squad ID: ${squadId}`);
+      const min = Math.min(...overalls);
+      const max = Math.max(...overalls);
+      const avg = (overalls.reduce((a, b) => a + b, 0) / overalls.length).toFixed(1);
 
-        setStatus(`Found squad ${squadId}! Loading match IDs...`, "loading");
-
-        const matchesData = await fetchMatchIds(squadId, limit);
-
-        if (!matchesData || matchesData.length === 0) {
-          setStatus("No friendly matches found for this squad", "error");
-          return;
-        }
-
-        setStatus(`Loading ${matchesData.length} match reports and formations...`, "loading");
-
-        const matchReports = [];
-        playerNamesCache = {};
-
-        for (let i = 0; i < matchesData.length; i++) {
-          try {
-            const matchId = matchesData[i].id;
-            const report = await fetchMatchReport(matchId);
-            const formations = await fetchMatchFormations(matchId);
-
-            if (formations) {
-              const names = extractPlayerNamesFromFormations(formations);
-              Object.assign(playerNamesCache, names);
-            }
-
-            matchReports.push({
-              matchId: matchId,
-              date: matchesData[i].startDate || new Date().toISOString(),
-              report: report,
-              formations: formations,
-            });
-
-            if ((i + 1) % 10 === 0 || i === matchesData.length - 1) {
-              setStatus(`Loaded ${i + 1}/${matchesData.length} matches...`, "loading");
-            }
-          } catch (e) {
-            console.error(`Failed to load match ${matchesData[i].id}:`, e);
-          }
-        }
-
-        allMatches = matchReports;
-        renderAll();
-        setStatus(`Successfully loaded ${allMatches.length} matches!`, "success");
-      } catch (e) {
-        console.error("Error loading matches:", e);
-        setStatus(`Error: ${e.message}`, "error");
-      }
+      return { min, max, avg };
     }
 
-    async function addMatch() {
-      const matchIdInput = document.getElementById("match-id-input").value.trim();
-
-      if (!matchIdInput) {
+    async function addMatchById(matchIdInput) {
+      if (!matchIdInput || matchIdInput.trim() === "") {
         setStatus("Please enter a match ID", "error");
         return;
       }
 
-      if (allMatches.find((m) => m.matchId === matchIdInput)) {
-        setStatus("Match already in list", "error");
+      const matchId = matchIdInput.trim();
+
+      if (allMatches.some((m) => m.matchId === matchId)) {
+        setStatus(`Match ${matchId} already added`, "error");
         return;
       }
 
-      setStatus(`Loading match ${matchIdInput}...`, "loading");
-
       try {
-        const report = await fetchMatchReport(matchIdInput);
-        const formations = await fetchMatchFormations(matchIdInput);
+        setStatus(`Fetching match ${matchId}...`, "loading");
 
-        if (formations) {
-          const names = extractPlayerNamesFromFormations(formations);
-          Object.assign(playerNamesCache, names);
-        }
+        const report = await fetchMatchReport(matchId);
+        const formations = await fetchFormations(matchId);
 
         allMatches.push({
-          matchId: matchIdInput,
-          date: new Date().toISOString(),
-          report: report,
-          formations: formations,
+          matchId,
+          report,
+          formations,
         });
 
-        document.getElementById("match-id-input").value = "";
         renderAll();
-        setStatus(`Successfully added match ${matchIdInput}!`, "success");
+        document.getElementById("match-id-input").value = "";
+        setStatus(`Successfully added match ${matchId}!`, "success");
       } catch (e) {
         console.error("Error adding match:", e);
         setStatus(`Error: ${e.message}`, "error");
@@ -1942,159 +1189,224 @@
 
       const awayStats = { ...homeStats };
 
-      let homeTotalPasses = 0, homeAccuratePasses = 0, homeTotalCrosses = 0, homeAccurateCrosses = 0;
-      let awayTotalPasses = 0, awayAccuratePasses = 0, awayTotalCrosses = 0, awayAccurateCrosses = 0;
-
-      const homeXIValues = [];
-      const awayXIValues = [];
+      let homeXIData = [];
+      let awayXIData = [];
 
       allMatches.forEach((match) => {
         const home = match.report?.home;
         const away = match.report?.away;
+        const formations = match.formations;
 
-        if (match.formations) {
-          const playerMap = extractPlayerMapFromFormations(match.formations);
-          if (match.formations.homeFormation) {
-            const homeXIOverall = computeXIOverall(match.formations.homeFormation, playerMap);
-            if (homeXIOverall > 0) homeXIValues.push(homeXIOverall);
+        if (!home || !away) return;
+
+        const homeGoals = home.playersStats?.reduce((sum, p) => sum + (p.goals || 0), 0) || 0;
+        const awayGoals = away.playersStats?.reduce((sum, p) => sum + (p.goals || 0), 0) || 0;
+
+        if (awayGoals === 0) homeStats.cleanSheets++;
+        if (homeGoals === 0) awayStats.cleanSheets++;
+
+        if (formations) {
+          if (formations.homeFormation && formations.playersMap) {
+            const homeXIOverall = computeXIOverall(formations.homeFormation, formations.playersMap);
+            if (homeXIOverall) homeXIData.push(homeXIOverall);
           }
-          if (match.formations.awayFormation) {
-            const awayXIOverall = computeXIOverall(match.formations.awayFormation, playerMap);
-            if (awayXIOverall > 0) awayXIValues.push(awayXIOverall);
-          }
-        }
-
-        if (home && home.playersStats) {
-          let homeGoalsConceded = 0;
-
-          home.playersStats.forEach((player) => {
-            homeStats.goals += player.goals || 0;
-            homeStats.xG += player.xG || 0;
-            homeStats.shots += player.shots || 0;
-            homeStats.shotsOnTarget += player.shotsOnTarget || 0;
-            homeStats.fouls += player.foulsCommitted || 0;
-            homeStats.yellowCards += player.yellowCards || 0;
-            homeStats.redCards += player.redCards || 0;
-            homeStats.defensiveDuelsWon += player.defensiveDuelsWon || 0;
-            homeStats.dribbledPast += player.dribbledPast || 0;
-            homeStats.shotsBlocked += player.shotsInterceptions || 0;
-            homeStats.ownGoals += player.ownGoals || 0;
-            homeGoalsConceded += player.goalsConceded || 0;
-
-            if (player.passes) {
-              homeTotalPasses += player.passes;
-              homeAccuratePasses += player.passesAccurate || 0;
-            }
-
-            if (player.crosses) {
-              homeTotalCrosses += player.crosses;
-              homeAccurateCrosses += player.crossesAccurate || 0;
-            }
-          });
-
-          if (homeGoalsConceded === 0) homeStats.cleanSheets++;
-
-          const homePasses = home.playersStats.reduce((sum, p) => sum + (p.passes || 0), 0) || 0;
-          const awayPasses = away?.playersStats?.reduce((sum, p) => sum + (p.passes || 0), 0) || 0;
-          const totalPassesMatch = homePasses + awayPasses;
-          if (totalPassesMatch > 0) {
-            homeStats.possession += (homePasses / totalPassesMatch) * 100;
+          if (formations.awayFormation && formations.playersMap) {
+            const awayXIOverall = computeXIOverall(formations.awayFormation, formations.playersMap);
+            if (awayXIOverall) awayXIData.push(awayXIOverall);
           }
         }
 
-        if (away && away.playersStats) {
-          let awayGoalsConceded = 0;
-
-          away.playersStats.forEach((player) => {
-            awayStats.goals += player.goals || 0;
-            awayStats.xG += player.xG || 0;
-            awayStats.shots += player.shots || 0;
-            awayStats.shotsOnTarget += player.shotsOnTarget || 0;
-            awayStats.fouls += player.foulsCommitted || 0;
-            awayStats.yellowCards += player.yellowCards || 0;
-            awayStats.redCards += player.redCards || 0;
-            awayStats.defensiveDuelsWon += player.defensiveDuelsWon || 0;
-            awayStats.dribbledPast += player.dribbledPast || 0;
-            awayStats.shotsBlocked += player.shotsInterceptions || 0;
-            awayStats.ownGoals += player.ownGoals || 0;
-            awayGoalsConceded += player.goalsConceded || 0;
-
-            if (player.passes) {
-              awayTotalPasses += player.passes;
-              awayAccuratePasses += player.passesAccurate || 0;
-            }
-
-            if (player.crosses) {
-              awayTotalCrosses += player.crosses;
-              awayAccurateCrosses += player.crossesAccurate || 0;
-            }
-          });
-
-          if (awayGoalsConceded === 0) awayStats.cleanSheets++;
-
-          const homePasses = home?.playersStats?.reduce((sum, p) => sum + (p.passes || 0), 0) || 0;
-          const awayPasses = away.playersStats.reduce((sum, p) => sum + (p.passes || 0), 0) || 0;
-          const totalPassesMatch = homePasses + awayPasses;
-          if (totalPassesMatch > 0) {
-            awayStats.possession += (awayPasses / totalPassesMatch) * 100;
-          }
+        function addStats(target, source) {
+          if (!source) return;
+          target.goals += homeGoals;
+          target.xG += source.xG || 0;
+          target.shots += source.shots || 0;
+          target.shotsOnTarget += source.shotsOnTarget || 0;
+          target.possession += source.possession || 0;
+          target.passes += source.passes || 0;
+          target.passAccuracy += source.passAccuracy || 0;
+          target.crosses += source.crosses || 0;
+          target.crossAccuracy += source.crossAccuracy || 0;
+          target.fouls += source.fouls || 0;
+          target.yellowCards += source.yellowCards || 0;
+          target.redCards += source.redCards || 0;
+          target.defensiveDuelsWon += source.defensiveDuelsWon || 0;
+          target.dribbledPast += source.dribbledPast || 0;
+          target.shotsBlocked += source.shotsBlocked || 0;
+          target.ownGoals += source.ownGoals || 0;
         }
+
+        const homeAgg = home.playersStats?.reduce((acc, p) => {
+          acc.xG += p.expectedGoals || 0;
+          acc.shots += p.shots || 0;
+          acc.shotsOnTarget += p.shotsOnTarget || 0;
+          acc.possession += p.possession || 0;
+          acc.passes += p.passes || 0;
+          acc.passAccuracy += p.passAccuracy || 0;
+          acc.crosses += p.crosses || 0;
+          acc.crossAccuracy += p.crossAccuracy || 0;
+          acc.fouls += p.fouls || 0;
+          acc.yellowCards += p.yellowCards || 0;
+          acc.redCards += p.redCards || 0;
+          acc.defensiveDuelsWon += p.defensiveDuelsWon || 0;
+          acc.dribbledPast += p.dribbledPast || 0;
+          acc.shotsBlocked += p.shotsBlocked || 0;
+          acc.ownGoals += p.ownGoals || 0;
+          return acc;
+        }, {
+          xG: 0, shots: 0, shotsOnTarget: 0, possession: 0, passes: 0, passAccuracy: 0,
+          crosses: 0, crossAccuracy: 0, fouls: 0, yellowCards: 0, redCards: 0,
+          defensiveDuelsWon: 0, dribbledPast: 0, shotsBlocked: 0, ownGoals: 0,
+        }) || {};
+
+        const awayAgg = away.playersStats?.reduce((acc, p) => {
+          acc.xG += p.expectedGoals || 0;
+          acc.shots += p.shots || 0;
+          acc.shotsOnTarget += p.shotsOnTarget || 0;
+          acc.possession += p.possession || 0;
+          acc.passes += p.passes || 0;
+          acc.passAccuracy += p.passAccuracy || 0;
+          acc.crosses += p.crosses || 0;
+          acc.crossAccuracy += p.crossAccuracy || 0;
+          acc.fouls += p.fouls || 0;
+          acc.yellowCards += p.yellowCards || 0;
+          acc.redCards += p.redCards || 0;
+          acc.defensiveDuelsWon += p.defensiveDuelsWon || 0;
+          acc.dribbledPast += p.dribbledPast || 0;
+          acc.shotsBlocked += p.shotsBlocked || 0;
+          acc.ownGoals += p.ownGoals || 0;
+          return acc;
+        }, {
+          xG: 0, shots: 0, shotsOnTarget: 0, possession: 0, passes: 0, passAccuracy: 0,
+          crosses: 0, crossAccuracy: 0, fouls: 0, yellowCards: 0, redCards: 0,
+          defensiveDuelsWon: 0, dribbledPast: 0, shotsBlocked: 0, ownGoals: 0,
+        }) || {};
+
+        homeStats.goals += homeGoals;
+        homeStats.xG += homeAgg.xG;
+        homeStats.shots += homeAgg.shots;
+        homeStats.shotsOnTarget += homeAgg.shotsOnTarget;
+        homeStats.possession += homeAgg.possession;
+        homeStats.passes += homeAgg.passes;
+        homeStats.passAccuracy += homeAgg.passAccuracy;
+        homeStats.crosses += homeAgg.crosses;
+        homeStats.crossAccuracy += homeAgg.crossAccuracy;
+        homeStats.fouls += homeAgg.fouls;
+        homeStats.yellowCards += homeAgg.yellowCards;
+        homeStats.redCards += homeAgg.redCards;
+        homeStats.defensiveDuelsWon += homeAgg.defensiveDuelsWon;
+        homeStats.dribbledPast += homeAgg.dribbledPast;
+        homeStats.shotsBlocked += homeAgg.shotsBlocked;
+        homeStats.ownGoals += homeAgg.ownGoals;
+
+        awayStats.goals += awayGoals;
+        awayStats.xG += awayAgg.xG;
+        awayStats.shots += awayAgg.shots;
+        awayStats.shotsOnTarget += awayAgg.shotsOnTarget;
+        awayStats.possession += awayAgg.possession;
+        awayStats.passes += awayAgg.passes;
+        awayStats.passAccuracy += awayAgg.passAccuracy;
+        awayStats.crosses += awayAgg.crosses;
+        awayStats.crossAccuracy += awayAgg.crossAccuracy;
+        awayStats.fouls += awayAgg.fouls;
+        awayStats.yellowCards += awayAgg.yellowCards;
+        awayStats.redCards += awayAgg.redCards;
+        awayStats.defensiveDuelsWon += awayAgg.defensiveDuelsWon;
+        awayStats.dribbledPast += awayAgg.dribbledPast;
+        awayStats.shotsBlocked += awayAgg.shotsBlocked;
+        awayStats.ownGoals += awayAgg.ownGoals;
       });
 
-      const mc = allMatches.length;
+      const matches = allMatches.length;
 
-      homeStats.goals = (homeStats.goals / mc).toFixed(2);
-      homeStats.xG = (homeStats.xG / mc).toFixed(2);
-      homeStats.shots = (homeStats.shots / mc).toFixed(1);
-      homeStats.shotsOnTarget = (homeStats.shotsOnTarget / mc).toFixed(1);
-      homeStats.shotAccuracy = homeStats.shots > 0 ? ((homeStats.shotsOnTarget / homeStats.shots) * 100).toFixed(1) : "0";
-      homeStats.possession = (homeStats.possession / mc).toFixed(1);
-      homeStats.passes = (homeTotalPasses / mc).toFixed(0);
-      homeStats.passAccuracy = homeTotalPasses > 0 ? ((homeAccuratePasses / homeTotalPasses) * 100).toFixed(1) : "0";
-      homeStats.crosses = (homeTotalCrosses / mc).toFixed(1);
-      homeStats.crossAccuracy = homeTotalCrosses > 0 ? ((homeAccurateCrosses / homeTotalCrosses) * 100).toFixed(1) : "0";
-      homeStats.fouls = (homeStats.fouls / mc).toFixed(1);
-      homeStats.yellowCards = (homeStats.yellowCards / mc).toFixed(1);
-      homeStats.redCards = (homeStats.redCards / mc).toFixed(2);
-      homeStats.defensiveDuelsWon = (homeStats.defensiveDuelsWon / mc).toFixed(1);
-      homeStats.dribbledPast = (homeStats.dribbledPast / mc).toFixed(1);
-      homeStats.totalDuels = ((homeStats.defensiveDuelsWon * mc + homeStats.dribbledPast * mc) / mc).toFixed(1);
-      homeStats.defDuelWinRate = (homeStats.defensiveDuelsWon * mc + homeStats.dribbledPast * mc > 0) ? ((homeStats.defensiveDuelsWon * mc / (homeStats.defensiveDuelsWon * mc + homeStats.dribbledPast * mc)) * 100).toFixed(1) : "0";
-      homeStats.shotsBlocked = (homeStats.shotsBlocked / mc).toFixed(1);
-      homeStats.ownGoals = (homeStats.ownGoals / mc).toFixed(2);
-
-      awayStats.goals = (awayStats.goals / mc).toFixed(2);
-      awayStats.xG = (awayStats.xG / mc).toFixed(2);
-      awayStats.shots = (awayStats.shots / mc).toFixed(1);
-      awayStats.shotsOnTarget = (awayStats.shotsOnTarget / mc).toFixed(1);
-      awayStats.shotAccuracy = awayStats.shots > 0 ? ((awayStats.shotsOnTarget / awayStats.shots) * 100).toFixed(1) : "0";
-      awayStats.possession = (awayStats.possession / mc).toFixed(1);
-      awayStats.passes = (awayTotalPasses / mc).toFixed(0);
-      awayStats.passAccuracy = awayTotalPasses > 0 ? ((awayAccuratePasses / awayTotalPasses) * 100).toFixed(1) : "0";
-      awayStats.crosses = (awayTotalCrosses / mc).toFixed(1);
-      awayStats.crossAccuracy = awayTotalCrosses > 0 ? ((awayAccurateCrosses / awayTotalCrosses) * 100).toFixed(1) : "0";
-      awayStats.fouls = (awayStats.fouls / mc).toFixed(1);
-      awayStats.yellowCards = (awayStats.yellowCards / mc).toFixed(1);
-      awayStats.redCards = (awayStats.redCards / mc).toFixed(2);
-      awayStats.defensiveDuelsWon = (awayStats.defensiveDuelsWon / mc).toFixed(1);
-      awayStats.dribbledPast = (awayStats.dribbledPast / mc).toFixed(1);
-      awayStats.totalDuels = ((awayStats.defensiveDuelsWon * mc + awayStats.dribbledPast * mc) / mc).toFixed(1);
-      awayStats.defDuelWinRate = (awayStats.defensiveDuelsWon * mc + awayStats.dribbledPast * mc > 0) ? ((awayStats.defensiveDuelsWon * mc / (awayStats.defensiveDuelsWon * mc + awayStats.dribbledPast * mc)) * 100).toFixed(1) : "0";
-      awayStats.shotsBlocked = (awayStats.shotsBlocked / mc).toFixed(1);
-      awayStats.ownGoals = (awayStats.ownGoals / mc).toFixed(2);
-
-      function summarizeXI(values) {
-        if (!values.length) return { min: "-", max: "-", avg: "-" };
-        const min = Math.min(...values);
-        const max = Math.max(...values);
-        const avg = values.reduce((a, b) => a + b, 0) / values.length;
-        return { min, max, avg: avg.toFixed(1) };
+      function avgStat(stat, decimals = 2) {
+        return (stat / matches).toFixed(decimals);
       }
 
-      homeStats.xiOverall = summarizeXI(homeXIValues);
-      awayStats.xiOverall = summarizeXI(awayXIValues);
+      function avgPercentage(stat, decimals = 1) {
+        return (stat / matches).toFixed(decimals);
+      }
 
-      return { home: homeStats, away: awayStats };
+      function calcDefDuelWinRate(won, past) {
+        const total = won + past;
+        return total > 0 ? ((won / total) * 100).toFixed(1) : "0.0";
+      }
+
+      const homeTotalDuels = homeStats.defensiveDuelsWon + homeStats.dribbledPast;
+      const awayTotalDuels = awayStats.defensiveDuelsWon + awayStats.dribbledPast;
+
+      const homeFormatted = {
+        matches: homeStats.matches,
+        goals: avgStat(homeStats.goals),
+        xG: avgStat(homeStats.xG),
+        shots: avgStat(homeStats.shots),
+        shotsOnTarget: avgStat(homeStats.shotsOnTarget),
+        shotAccuracy: homeStats.shots > 0 ? ((homeStats.shotsOnTarget / homeStats.shots) * 100).toFixed(1) : "0.0",
+        possession: avgPercentage(homeStats.possession),
+        passes: avgStat(homeStats.passes, 1),
+        passAccuracy: avgPercentage(homeStats.passAccuracy),
+        crosses: avgStat(homeStats.crosses, 1),
+        crossAccuracy: avgPercentage(homeStats.crossAccuracy),
+        fouls: avgStat(homeStats.fouls, 1),
+        yellowCards: avgStat(homeStats.yellowCards, 1),
+        redCards: avgStat(homeStats.redCards, 2),
+        defDuelWinRate: calcDefDuelWinRate(homeStats.defensiveDuelsWon, homeStats.dribbledPast),
+        totalDuels: avgStat(homeTotalDuels, 1),
+        shotsBlocked: avgStat(homeStats.shotsBlocked, 1),
+        ownGoals: avgStat(homeStats.ownGoals, 2),
+        cleanSheets: homeStats.cleanSheets,
+      };
+
+      const awayFormatted = {
+        matches: awayStats.matches,
+        goals: avgStat(awayStats.goals),
+        xG: avgStat(awayStats.xG),
+        shots: avgStat(awayStats.shots),
+        shotsOnTarget: avgStat(awayStats.shotsOnTarget),
+        shotAccuracy: awayStats.shots > 0 ? ((awayStats.shotsOnTarget / awayStats.shots) * 100).toFixed(1) : "0.0",
+        possession: avgPercentage(awayStats.possession),
+        passes: avgStat(awayStats.passes, 1),
+        passAccuracy: avgPercentage(awayStats.passAccuracy),
+        crosses: avgStat(awayStats.crosses, 1),
+        crossAccuracy: avgPercentage(awayStats.crossAccuracy),
+        fouls: avgStat(awayStats.fouls, 1),
+        yellowCards: avgStat(awayStats.yellowCards, 1),
+        redCards: avgStat(awayStats.redCards, 2),
+        defDuelWinRate: calcDefDuelWinRate(awayStats.defensiveDuelsWon, awayStats.dribbledPast),
+        totalDuels: avgStat(awayTotalDuels, 1),
+        shotsBlocked: avgStat(awayStats.shotsBlocked, 1),
+        ownGoals: avgStat(awayStats.ownGoals, 2),
+        cleanSheets: awayStats.cleanSheets,
+      };
+
+      if (homeXIData.length > 0) {
+        const allMins = homeXIData.map(x => x.min);
+        const allMaxs = homeXIData.map(x => x.max);
+        const allAvgs = homeXIData.map(x => parseFloat(x.avg));
+
+        homeFormatted.xiOverall = {
+          min: Math.min(...allMins),
+          max: Math.max(...allMaxs),
+          avg: (allAvgs.reduce((a, b) => a + b, 0) / allAvgs.length).toFixed(1),
+        };
+      }
+
+      if (awayXIData.length > 0) {
+        const allMins = awayXIData.map(x => x.min);
+        const allMaxs = awayXIData.map(x => x.max);
+        const allAvgs = awayXIData.map(x => parseFloat(x.avg));
+
+        awayFormatted.xiOverall = {
+          min: Math.min(...allMins),
+          max: Math.max(...allMaxs),
+          avg: (allAvgs.reduce((a, b) => a + b, 0) / allAvgs.length).toFixed(1),
+        };
+      }
+
+      return {
+        home: homeFormatted,
+        away: awayFormatted,
+      };
     }
 
     function calculatePlayerStats() {
@@ -2106,56 +1418,52 @@
         const home = match.report?.home;
         if (!home || !home.playersStats) return;
 
-        home.playersStats.forEach((player) => {
-          const pid = String(player.playerId);
-
+        home.playersStats.forEach((p) => {
+          const pid = p.playerId;
           if (!playerAggregates[pid]) {
-            const cachedName = playerNamesCache[pid];
-            const playerName = cachedName || `Player ${pid}`;
-
             playerAggregates[pid] = {
               playerId: pid,
-              playerName: playerName,
+              name: "",
+              position: p.position || "?",
               appearances: 0,
-              goals: 0, assists: 0, xG: 0, shots: 0, shotsOnTarget: 0, chancesCreated: 0,
-              passes: 0, passesAccurate: 0, crosses: 0, crossesAccurate: 0, dribblingSuccess: 0,
-              dribbledPast: 0, defensiveDuelsWon: 0, defensiveDuelsTotal: 0, clearances: 0,
-              shotsInterceptions: 0, shotsIntercepted: 0, fouls: 0, foulsSuffered: 0, yellowCards: 0, redCards: 0,
-              ownGoals: 0, saves: 0, goalsConceded: 0, ratingSum: 0, positions: new Set(),
+              ratingSum: 0,
+              goals: 0, assists: 0, xG: 0, shots: 0, shotsOnTarget: 0,
+              chancesCreated: 0, keyPasses: 0, passes: 0, passAccuracy: 0,
+              crosses: 0, crossAccuracy: 0, dribbles: 0, dribbledPast: 0,
+              defensiveDuelsWon: 0, clearances: 0, blockedShots: 0, shotsIntercepted: 0,
+              progressivePasses: 0, fouls: 0, foulsSuffered: 0, yellowCards: 0, redCards: 0,
+              ownGoals: 0, saves: 0, goalsConceded: 0,
             };
           }
 
           const agg = playerAggregates[pid];
           agg.appearances++;
-          agg.goals += player.goals || 0;
-          agg.assists += player.assists || 0;
-          agg.xG += player.xG || 0;
-          agg.shots += player.shots || 0;
-          agg.shotsOnTarget += player.shotsOnTarget || 0;
-          agg.chancesCreated += player.chancesCreated || 0;
-          agg.passes += player.passes || 0;
-          agg.passesAccurate += player.passesAccurate || 0;
-          agg.crosses += player.crosses || 0;
-          agg.crossesAccurate += player.crossesAccurate || 0;
-          agg.dribblingSuccess += player.dribblingSuccess || 0;
-          agg.dribbledPast += player.dribbledPast || 0;
-          agg.defensiveDuelsWon += player.defensiveDuelsWon || 0;
-          agg.defensiveDuelsTotal += (player.defensiveDuelsWon || 0) + (player.dribbledPast || 0);
-          agg.clearances += player.clearances || 0;
-          agg.shotsInterceptions += player.shotsInterceptions || 0;
-          agg.shotsIntercepted += player.shotsIntercepted || 0;
-          agg.fouls += player.foulsCommitted || 0;
-          agg.foulsSuffered += player.foulsSuffered || 0;
-          agg.yellowCards += player.yellowCards || 0;
-          agg.redCards += player.redCards || 0;
-          agg.ownGoals += player.ownGoals || 0;
-          agg.saves += player.saves || 0;
-          agg.goalsConceded += player.goalsConceded || 0;
-          agg.ratingSum += player.rating || 0;
-
-          if (player.position) {
-            agg.positions.add(player.position);
-          }
+          agg.ratingSum += p.rating || 0;
+          agg.goals += p.goals || 0;
+          agg.assists += p.assists || 0;
+          agg.xG += p.expectedGoals || 0;
+          agg.shots += p.shots || 0;
+          agg.shotsOnTarget += p.shotsOnTarget || 0;
+          agg.chancesCreated += p.chancesCreated || 0;
+          agg.keyPasses += p.keyPasses || 0;
+          agg.passes += p.passes || 0;
+          agg.passAccuracy += p.passAccuracy || 0;
+          agg.crosses += p.crosses || 0;
+          agg.crossAccuracy += p.crossAccuracy || 0;
+          agg.dribbles += p.dribbles || 0;
+          agg.dribbledPast += p.dribbledPast || 0;
+          agg.defensiveDuelsWon += p.defensiveDuelsWon || 0;
+          agg.clearances += p.clearances || 0;
+          agg.blockedShots += p.blockedShots || 0;
+          agg.shotsIntercepted += p.shotsIntercepted || 0;
+          agg.progressivePasses += p.progressivePasses || 0;
+          agg.fouls += p.fouls || 0;
+          agg.foulsSuffered += p.foulsSuffered || 0;
+          agg.yellowCards += p.yellowCards || 0;
+          agg.redCards += p.redCards || 0;
+          agg.ownGoals += p.ownGoals || 0;
+          agg.saves += p.saves || 0;
+          agg.goalsConceded += p.goalsConceded || 0;
         });
       });
 
@@ -2193,8 +1501,8 @@
       const homeXi = stats.home.xiOverall || { min: "-", max: "-", avg: "-" };
       document.getElementById("home-xi-summary").innerHTML = `
         <span><strong>XI Overall Min:</strong> ${homeXi.min}</span>
-        <span><strong>Max:</strong> ${homeXi.max}</span>
-        <span><strong>Avg:</strong> ${homeXi.avg}</span>
+        <span><strong>XI Overall Max:</strong> ${homeXi.max}</span>
+        <span><strong>XI Overall Avg:</strong> ${homeXi.avg}</span>
       `;
     }
 
@@ -2203,7 +1511,7 @@
       if (!stats) return;
 
       const container = document.getElementById("away-stats");
-      document.getElementById("away-overview-subtitle").textContent = `Opponent averages across ${stats.away.matches} matches`;
+      document.getElementById("away-overview-subtitle").textContent = `Averages across ${stats.away.matches} matches`;
 
       container.innerHTML = `
         <div class="stat-item"><div class="stat-label" title="Goals per match">Goals</div><div class="stat-value">${stats.away.goals}</div></div>
@@ -2229,159 +1537,37 @@
       const awayXi = stats.away.xiOverall || { min: "-", max: "-", avg: "-" };
       document.getElementById("away-xi-summary").innerHTML = `
         <span><strong>XI Overall Min:</strong> ${awayXi.min}</span>
-        <span><strong>Max:</strong> ${awayXi.max}</span>
-        <span><strong>Avg:</strong> ${awayXi.avg}</span>
+        <span><strong>XI Overall Max:</strong> ${awayXi.max}</span>
+        <span><strong>XI Overall Avg:</strong> ${awayXi.avg}</span>
       `;
     }
 
     function aggregateTeamStats(playersStats) {
-      if (!playersStats) return null;
+      if (!playersStats || playersStats.length === 0) return {};
 
-      const stats = {
-        goals: 0, assists: 0, xG: 0, shots: 0, shotsOnTarget: 0, passes: 0, passesAccurate: 0,
-        crosses: 0, crossesAccurate: 0, chancesCreated: 0, fouls: 0, yellowCards: 0, redCards: 0,
-        avgRating: 0, defensiveDuelsWon: 0, dribbledPast: 0, shotsBlocked: 0, ownGoals: 0,
-      };
-
-      playersStats.forEach((player) => {
-        stats.goals += player.goals || 0;
-        stats.assists += player.assists || 0;
-        stats.xG += player.xG || 0;
-        stats.shots += player.shots || 0;
-        stats.shotsOnTarget += player.shotsOnTarget || 0;
-        stats.passes += player.passes || 0;
-        stats.passesAccurate += player.passesAccurate || 0;
-        stats.crosses += player.crosses || 0;
-        stats.crossesAccurate += player.crossesAccurate || 0;
-        stats.chancesCreated += player.chancesCreated || 0;
-        stats.fouls += player.foulsCommitted || 0;
-        stats.yellowCards += player.yellowCards || 0;
-        stats.redCards += player.redCards || 0;
-        stats.avgRating += player.rating || 0;
-        stats.defensiveDuelsWon += player.defensiveDuelsWon || 0;
-        stats.dribbledPast += player.dribbledPast || 0;
-        stats.shotsBlocked += player.shotsInterceptions || 0;
-        stats.ownGoals += player.ownGoals || 0;
-      });
-
-      stats.avgRating = (stats.avgRating / playersStats.length).toFixed(2);
-
-      return stats;
-    }
-
-    // SIMPLIFIED: Apply match filter using data attributes
-    function applyMatchFilter() {
-      const matchItems = document.querySelectorAll(".match-item");
-      
-      let visibleCount = 0;
-      
-      matchItems.forEach((item) => {
-        const homeGoals = parseInt(item.dataset.homeGoals) || 0;
-        const awayGoals = parseInt(item.dataset.awayGoals) || 0;
-        
-        // Determine result
-        let result;
-        if (homeGoals > awayGoals) {
-          result = "win";
-        } else if (homeGoals === awayGoals) {
-          result = "draw";
-        } else {
-          result = "loss";
-        }
-        
-        // Apply filter
-        let shouldShow = false;
-        if (currentMatchFilter === "all") {
-          shouldShow = true;
-        } else if (currentMatchFilter === "wins" && result === "win") {
-          shouldShow = true;
-        } else if (currentMatchFilter === "draws" && result === "draw") {
-          shouldShow = true;
-        } else if (currentMatchFilter === "losses" && result === "loss") {
-          shouldShow = true;
-        }
-        
-        if (shouldShow) {
-          item.classList.remove("filter-hidden");
-          visibleCount++;
-        } else {
-          item.classList.add("filter-hidden");
-        }
-      });
-
-      // Update match title count
-      const filterText = currentMatchFilter === "all" ? "" : ` (${currentMatchFilter.charAt(0).toUpperCase() + currentMatchFilter.slice(1)})`;
-      document.getElementById("matches-title").textContent = `Match History${filterText} (${visibleCount} matches)`;
-    }
-    function sortPlayers(playerAggregates) {
-      const players = Object.values(playerAggregates);
-      const col = playerDetailSort.column;
-      const asc = playerDetailSort.asc;
-
-      players.sort((a, b) => {
-        let valA, valB;
-
-        switch (col) {
-          case "name": valA = a.playerName; valB = b.playerName; break;
-          case "positions": valA = getPositionSortValue(a.positions); valB = getPositionSortValue(b.positions); break;
-          case "apps": valA = a.appearances; valB = b.appearances; break;
-          case "rating": valA = a.ratingSum / a.appearances; valB = b.ratingSum / b.appearances; break;
-          case "goals": valA = a.goals; valB = b.goals; break;
-          case "assists": valA = a.assists; valB = b.assists; break;
-          case "goalContribution": valA = a.goals + a.assists; valB = b.goals + b.assists; break;
-          case "xg": valA = a.xG; valB = b.xG; break;
-          case "xgDiff": valA = a.goals - a.xG; valB = b.goals - b.xG; break;
-          case "conversionRate": valA = a.shots > 0 ? a.goals / a.shots : 0; valB = b.shots > 0 ? b.goals / b.shots : 0; break;
-          case "xgPerShot": valA = a.shots > 0 ? a.xG / a.shots : 0; valB = b.shots > 0 ? b.xG / b.shots : 0; break;
-          case "shots": valA = a.shots; valB = b.shots; break;
-          case "sot": valA = a.shotsOnTarget; valB = b.shotsOnTarget; break;
-          case "shotAcc": valA = a.shots > 0 ? a.shotsOnTarget / a.shots : 0; valB = b.shots > 0 ? b.shotsOnTarget / b.shots : 0; break;
-          case "chancesCreated": valA = a.chancesCreated; valB = b.chancesCreated; break;
-          case "keyPassRate": valA = a.passes > 0 ? a.chancesCreated / a.passes : 0; valB = b.passes > 0 ? b.chancesCreated / b.passes : 0; break;
-          case "passes": valA = a.passes; valB = b.passes; break;
-          case "passAcc": valA = a.passes > 0 ? a.passesAccurate / a.passes : 0; valB = b.passes > 0 ? b.passesAccurate / b.passes : 0; break;
-          case "crosses": valA = a.crosses; valB = b.crosses; break;
-          case "crossAcc": valA = a.crosses > 0 ? a.crossesAccurate / a.crosses : 0; valB = b.crosses > 0 ? b.crossesAccurate / b.crosses : 0; break;
-          case "dribbles": valA = a.dribblingSuccess; valB = b.dribblingSuccess; break;
-          case "dribbledPast": valA = a.dribbledPast; valB = b.dribbledPast; break;
-          case "defDuels": valA = a.defensiveDuelsTotal > 0 ? a.defensiveDuelsWon / a.defensiveDuelsTotal : 0; valB = b.defensiveDuelsTotal > 0 ? b.defensiveDuelsWon / b.defensiveDuelsTotal : 0; break;
-          case "clearances": valA = a.clearances; valB = b.clearances; break;
-          case "blocks": valA = a.shotsInterceptions; valB = b.shotsInterceptions; break;
-          case "shotsIntercepted": valA = a.shotsIntercepted; valB = b.shotsIntercepted; break;
-          case "progressive": valA = a.passesAccurate + a.dribblingSuccess; valB = b.passesAccurate + b.dribblingSuccess; break;
-          case "fouls": valA = a.fouls; valB = b.fouls; break;
-          case "foulsSuffered": valA = a.foulsSuffered; valB = b.foulsSuffered; break;
-          case "yc": valA = a.yellowCards; valB = b.yellowCards; break;
-          case "rc": valA = a.redCards; valB = b.redCards; break;
-          case "ownGoals": valA = a.ownGoals; valB = b.ownGoals; break;
-          case "saves": valA = a.saves; valB = b.saves; break;
-          case "goalsConceded": valA = a.goalsConceded; valB = b.goalsConceded; break;
-          default: valA = a.ratingSum / a.appearances; valB = b.ratingSum / b.appearances;
-        }
-
-        if (typeof valA === "string") {
-          return asc ? valA.localeCompare(valB) : valB.localeCompare(valA);
-        }
-
-        return asc ? valA - valB : valB - valA;
-      });
-
-      return players;
+      return playersStats.reduce((acc, p) => {
+        acc.xG = (acc.xG || 0) + (p.expectedGoals || 0);
+        acc.shots = (acc.shots || 0) + (p.shots || 0);
+        acc.shotsOnTarget = (acc.shotsOnTarget || 0) + (p.shotsOnTarget || 0);
+        acc.possession = (acc.possession || 0) + (p.possession || 0);
+        acc.passes = (acc.passes || 0) + (p.passes || 0);
+        acc.passAccuracy = (acc.passAccuracy || 0) + (p.passAccuracy || 0);
+        acc.crosses = (acc.crosses || 0) + (p.crosses || 0);
+        acc.crossAccuracy = (acc.crossAccuracy || 0) + (p.crossAccuracy || 0);
+        acc.fouls = (acc.fouls || 0) + (p.fouls || 0);
+        acc.yellowCards = (acc.yellowCards || 0) + (p.yellowCards || 0);
+        acc.redCards = (acc.redCards || 0) + (p.redCards || 0);
+        return acc;
+      }, {});
     }
 
     function applyHiddenColumns() {
       const table = document.getElementById("player-detail-table");
-      if (!table) return;
+      const allCols = Array.from(table.querySelectorAll("th[data-col]")).map(th => th.dataset.col);
 
-      const allCols = ["name", "positions", "apps", "rating", "goals", "assists", "goalContribution", 
-                       "xg", "xgDiff", "conversionRate", "xgPerShot", "shots", "sot", "shotAcc", 
-                       "chancesCreated", "keyPassRate", "passes", "passAcc", "crosses", "crossAcc", 
-                       "dribbles", "dribbledPast", "defDuels", "clearances", "blocks", "shotsIntercepted", 
-                       "progressive", "fouls", "foulsSuffered", "yc", "rc", "ownGoals", "saves", "goalsConceded"];
-
-      allCols.forEach((col, index) => {
+      allCols.forEach((col) => {
         const th = table.querySelector(`th[data-col="${col}"]`);
-        const tds = table.querySelectorAll(`tbody tr td:nth-child(${index + 1})`);
+        const tds = table.querySelectorAll(`td[data-col="${col}"]`);
 
         if (hiddenPlayerCols.has(col)) {
           if (th) th.classList.add("hidden-col");
@@ -2391,6 +1577,89 @@
           tds.forEach(td => td.classList.remove("hidden-col"));
         }
       });
+    }
+
+    function applyMatchFilter() {
+      const items = document.querySelectorAll(".match-item");
+      
+      items.forEach((item) => {
+        const result = item.dataset.result;
+        
+        if (currentMatchFilter === "all") {
+          item.classList.remove("filter-hidden");
+        } else if (currentMatchFilter === result) {
+          item.classList.remove("filter-hidden");
+        } else {
+          item.classList.add("filter-hidden");
+        }
+      });
+    }
+
+    function sortPlayers(playerAggregates) {
+      const players = Object.values(playerAggregates);
+
+      const posOrder = {};
+      POSITION_ORDER.forEach((pos, idx) => {
+        posOrder[pos] = idx;
+      });
+
+      players.sort((a, b) => {
+        let valA, valB;
+
+        if (playerDetailSort.column === "name") {
+          valA = a.name.toLowerCase();
+          valB = b.name.toLowerCase();
+          return playerDetailSort.asc ? valA.localeCompare(valB) : valB.localeCompare(valA);
+        }
+
+        if (playerDetailSort.column === "position") {
+          valA = posOrder[a.position] !== undefined ? posOrder[a.position] : 999;
+          valB = posOrder[b.position] !== undefined ? posOrder[b.position] : 999;
+        } else if (playerDetailSort.column === "rating") {
+          valA = a.ratingSum / a.appearances;
+          valB = b.ratingSum / b.appearances;
+        } else if (playerDetailSort.column === "goalContribution") {
+          valA = a.goals + a.assists;
+          valB = b.goals + b.assists;
+        } else if (playerDetailSort.column === "xgDiff") {
+          valA = a.goals - a.xG;
+          valB = b.goals - b.xG;
+        } else if (playerDetailSort.column === "conversionRate") {
+          valA = a.shots > 0 ? (a.goals / a.shots) * 100 : 0;
+          valB = b.shots > 0 ? (b.goals / b.shots) * 100 : 0;
+        } else if (playerDetailSort.column === "xgPerShot") {
+          valA = a.shots > 0 ? a.xG / a.shots : 0;
+          valB = b.shots > 0 ? b.xG / b.shots : 0;
+        } else if (playerDetailSort.column === "shotAccuracy") {
+          valA = a.shots > 0 ? (a.shotsOnTarget / a.shots) * 100 : 0;
+          valB = b.shots > 0 ? (b.shotsOnTarget / b.shots) * 100 : 0;
+        } else if (playerDetailSort.column === "keyPassRate") {
+          valA = a.passes > 0 ? (a.keyPasses / a.passes) * 100 : 0;
+          valB = b.passes > 0 ? (b.keyPasses / b.passes) * 100 : 0;
+        } else if (playerDetailSort.column === "passAccuracy") {
+          valA = a.passAccuracy / a.appearances;
+          valB = b.passAccuracy / b.appearances;
+        } else if (playerDetailSort.column === "crossAccuracy") {
+          valA = a.crossAccuracy / a.appearances;
+          valB = b.crossAccuracy / b.appearances;
+        } else if (playerDetailSort.column === "defensiveDuelsWonRate") {
+          const totalA = a.defensiveDuelsWon + a.dribbledPast;
+          const totalB = b.defensiveDuelsWon + b.dribbledPast;
+          valA = totalA > 0 ? (a.defensiveDuelsWon / totalA) * 100 : 0;
+          valB = totalB > 0 ? (b.defensiveDuelsWon / totalB) * 100 : 0;
+        } else {
+          valA = a[playerDetailSort.column] || 0;
+          valB = b[playerDetailSort.column] || 0;
+        }
+
+        if (playerDetailSort.asc) {
+          return valA > valB ? 1 : valA < valB ? -1 : 0;
+        } else {
+          return valA < valB ? 1 : valA > valB ? -1 : 0;
+        }
+      });
+
+      return players;
     }
 
     function renderPlayerDetail() {
@@ -2424,75 +1693,67 @@
         const conversionRate = player.shots > 0 ? ((player.goals / player.shots) * 100).toFixed(1) : "0";
         const xgPerShot = player.shots > 0 ? (player.xG / player.shots).toFixed(2) : "0.00";
         const shotAcc = player.shots > 0 ? ((player.shotsOnTarget / player.shots) * 100).toFixed(1) : "0";
-        const keyPassRate = player.passes > 0 ? ((player.chancesCreated / player.passes) * 100).toFixed(1) : "0";
-        const passAcc = player.passes > 0 ? ((player.passesAccurate / player.passes) * 100).toFixed(1) : "0";
-        const crossAcc = player.crosses > 0 ? ((player.crossesAccurate / player.crosses) * 100).toFixed(1) : "0";
-        const defDuelsPct = player.defensiveDuelsTotal > 0 ? ((player.defensiveDuelsWon / player.defensiveDuelsTotal) * 100).toFixed(1) : "0";
-        const progressive = player.passesAccurate + player.dribblingSuccess;
+        const keyPassRate = player.passes > 0 ? ((player.keyPasses / player.passes) * 100).toFixed(1) : "0";
+        const avgPassAcc = (player.passAccuracy / player.appearances).toFixed(1);
+        const avgCrossAcc = (player.crossAccuracy / player.appearances).toFixed(1);
+        const defensiveTotal = player.defensiveDuelsWon + player.dribbledPast;
+        const defDuelWinRate = defensiveTotal > 0 ? ((player.defensiveDuelsWon / defensiveTotal) * 100).toFixed(1) : "0";
 
-        const positionsArray = Array.from(player.positions).sort((a, b) => {
-          const indexA = POSITION_ORDER.indexOf(a);
-          const indexB = POSITION_ORDER.indexOf(b);
-          return (indexA === -1 ? 999 : indexA) - (indexB === -1 ? 999 : indexB);
-        });
-        const positions = positionsArray.length > 0 ? positionsArray.join(" / ") : "-";
+        if (hiddenPlayerRows.has(player.playerId)) return;
 
         const tr = document.createElement("tr");
-        tr.dataset.playerId = player.playerId;
-        
-        if (hiddenPlayerRows.has(player.playerId)) {
-          tr.classList.add("hidden-row");
-        }
-
         tr.innerHTML = `
-          <td>${player.playerName}</td>
-          <td>${positions}</td>
-          <td>${player.appearances}</td>
-          <td>${avgRating}</td>
-          <td>${player.goals}</td>
-          <td>${player.assists}</td>
-          <td>${goalContribution}</td>
-          <td>${player.xG.toFixed(2)}</td>
-          <td>${xgDiff}</td>
-          <td>${conversionRate}%</td>
-          <td>${xgPerShot}</td>
-          <td>${player.shots}</td>
-          <td>${player.shotsOnTarget}</td>
-          <td>${shotAcc}%</td>
-          <td>${player.chancesCreated}</td>
-          <td>${keyPassRate}%</td>
-          <td>${player.passes}</td>
-          <td>${passAcc}%</td>
-          <td>${player.crosses}</td>
-          <td>${crossAcc}%</td>
-          <td>${player.dribblingSuccess}</td>
-          <td>${player.dribbledPast}</td>
-          <td>${defDuelsPct}%</td>
-          <td>${player.clearances}</td>
-          <td>${player.shotsInterceptions}</td>
-          <td>${player.shotsIntercepted}</td>
-          <td>${progressive}</td>
-          <td>${player.fouls}</td>
-          <td>${player.foulsSuffered}</td>
-          <td>${player.yellowCards}</td>
-          <td>${player.redCards}</td>
-          <td>${player.ownGoals}</td>
-          <td>${player.saves}</td>
-          <td>${player.goalsConceded}</td>
+          <td data-col="name">${player.name || `Player ${player.playerId}`}</td>
+          <td data-col="position">${player.position}</td>
+          <td data-col="appearances">${player.appearances}</td>
+          <td data-col="rating">${avgRating}</td>
+          <td data-col="goals">${player.goals}</td>
+          <td data-col="assists">${player.assists}</td>
+          <td data-col="goalContribution">${goalContribution}</td>
+          <td data-col="xG">${player.xG.toFixed(2)}</td>
+          <td data-col="xgDiff">${xgDiff}</td>
+          <td data-col="conversionRate">${conversionRate}</td>
+          <td data-col="xgPerShot">${xgPerShot}</td>
+          <td data-col="shots">${player.shots}</td>
+          <td data-col="shotsOnTarget">${player.shotsOnTarget}</td>
+          <td data-col="shotAccuracy">${shotAcc}</td>
+          <td data-col="chancesCreated">${player.chancesCreated}</td>
+          <td data-col="keyPassRate">${keyPassRate}</td>
+          <td data-col="passes">${player.passes}</td>
+          <td data-col="passAccuracy">${avgPassAcc}</td>
+          <td data-col="crosses">${player.crosses}</td>
+          <td data-col="crossAccuracy">${avgCrossAcc}</td>
+          <td data-col="dribbles">${player.dribbles}</td>
+          <td data-col="dribbledPast">${player.dribbledPast}</td>
+          <td data-col="defensiveDuelsWonRate">${defDuelWinRate}</td>
+          <td data-col="clearances">${player.clearances}</td>
+          <td data-col="blockedShots">${player.blockedShots}</td>
+          <td data-col="shotsIntercepted">${player.shotsIntercepted}</td>
+          <td data-col="progressivePasses">${player.progressivePasses}</td>
+          <td data-col="fouls">${player.fouls}</td>
+          <td data-col="foulsSuffered">${player.foulsSuffered}</td>
+          <td data-col="yellowCards">${player.yellowCards}</td>
+          <td data-col="redCards">${player.redCards}</td>
+          <td data-col="ownGoals">${player.ownGoals}</td>
+          <td data-col="saves">${player.saves}</td>
+          <td data-col="goalsConceded">${player.goalsConceded}</td>
+          <td><button class="hide-row-btn" data-player-id="${player.playerId}">Hide</button></td>
         `;
-
-        tr.addEventListener("click", () => {
-          hiddenPlayerRows.add(player.playerId);
-          tr.classList.add("hidden-row");
-        });
 
         tbody.appendChild(tr);
       });
 
       applyHiddenColumns();
+
+      document.querySelectorAll(".hide-row-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const playerId = btn.dataset.playerId;
+          hiddenPlayerRows.add(playerId);
+          renderPlayerDetail();
+        });
+      });
     }
 
-    // FIXED: Now stores goals in dataset attributes for reliable filtering
     function renderMatches() {
       const container = document.getElementById("matches-container");
 
@@ -2526,391 +1787,254 @@
         let awayName = "Away Team";
 
         if (formations) {
-          const playerMap = extractPlayerMapFromFormations(formations);
-          const clubNames = extractClubNames(formations);
-
-          homeName = clubNames.homeName;
-          awayName = clubNames.awayName;
-
           if (formations.homeFormation) {
             homeFormationType = formations.homeFormation.type || "-";
-            homeXIOverall = computeXIOverall(formations.homeFormation, playerMap);
+            if (formations.playersMap) {
+              const homeXI = computeXIOverall(formations.homeFormation, formations.playersMap);
+              if (homeXI) {
+                homeXIOverall = homeXI.avg;
+              }
+            }
+            if (formations.homeClub) {
+              homeName = formations.homeClub.name || "Home Team";
+            }
           }
 
           if (formations.awayFormation) {
             awayFormationType = formations.awayFormation.type || "-";
-            awayXIOverall = computeXIOverall(formations.awayFormation, playerMap);
+            if (formations.playersMap) {
+              const awayXI = computeXIOverall(formations.awayFormation, formations.playersMap);
+              if (awayXI) {
+                awayXIOverall = awayXI.avg;
+              }
+            }
+            if (formations.awayClub) {
+              awayName = formations.awayClub.name || "Away Team";
+            }
           }
         }
 
-        const homePasses = home.playersStats?.reduce((sum, p) => sum + (p.passes || 0), 0) || 0;
-        const awayPasses = away.playersStats?.reduce((sum, p) => sum + (p.passes || 0), 0) || 0;
-        const totalPasses = homePasses + awayPasses;
-        const homePossession = totalPasses > 0 ? ((homePasses / totalPasses) * 100).toFixed(1) : "50.0";
-        const awayPossession = totalPasses > 0 ? ((awayPasses / totalPasses) * 100).toFixed(1) : "50.0";
+        const matchDate = match.report.createdAt ? new Date(match.report.createdAt).toLocaleDateString() : "Unknown";
 
-        const matchDiv = document.createElement("div");
-        matchDiv.className = "match-item";
-        matchDiv.dataset.matchId = match.matchId;
-        
-        // CRITICAL FIX: Store goals directly on the element for filtering
-        matchDiv.dataset.homeGoals = homeGoals;
-        matchDiv.dataset.awayGoals = awayGoals;
+        let matchResult = "drawn";
+        if (homeGoals > awayGoals) matchResult = "won";
+        else if (homeGoals < awayGoals) matchResult = "lost";
 
-        const matchMain = document.createElement("div");
-        matchMain.className = "match-main";
+        const matchItem = document.createElement("div");
+        matchItem.className = "match-item";
+        matchItem.dataset.result = matchResult;
 
-        matchMain.innerHTML = `
-          <div class="match-header-row">
-            <div class="match-title-section">
-              <div class="match-teams-title">${homeName} vs ${awayName}</div>
-              <div class="match-meta">
-                ${new Date(match.date).toLocaleString()} | ID: ${match.matchId}
-                <a href="https://app.playmfl.com/matches/${match.matchId}" target="_blank" class="match-link">🔗 View on MFL</a>
-              </div>
+        matchItem.innerHTML = `
+          <div class="match-header">
+            <div>
+              <div class="match-title">Match ID: ${match.matchId}</div>
+              <div class="match-date">${matchDate}</div>
             </div>
-            <div class="match-actions">
-              <button class="btn btn-danger" onclick="event.stopPropagation(); deleteMatch('${match.matchId}')">🗑️ Delete</button>
-              <span class="match-toggle">▼</span>
-            </div>
+            <button class="btn btn-danger" onclick="event.stopPropagation(); deleteMatch(${match.matchId})">🗑️ Delete</button>
           </div>
 
-          <div class="match-score-big">${homeGoals} - ${awayGoals}</div>
+          <div class="match-score">
+            <div class="team-name" style="text-align: right;">${homeName}</div>
+            <div class="score">${homeGoals}</div>
+            <div style="color: #64748b;">-</div>
+            <div class="score">${awayGoals}</div>
+            <div class="team-name">${awayName}</div>
+          </div>
 
-          <div class="match-quick-stats">
-            <div class="quick-stat-card">
-              <div class="quick-stat-label" title="Formation">Formation</div>
-              <div class="quick-stat-values">
-                <span class="quick-stat-home">${homeFormationType}</span>
-                <span class="quick-stat-separator">vs</span>
-                <span class="quick-stat-away">${awayFormationType}</span>
-              </div>
+          <div class="match-stats">
+            <div class="team-stats">
+              <div class="stat-row"><span class="label">Formation:</span> <span>${homeFormationType}</span></div>
+              <div class="stat-row"><span class="label">XI Overall:</span> <span>${homeXIOverall || "-"}</span></div>
+              <div class="stat-row"><span class="label">xG:</span> <span>${(homeStats.xG || 0).toFixed(2)}</span></div>
+              <div class="stat-row"><span class="label">Shots:</span> <span>${homeStats.shots || 0}</span></div>
+              <div class="stat-row"><span class="label">Shots on Target:</span> <span>${homeStats.shotsOnTarget || 0}</span></div>
+              <div class="stat-row"><span class="label">Possession:</span> <span>${(homeStats.possession || 0).toFixed(1)}%</span></div>
+              <div class="stat-row"><span class="label">Passes:</span> <span>${homeStats.passes || 0}</span></div>
+              <div class="stat-row"><span class="label">Pass Accuracy:</span> <span>${(homeStats.passAccuracy || 0).toFixed(1)}%</span></div>
             </div>
 
-            <div class="quick-stat-card">
-              <div class="quick-stat-label" title="Starting XI Overall Rating (sum of 11 players)">XI Overall</div>
-              <div class="quick-stat-values">
-                <span class="quick-stat-home">${homeXIOverall}</span>
-                <span class="quick-stat-separator">vs</span>
-                <span class="quick-stat-away">${awayXIOverall}</span>
-              </div>
-            </div>
+            <div class="stat-divider"></div>
 
-            <div class="quick-stat-card">
-              <div class="quick-stat-label" title="Expected Goals">xG</div>
-              <div class="quick-stat-values">
-                <span class="quick-stat-home">${homeStats.xG.toFixed(2)}</span>
-                <span class="quick-stat-separator">-</span>
-                <span class="quick-stat-away">${awayStats.xG.toFixed(2)}</span>
-              </div>
-            </div>
-
-            <div class="quick-stat-card">
-              <div class="quick-stat-label" title="Shots">Shots</div>
-              <div class="quick-stat-values">
-                <span class="quick-stat-home">${homeStats.shots}</span>
-                <span class="quick-stat-separator">-</span>
-                <span class="quick-stat-away">${awayStats.shots}</span>
-              </div>
-            </div>
-
-            <div class="quick-stat-card">
-              <div class="quick-stat-label" title="Shots on Target">Shots on Target</div>
-              <div class="quick-stat-values">
-                <span class="quick-stat-home">${homeStats.shotsOnTarget}</span>
-                <span class="quick-stat-separator">-</span>
-                <span class="quick-stat-away">${awayStats.shotsOnTarget}</span>
-              </div>
-            </div>
-
-            <div class="quick-stat-card">
-              <div class="quick-stat-label" title="Possession percentage">Possession</div>
-              <div class="quick-stat-values">
-                <span class="quick-stat-home">${homePossession}%</span>
-                <span class="quick-stat-separator">-</span>
-                <span class="quick-stat-away">${awayPossession}%</span>
-              </div>
+            <div class="team-stats" style="align-items: flex-end;">
+              <div class="stat-row"><span>${awayFormationType}</span> <span class="label">:Formation</span></div>
+              <div class="stat-row"><span>${awayXIOverall || "-"}</span> <span class="label">:XI Overall</span></div>
+              <div class="stat-row"><span>${(awayStats.xG || 0).toFixed(2)}</span> <span class="label">:xG</span></div>
+              <div class="stat-row"><span>${awayStats.shots || 0}</span> <span class="label">:Shots</span></div>
+              <div class="stat-row"><span>${awayStats.shotsOnTarget || 0}</span> <span class="label">:Shots on Target</span></div>
+              <div class="stat-row"><span>${(awayStats.possession || 0).toFixed(1)}%</span> <span class="label">:Possession</span></div>
+              <div class="stat-row"><span>${awayStats.passes || 0}</span> <span class="label">:Passes</span></div>
+              <div class="stat-row"><span>${(awayStats.passAccuracy || 0).toFixed(1)}%</span> <span class="label">:Pass Accuracy</span></div>
             </div>
           </div>
         `;
 
-        matchDiv.appendChild(matchMain);
-
-        const matchDetails = document.createElement("div");
-        matchDetails.className = "match-details";
-        matchDetails.innerHTML = `
-          <div class="full-stats-title">📊 Complete Match Statistics</div>
-          <div class="full-stats-grid">
-            <div class="team-full-stats">
-              <h4>🏠 ${homeName}</h4>
-              ${renderFullTeamStats(homeStats)}
-            </div>
-            <div class="team-full-stats">
-              <h4>✈️ ${awayName}</h4>
-              ${renderFullTeamStats(awayStats)}
-            </div>
-          </div>
-
-          <div class="players-section-title">👥 Match Players & Performance</div>
-          <div class="team-players-card">
-            <h5>🏠 ${homeName} Players</h5>
-            ${renderMatchPlayers(home.playersStats, playerNamesCache)}
-          </div>
-          <div class="team-players-card">
-            <h5>✈️ ${awayName} Players</h5>
-            ${renderMatchPlayers(away.playersStats, playerNamesCache)}
-          </div>
-        `;
-
-        matchDiv.appendChild(matchDetails);
-
-        matchMain.addEventListener("click", (e) => {
-          if (e.target.closest(".btn-danger") || e.target.closest(".match-link")) return;
-          matchDiv.classList.toggle("expanded");
-        });
-
-        container.appendChild(matchDiv);
+        container.appendChild(matchItem);
       });
 
-      // CRITICAL FIX: Use setTimeout to ensure DOM is fully updated before filtering
-      setTimeout(() => {
-        applyMatchFilter();
-      }, 0);
+      applyMatchFilter();
     }
 
-    function renderFullTeamStats(stats) {
-      if (!stats) return "<p>No stats available</p>";
+    async function analyzeMatches() {
+      const clubIdInput = document.getElementById("club-id-input").value.trim();
+      const limitInput = parseInt(document.getElementById("match-limit-input").value) || 5;
 
-      const passAcc = stats.passes > 0 ? ((stats.passesAccurate / stats.passes) * 100).toFixed(1) : "0";
-      const crossAcc = stats.crosses > 0 ? ((stats.crossesAccurate / stats.crosses) * 100).toFixed(1) : "0";
-      const shotAcc = stats.shots > 0 ? ((stats.shotsOnTarget / stats.shots) * 100).toFixed(1) : "0";
-      const defDuelWinRate = (stats.defensiveDuelsWon + stats.dribbledPast > 0) ? ((stats.defensiveDuelsWon / (stats.defensiveDuelsWon + stats.dribbledPast)) * 100).toFixed(1) : "0";
-      const totalDuels = stats.defensiveDuelsWon + stats.dribbledPast;
-
-      return `
-        <div class="stat-row"><span class="label" title="Goals">Goals</span><span class="value">${stats.goals}</span></div>
-        <div class="stat-row"><span class="label" title="Assists">Assists</span><span class="value">${stats.assists}</span></div>
-        <div class="stat-row"><span class="label" title="Expected Goals">xG</span><span class="value">${stats.xG.toFixed(2)}</span></div>
-        <div class="stat-row"><span class="label" title="Shots">Shots</span><span class="value">${stats.shots}</span></div>
-        <div class="stat-row"><span class="label" title="Shots on Target">Shots on Target</span><span class="value">${stats.shotsOnTarget}</span></div>
-        <div class="stat-row"><span class="label" title="Shot Accuracy percentage">Shot Accuracy</span><span class="value">${shotAcc}%</span></div>
-        <div class="stat-row"><span class="label" title="Total Passes">Passes</span><span class="value">${stats.passes}</span></div>
-        <div class="stat-row"><span class="label" title="Pass Accuracy percentage">Pass Acc.</span><span class="value">${passAcc}%</span></div>
-        <div class="stat-row"><span class="label" title="Total Crosses">Crosses</span><span class="value">${stats.crosses}</span></div>
-        <div class="stat-row"><span class="label" title="Cross Accuracy percentage">Cross Acc.</span><span class="value">${crossAcc}%</span></div>
-        <div class="stat-row"><span class="label" title="Chances Created">Chances Created</span><span class="value">${stats.chancesCreated}</span></div>
-        <div class="stat-row"><span class="label" title="Defensive Duel Win Rate">Def Duel Win Rate</span><span class="value">${defDuelWinRate}%</span></div>
-        <div class="stat-row"><span class="label" title="Total Duels">Total Duels</span><span class="value">${totalDuels}</span></div>
-        <div class="stat-row"><span class="label" title="Shots Blocked">Shots Blocked</span><span class="value">${stats.shotsBlocked}</span></div>
-        <div class="stat-row"><span class="label" title="Own Goals">Own Goals</span><span class="value">${stats.ownGoals}</span></div>
-        <div class="stat-row"><span class="label" title="Fouls Committed">Fouls</span><span class="value">${stats.fouls}</span></div>
-        <div class="stat-row"><span class="label" title="Yellow Cards">Yellow Cards</span><span class="value">${stats.yellowCards}</span></div>
-        <div class="stat-row"><span class="label" title="Red Cards">Red Cards</span><span class="value">${stats.redCards}</span></div>
-        <div class="stat-row"><span class="label" title="Average Player Rating">Avg Rating</span><span class="value">${stats.avgRating}</span></div>
-      `;
-    }
-
-    function renderMatchPlayers(playersStats, namesCache) {
-      if (!playersStats || playersStats.length === 0) {
-        return '<p style="color: #94a3b8; padding: 10px;">No player data available</p>';
-      }
-
-      const sortedPlayers = [...playersStats].sort((a, b) => {
-        const posA = POSITION_ORDER.indexOf(a.position);
-        const posB = POSITION_ORDER.indexOf(b.position);
-        return (posA === -1 ? 999 : posA) - (posB === -1 ? 999 : posB);
-      });
-
-      let html = `
-        <table class="players-table">
-          <thead>
-            <tr>
-              <th>Player</th>
-              <th title="Position">Pos</th>
-              <th title="Rating">Rat</th>
-              <th title="Goals">G</th>
-              <th title="Assists">A</th>
-              <th title="Expected Goals">xG</th>
-              <th title="Expected Goals per Shot">xG/Sh</th>
-              <th title="Shots">Sh</th>
-              <th title="Shots on Target">SoT</th>
-              <th title="Shot Accuracy %">Sh%</th>
-              <th title="Chances Created">Chc</th>
-              <th title="Passes">Pass</th>
-              <th title="Pass Accuracy %">P%</th>
-              <th title="Crosses">Crs</th>
-              <th title="Cross Accuracy %">C%</th>
-              <th title="Successful Dribbles">Drb</th>
-              <th title="Dribbled Past">DrP</th>
-              <th title="Defensive Duel Win %">DD%</th>
-              <th title="Clearances">Clr</th>
-              <th title="Shots Blocked">Blk</th>
-              <th title="Shots Intercepted (Offensive)">ShI</th>
-              <th title="Progressive Actions">Prog</th>
-              <th title="Fouls Committed">Fls</th>
-              <th title="Fouls Suffered">FS</th>
-              <th title="Yellow Cards">YC</th>
-              <th title="Red Cards">RC</th>
-              <th title="Own Goals">OG</th>
-              <th title="Saves">Sav</th>
-              <th title="Goals Conceded">GC</th>
-            </tr>
-          </thead>
-          <tbody>
-      `;
-
-      sortedPlayers.forEach((player) => {
-        const pid = String(player.playerId);
-        const name = namesCache[pid] || `Player ${pid}`;
-        const passAcc = player.passes > 0 ? ((player.passesAccurate / player.passes) * 100).toFixed(0) : "0";
-        const crossAcc = player.crosses > 0 ? ((player.crossesAccurate / player.crosses) * 100).toFixed(0) : "0";
-        const shotAcc = player.shots > 0 ? ((player.shotsOnTarget / player.shots) * 100).toFixed(0) : "0";
-        const xgPerShot = player.shots > 0 ? (player.xG / player.shots).toFixed(2) : "0.00";
-        const defDuelRate = (player.defensiveDuelsWon + player.dribbledPast > 0) ? ((player.defensiveDuelsWon / (player.defensiveDuelsWon + player.dribbledPast)) * 100).toFixed(0) : "0";
-        const progressive = player.passesAccurate + player.dribblingSuccess;
-
-        html += `
-          <tr>
-            <td>${name}</td>
-            <td>${player.position || "-"}</td>
-            <td>${(player.rating || 0).toFixed(1)}</td>
-            <td>${player.goals || 0}</td>
-            <td>${player.assists || 0}</td>
-            <td>${(player.xG || 0).toFixed(2)}</td>
-            <td>${xgPerShot}</td>
-            <td>${player.shots || 0}</td>
-            <td>${player.shotsOnTarget || 0}</td>
-            <td>${shotAcc}%</td>
-            <td>${player.chancesCreated || 0}</td>
-            <td>${player.passes || 0}</td>
-            <td>${passAcc}%</td>
-            <td>${player.crosses || 0}</td>
-            <td>${crossAcc}%</td>
-            <td>${player.dribblingSuccess || 0}</td>
-            <td>${player.dribbledPast || 0}</td>
-            <td>${defDuelRate}%</td>
-            <td>${player.clearances || 0}</td>
-            <td>${player.shotsInterceptions || 0}</td>
-            <td>${player.shotsIntercepted || 0}</td>
-            <td>${progressive}</td>
-            <td>${player.foulsCommitted || 0}</td>
-            <td>${player.foulsSuffered || 0}</td>
-            <td>${player.yellowCards || 0}</td>
-            <td>${player.redCards || 0}</td>
-            <td>${player.ownGoals || 0}</td>
-            <td>${player.saves || 0}</td>
-            <td>${player.goalsConceded || 0}</td>
-          </tr>
-        `;
-      });
-
-      html += `
-          </tbody>
-        </table>
-      `;
-
-      return html;
-    }
-
-    function downloadCSV() {
-      if (allMatches.length === 0) {
-        alert("No data to export");
+      if (!clubIdInput) {
+        setStatus("Please enter a Club ID", "error");
         return;
       }
 
-      const rows = [];
+      clubId = clubIdInput;
+      const limit = Math.min(Math.max(limitInput, 1), 10);
 
-      rows.push([
-        "Match ID", "Date", "Home Team", "Away Team", "Score", "Home Goals", "Away Goals", "Home xG", "Away xG",
-        "Home Shots", "Away Shots", "Home SoT", "Away SoT", "Home Shot Acc%", "Away Shot Acc%",
-        "Home Possession%", "Away Possession%", "Home Passes", "Away Passes", "Home Pass Acc%", "Away Pass Acc%",
-        "Home Def Duel Win%", "Away Def Duel Win%", "Home Total Duels", "Away Total Duels",
-        "Home Shots Blocked", "Away Shots Blocked", "Home Own Goals", "Away Own Goals",
-        "Home Fouls", "Away Fouls", "Home YC", "Away YC", "Home RC", "Away RC",
-        "Home Avg Rating", "Away Avg Rating", "Home Formation", "Away Formation",
-        "Home XI Overall", "Away XI Overall",
-      ]);
+      try {
+        setStatus("Fetching squad ID...", "loading");
+        squadId = await fetchSquadIdFromClubId(clubId);
 
-      allMatches.forEach((match) => {
-        const home = match.report?.home;
-        const away = match.report?.away;
-        const formations = match.formations;
+        setStatus(`Fetching last ${limit} friendly matches...`, "loading");
+        const matchIds = await fetchMatchIds(squadId, limit);
 
-        if (!home || !away) return;
+        if (matchIds.length === 0) {
+          setStatus("No friendly matches found", "error");
+          return;
+        }
 
-        const homeStats = aggregateTeamStats(home.playersStats);
-        const awayStats = aggregateTeamStats(away.playersStats);
+        setStatus(`Loading ${matchIds.length} matches...`, "loading");
 
-        if (!homeStats || !awayStats) return;
+        allMatches = [];
 
-        const homePassAcc = homeStats.passes > 0 ? ((homeStats.passesAccurate / homeStats.passes) * 100).toFixed(1) : "0";
-        const awayPassAcc = awayStats.passes > 0 ? ((awayStats.passesAccurate / awayStats.passes) * 100).toFixed(1) : "0";
-        const homeShotAcc = homeStats.shots > 0 ? ((homeStats.shotsOnTarget / homeStats.shots) * 100).toFixed(1) : "0";
-        const awayShotAcc = awayStats.shots > 0 ? ((awayStats.shotsOnTarget / awayStats.shots) * 100).toFixed(1) : "0";
+        for (let i = 0; i < matchIds.length; i++) {
+          const matchId = matchIds[i];
+          setStatus(`Loading match ${i + 1}/${matchIds.length}...`, "loading");
 
-        const homePasses = home.playersStats?.reduce((sum, p) => sum + (p.passes || 0), 0) || 0;
-        const awayPasses = away.playersStats?.reduce((sum, p) => sum + (p.passes || 0), 0) || 0;
-        const totalPasses = homePasses + awayPasses;
-        const homePossession = totalPasses > 0 ? ((homePasses / totalPasses) * 100).toFixed(1) : "50.0";
-        const awayPossession = totalPasses > 0 ? ((awayPasses / totalPasses) * 100).toFixed(1) : "50.0";
+          const report = await fetchMatchReport(matchId);
+          const formations = await fetchFormations(matchId);
 
-        const homeDefDuelWinRate = (homeStats.defensiveDuelsWon + homeStats.dribbledPast > 0) ? ((homeStats.defensiveDuelsWon / (homeStats.defensiveDuelsWon + homeStats.dribbledPast)) * 100).toFixed(1) : "0";
-        const awayDefDuelWinRate = (awayStats.defensiveDuelsWon + awayStats.dribbledPast > 0) ? ((awayStats.defensiveDuelsWon / (awayStats.defensiveDuelsWon + awayStats.dribbledPast)) * 100).toFixed(1) : "0";
+          allMatches.push({
+            matchId,
+            report,
+            formations,
+          });
+        }
 
-        const homeTotalDuels = homeStats.defensiveDuelsWon + homeStats.dribbledPast;
-        const awayTotalDuels = awayStats.defensiveDuelsWon + awayStats.dribbledPast;
-
-        let homeFormationType = "-";
-        let awayFormationType = "-";
-        let homeXIOverall = 0;
-        let awayXIOverall = 0;
-        let homeName = "Home Team";
-        let awayName = "Away Team";
-
-        if (formations) {
-          const playerMap = extractPlayerMapFromFormations(formations);
-          const clubNames = extractClubNames(formations);
-
-          homeName = clubNames.homeName;
-          awayName = clubNames.awayName;
-
-          if (formations.homeFormation) {
-            homeFormationType = formations.homeFormation.type || "-";
-            homeXIOverall = computeXIOverall(formations.homeFormation, playerMap);
+        setStatus("Fetching player names...", "loading");
+        const playerIds = new Set();
+        allMatches.forEach((match) => {
+          const home = match.report?.home;
+          if (home && home.playersStats) {
+            home.playersStats.forEach((p) => playerIds.add(p.playerId));
           }
+        });
 
-          if (formations.awayFormation) {
-            awayFormationType = formations.awayFormation.type || "-";
-            awayXIOverall = computeXIOverall(formations.awayFormation, playerMap);
+        const playerIdsArray = Array.from(playerIds);
+        for (let i = 0; i < playerIdsArray.length; i++) {
+          await fetchPlayerName(playerIdsArray[i]);
+        }
+
+        const playerAggregates = calculatePlayerStats();
+        if (playerAggregates) {
+          for (const pid in playerAggregates) {
+            const player = playerAggregates[pid];
+            if (!player.name) {
+              player.name = playerNamesCache[pid] || `Player ${pid}`;
+            }
           }
         }
 
-        rows.push([
-          match.matchId, new Date(match.date).toISOString(), homeName, awayName,
-          `${homeStats.goals}-${awayStats.goals}`, homeStats.goals, awayStats.goals,
-          homeStats.xG.toFixed(2), awayStats.xG.toFixed(2),
-          homeStats.shots, awayStats.shots, homeStats.shotsOnTarget, awayStats.shotsOnTarget,
-          homeShotAcc, awayShotAcc, homePossession, awayPossession,
-          homeStats.passes, awayStats.passes, homePassAcc, awayPassAcc,
-          homeDefDuelWinRate, awayDefDuelWinRate, homeTotalDuels, awayTotalDuels,
-          homeStats.shotsBlocked, awayStats.shotsBlocked, homeStats.ownGoals, awayStats.ownGoals,
-          homeStats.fouls, awayStats.fouls, homeStats.yellowCards, awayStats.yellowCards,
-          homeStats.redCards, awayStats.redCards, homeStats.avgRating, awayStats.avgRating,
-          homeFormationType, awayFormationType, homeXIOverall, awayXIOverall,
-        ]);
+        renderAll();
+        setStatus(`Successfully loaded ${allMatches.length} matches!`, "success");
+      } catch (e) {
+        console.error("Error analyzing matches:", e);
+        setStatus(`Error: ${e.message}`, "error");
+      }
+    }
+
+    function exportToCSV() {
+      if (allMatches.length === 0) {
+        setStatus("No data to export", "error");
+        return;
+      }
+
+      const playerAggregates = calculatePlayerStats();
+      if (!playerAggregates) {
+        setStatus("No player data to export", "error");
+        return;
+      }
+
+      const players = sortPlayers(playerAggregates);
+
+      const headers = [
+        "Player", "Position", "Apps", "Rating", "Goals", "Assists", "G+A", "xG", "xG±", "Conv%", "xG/Shot",
+        "Shots", "SoT", "Shot%", "Chances", "Key%", "Passes", "Pass%", "Crosses", "Cross%",
+        "Dribbles", "Drib Past", "Def%", "Clearances", "Blocked Shots", "Shots Int", "Prog Passes",
+        "Fouls", "Fouls Suffered", "YC", "RC", "OG", "Saves", "GC"
+      ];
+
+      const rows = players.map((player) => {
+        const avgRating = (player.ratingSum / player.appearances).toFixed(2);
+        const goalContribution = player.goals + player.assists;
+        const xgDiff = (player.goals - player.xG).toFixed(2);
+        const conversionRate = player.shots > 0 ? ((player.goals / player.shots) * 100).toFixed(1) : "0";
+        const xgPerShot = player.shots > 0 ? (player.xG / player.shots).toFixed(2) : "0.00";
+        const shotAcc = player.shots > 0 ? ((player.shotsOnTarget / player.shots) * 100).toFixed(1) : "0";
+        const keyPassRate = player.passes > 0 ? ((player.keyPasses / player.passes) * 100).toFixed(1) : "0";
+        const avgPassAcc = (player.passAccuracy / player.appearances).toFixed(1);
+        const avgCrossAcc = (player.crossAccuracy / player.appearances).toFixed(1);
+        const defensiveTotal = player.defensiveDuelsWon + player.dribbledPast;
+        const defDuelWinRate = defensiveTotal > 0 ? ((player.defensiveDuelsWon / defensiveTotal) * 100).toFixed(1) : "0";
+
+        return [
+          player.name || `Player ${player.playerId}`,
+          player.position,
+          player.appearances,
+          avgRating,
+          player.goals,
+          player.assists,
+          goalContribution,
+          player.xG.toFixed(2),
+          xgDiff,
+          conversionRate,
+          xgPerShot,
+          player.shots,
+          player.shotsOnTarget,
+          shotAcc,
+          player.chancesCreated,
+          keyPassRate,
+          player.passes,
+          avgPassAcc,
+          player.crosses,
+          avgCrossAcc,
+          player.dribbles,
+          player.dribbledPast,
+          defDuelWinRate,
+          player.clearances,
+          player.blockedShots,
+          player.shotsIntercepted,
+          player.progressivePasses,
+          player.fouls,
+          player.foulsSuffered,
+          player.yellowCards,
+          player.redCards,
+          player.ownGoals,
+          player.saves,
+          player.goalsConceded
+        ];
       });
 
-      const csv = rows.map((row) => row.join(",")).join("\n");
+      const csvContent = [
+        headers.join(","),
+        ...rows.map(row => row.map(cell => `"${cell}"`).join(","))
+      ].join("\n");
 
-      const blob = new Blob([csv], { type: "text/csv" });
+      const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = `friendly_matches_club${clubId}_${Date.now()}.csv`;
+      a.download = `mfl_friendly_analysis_${new Date().toISOString().split('T')[0]}.csv`;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
-      URL.revokeObjectURL(url);
+
+      setStatus("CSV exported successfully!", "success");
     }
 
     function renderAll() {
@@ -2930,29 +2054,318 @@
       }
     }
 
-    // EVENT HANDLERS
-    document.getElementById("load-btn").addEventListener("click", loadMatches);
-    document.getElementById("add-match-btn").addEventListener("click", addMatch);
-    document.getElementById("download-csv-btn").addEventListener("click", downloadCSV);
-    document.getElementById("save-analysis-btn").addEventListener("click", openSaveModal);
-    document.getElementById("compare-analyses-btn").addEventListener("click", openCompareModal);
-    document.getElementById("close-comparison-btn").addEventListener("click", closeComparisonView);
+    function renderComparisonView(leftAnalysis, rightAnalysis) {
+      const comparisonGrid = document.getElementById("comparison-grid");
+      comparisonGrid.innerHTML = "";
 
-    document.getElementById("club-id").addEventListener("keypress", (e) => {
-      if (e.key === "Enter") loadMatches();
-    });
+      function createComparisonColumn(analysis, side) {
+        const playerAggregates = {};
 
-    document.getElementById("game-limit").addEventListener("keypress", (e) => {
-      if (e.key === "Enter") loadMatches();
+        analysis.matches.forEach((match) => {
+          const home = match.report?.home;
+          if (!home || !home.playersStats) return;
+
+          home.playersStats.forEach((p) => {
+            const pid = p.playerId;
+            if (!playerAggregates[pid]) {
+              playerAggregates[pid] = {
+                playerId: pid,
+                name: "",
+                position: p.position || "?",
+                appearances: 0,
+                ratingSum: 0,
+                goals: 0, assists: 0, xG: 0, shots: 0, shotsOnTarget: 0,
+                chancesCreated: 0, keyPasses: 0, passes: 0, passAccuracy: 0,
+                crosses: 0, crossAccuracy: 0, dribbles: 0, dribbledPast: 0,
+                defensiveDuelsWon: 0, clearances: 0, blockedShots: 0, shotsIntercepted: 0,
+                progressivePasses: 0, fouls: 0, foulsSuffered: 0, yellowCards: 0, redCards: 0,
+                ownGoals: 0, saves: 0, goalsConceded: 0,
+              };
+            }
+
+            const agg = playerAggregates[pid];
+            agg.appearances++;
+            agg.ratingSum += p.rating || 0;
+            agg.goals += p.goals || 0;
+            agg.assists += p.assists || 0;
+            agg.xG += p.expectedGoals || 0;
+            agg.shots += p.shots || 0;
+            agg.shotsOnTarget += p.shotsOnTarget || 0;
+            agg.chancesCreated += p.chancesCreated || 0;
+            agg.keyPasses += p.keyPasses || 0;
+            agg.passes += p.passes || 0;
+            agg.passAccuracy += p.passAccuracy || 0;
+            agg.crosses += p.crosses || 0;
+            agg.crossAccuracy += p.crossAccuracy || 0;
+            agg.dribbles += p.dribbles || 0;
+            agg.dribbledPast += p.dribbledPast || 0;
+            agg.defensiveDuelsWon += p.defensiveDuelsWon || 0;
+            agg.clearances += p.clearances || 0;
+            agg.blockedShots += p.blockedShots || 0;
+            agg.shotsIntercepted += p.shotsIntercepted || 0;
+            agg.progressivePasses += p.progressivePasses || 0;
+            agg.fouls += p.fouls || 0;
+            agg.foulsSuffered += p.foulsSuffered || 0;
+            agg.yellowCards += p.yellowCards || 0;
+            agg.redCards += p.redCards || 0;
+            agg.ownGoals += p.ownGoals || 0;
+            agg.saves += p.saves || 0;
+            agg.goalsConceded += p.goalsConceded || 0;
+          });
+        });
+
+        for (const pid in playerAggregates) {
+          const player = playerAggregates[pid];
+          if (!player.name) {
+            player.name = playerNamesCache[pid] || `Player ${pid}`;
+          }
+        }
+
+        const posOrder = {};
+        POSITION_ORDER.forEach((pos, idx) => {
+          posOrder[pos] = idx;
+        });
+
+        const players = Object.values(playerAggregates);
+        const sortState = comparisonSortState[side];
+
+        players.sort((a, b) => {
+          let valA, valB;
+
+          if (sortState.column === "name") {
+            valA = a.name.toLowerCase();
+            valB = b.name.toLowerCase();
+            return sortState.asc ? valA.localeCompare(valB) : valB.localeCompare(valA);
+          }
+
+          if (sortState.column === "position") {
+            valA = posOrder[a.position] !== undefined ? posOrder[a.position] : 999;
+            valB = posOrder[b.position] !== undefined ? posOrder[b.position] : 999;
+          } else if (sortState.column === "rating") {
+            valA = a.ratingSum / a.appearances;
+            valB = b.ratingSum / b.appearances;
+          } else if (sortState.column === "goalContribution") {
+            valA = a.goals + a.assists;
+            valB = b.goals + b.assists;
+          } else if (sortState.column === "xgDiff") {
+            valA = a.goals - a.xG;
+            valB = b.goals - b.xG;
+          } else if (sortState.column === "conversionRate") {
+            valA = a.shots > 0 ? (a.goals / a.shots) * 100 : 0;
+            valB = b.shots > 0 ? (b.goals / b.shots) * 100 : 0;
+          } else {
+            valA = a[sortState.column] || 0;
+            valB = b[sortState.column] || 0;
+          }
+
+          if (sortState.asc) {
+            return valA > valB ? 1 : valA < valB ? -1 : 0;
+          } else {
+            return valA < valB ? 1 : valA > valB ? -1 : 0;
+          }
+        });
+
+        const columnDiv = document.createElement("div");
+        columnDiv.className = "comparison-column";
+
+        const header = document.createElement("div");
+        header.className = "comparison-header";
+        header.textContent = analysis.name;
+        columnDiv.appendChild(header);
+
+        const subtitle = document.createElement("div");
+        subtitle.style.cssText = "text-align: center; color: #94a3b8; font-size: 14px; margin-bottom: 16px;";
+        subtitle.textContent = `${players.length} players • ${analysis.matches.length} matches`;
+        columnDiv.appendChild(subtitle);
+
+        const tableWrapper = document.createElement("div");
+        tableWrapper.style.overflowX = "auto";
+
+        const table = document.createElement("table");
+        table.style.fontSize = "13px";
+
+        const thead = document.createElement("thead");
+        const headerRow = document.createElement("tr");
+
+        const columns = [
+          { key: "name", label: "Player" },
+          { key: "position", label: "Pos" },
+          { key: "appearances", label: "Apps" },
+          { key: "rating", label: "Rating" },
+          { key: "goals", label: "G" },
+          { key: "assists", label: "A" },
+          { key: "goalContribution", label: "G+A" },
+        ];
+
+        columns.forEach((col) => {
+          const th = document.createElement("th");
+          th.textContent = col.label;
+          th.style.cursor = "pointer";
+          th.dataset.col = col.key;
+
+          if (sortState.column === col.key) {
+            const indicator = document.createElement("span");
+            indicator.className = "sort-indicator";
+            indicator.textContent = sortState.asc ? "▲" : "▼";
+            th.appendChild(indicator);
+          }
+
+          th.addEventListener("click", () => {
+            if (sortState.column === col.key) {
+              sortState.asc = !sortState.asc;
+            } else {
+              sortState.column = col.key;
+              sortState.asc = false;
+            }
+            renderComparisonView(leftAnalysis, rightAnalysis);
+          });
+
+          headerRow.appendChild(th);
+        });
+
+        const actionTh = document.createElement("th");
+        actionTh.textContent = "Actions";
+        headerRow.appendChild(actionTh);
+
+        thead.appendChild(headerRow);
+        table.appendChild(thead);
+
+        const tbody = document.createElement("tbody");
+
+        players.forEach((player) => {
+          if (comparisonHiddenPlayerIds.has(player.playerId)) return;
+
+          const avgRating = (player.ratingSum / player.appearances).toFixed(2);
+          const goalContribution = player.goals + player.assists;
+
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td>${player.name}</td>
+            <td>${player.position}</td>
+            <td>${player.appearances}</td>
+            <td>${avgRating}</td>
+            <td>${player.goals}</td>
+            <td>${player.assists}</td>
+            <td>${goalContribution}</td>
+            <td><button class="hide-row-btn comparison-hide-btn" data-player-id="${player.playerId}">Hide</button></td>
+          `;
+          tbody.appendChild(tr);
+        });
+
+        table.appendChild(tbody);
+        tableWrapper.appendChild(table);
+        columnDiv.appendChild(tableWrapper);
+
+        return columnDiv;
+      }
+
+      const leftColumn = createComparisonColumn(leftAnalysis, "left");
+      const rightColumn = createComparisonColumn(rightAnalysis, "right");
+
+      comparisonGrid.appendChild(leftColumn);
+      comparisonGrid.appendChild(rightColumn);
+
+      document.querySelectorAll(".comparison-hide-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const playerId = btn.dataset.playerId;
+          comparisonHiddenPlayerIds.add(playerId);
+          renderComparisonView(leftAnalysis, rightAnalysis);
+        });
+      });
+    }
+
+    // Event listeners
+    document.getElementById("analyze-btn").addEventListener("click", analyzeMatches);
+
+    document.getElementById("add-match-btn").addEventListener("click", () => {
+      const matchIdInput = document.getElementById("match-id-input").value;
+      addMatchById(matchIdInput);
     });
 
     document.getElementById("match-id-input").addEventListener("keypress", (e) => {
-      if (e.key === "Enter") addMatch();
+      if (e.key === "Enter") {
+        const matchIdInput = document.getElementById("match-id-input").value;
+        addMatchById(matchIdInput);
+      }
+    });
+
+    document.getElementById("save-analysis-btn").addEventListener("click", () => {
+      if (allMatches.length === 0) {
+        setStatus("No matches to save", "error");
+        return;
+      }
+      document.getElementById("save-modal").classList.add("show");
+      document.getElementById("analysis-name-input").value = "";
+      document.getElementById("analysis-name-input").focus();
+    });
+
+    document.getElementById("confirm-save-btn").addEventListener("click", () => {
+      const name = document.getElementById("analysis-name-input").value.trim();
+      if (!name) {
+        setStatus("Please enter a name for the analysis", "error");
+        return;
+      }
+
+      const analysis = {
+        id: Date.now(),
+        name,
+        timestamp: Date.now(),
+        clubId,
+        squadId,
+        matches: allMatches,
+      };
+
+      savedAnalyses.push(analysis);
+      saveSavedAnalyses();
+      
+      document.getElementById("save-modal").classList.remove("show");
+      setStatus(`Analysis saved as "${name}"`, "success");
     });
 
     document.getElementById("analysis-name-input").addEventListener("keypress", (e) => {
-      if (e.key === "Enter") confirmSaveAnalysis();
+      if (e.key === "Enter") {
+        document.getElementById("confirm-save-btn").click();
+      }
     });
+
+    document.getElementById("load-analysis-btn").addEventListener("click", () => {
+      renderSavedAnalysesList();
+      document.getElementById("load-modal").classList.add("show");
+    });
+
+    document.getElementById("compare-btn").addEventListener("click", () => {
+      selectedAnalysesForComparison = [];
+      renderCompareAnalysesList();
+      document.getElementById("compare-modal").classList.add("show");
+    });
+
+    document.getElementById("confirm-compare-btn").addEventListener("click", () => {
+      if (selectedAnalysesForComparison.length !== 2) {
+        setStatus("Please select exactly 2 analyses to compare", "error");
+        return;
+      }
+
+      const leftAnalysis = savedAnalyses.find(a => a.id === selectedAnalysesForComparison[0]);
+      const rightAnalysis = savedAnalyses.find(a => a.id === selectedAnalysesForComparison[1]);
+
+      if (!leftAnalysis || !rightAnalysis) {
+        setStatus("Error loading analyses for comparison", "error");
+        return;
+      }
+
+      comparisonHiddenPlayerIds.clear();
+      comparisonSortState = {
+        left: { column: "rating", asc: false },
+        right: { column: "rating", asc: false },
+      };
+
+      renderComparisonView(leftAnalysis, rightAnalysis);
+      
+      document.getElementById("compare-modal").classList.remove("show");
+      document.getElementById("comparison-view").classList.add("visible");
+    });
+
+    document.getElementById("export-btn").addEventListener("click", exportToCSV);
 
     // Player detail table sorting
     document.querySelectorAll("#player-detail-table th[data-col]").forEach((th) => {
@@ -3003,6 +2416,7 @@
     });
 
     loadSavedAnalyses();
+  });
   </script>
 </body>
 </html>
