@@ -249,63 +249,31 @@
       ]);
 
       allMatches.forEach((match) => {
-        const home = match.report?.home;
-        const away = match.report?.away;
-        const formations = match.formations;
+        const summary = deriveMatchSummary(match);
+        if (!summary) return;
 
-        if (!home || !away) return;
+        const homeStats = summary.homeStats;
+        const awayStats = summary.awayStats;
+        const possession = summary.possession;
+        const formationInfo = summary.formationInfo;
 
-        const homeStats = aggregateTeamStats(home.playersStats);
-        const awayStats = aggregateTeamStats(away.playersStats);
+        const homePassAcc = formatPct(homeStats.passesAccurate, homeStats.passes, 1);
+        const awayPassAcc = formatPct(awayStats.passesAccurate, awayStats.passes, 1);
+        const homeShotAcc = formatPct(homeStats.shotsOnTarget, homeStats.shots, 1);
+        const awayShotAcc = formatPct(awayStats.shotsOnTarget, awayStats.shots, 1);
 
-        if (!homeStats || !awayStats) return;
-
-        const homePassAcc = homeStats.passes > 0 ? ((homeStats.passesAccurate / homeStats.passes) * 100).toFixed(1) : "0";
-        const awayPassAcc = awayStats.passes > 0 ? ((awayStats.passesAccurate / awayStats.passes) * 100).toFixed(1) : "0";
-        const homeShotAcc = homeStats.shots > 0 ? ((homeStats.shotsOnTarget / homeStats.shots) * 100).toFixed(1) : "0";
-        const awayShotAcc = awayStats.shots > 0 ? ((awayStats.shotsOnTarget / awayStats.shots) * 100).toFixed(1) : "0";
-
-        const homePasses = home.playersStats?.reduce((sum, p) => sum + (p.passes || 0), 0) || 0;
-        const awayPasses = away.playersStats?.reduce((sum, p) => sum + (p.passes || 0), 0) || 0;
-        const totalPasses = homePasses + awayPasses;
-        const homePossession = totalPasses > 0 ? ((homePasses / totalPasses) * 100).toFixed(1) : "50.0";
-        const awayPossession = totalPasses > 0 ? ((awayPasses / totalPasses) * 100).toFixed(1) : "50.0";
-
-        const homeDefDuelWinRate = (homeStats.defensiveDuelsWon + homeStats.dribbledPast > 0) ? ((homeStats.defensiveDuelsWon / (homeStats.defensiveDuelsWon + homeStats.dribbledPast)) * 100).toFixed(1) : "0";
-        const awayDefDuelWinRate = (awayStats.defensiveDuelsWon + awayStats.dribbledPast > 0) ? ((awayStats.defensiveDuelsWon / (awayStats.defensiveDuelsWon + awayStats.dribbledPast)) * 100).toFixed(1) : "0";
+        const homePossession = possession.home;
+        const awayPossession = possession.away;
 
         const homeTotalDuels = homeStats.defensiveDuelsWon + homeStats.dribbledPast;
         const awayTotalDuels = awayStats.defensiveDuelsWon + awayStats.dribbledPast;
-
-        let homeFormationType = "-";
-        let awayFormationType = "-";
-        let homeXIOverall = 0;
-        let awayXIOverall = 0;
-        let homeName = "Home Team";
-        let awayName = "Away Team";
-
-        if (formations) {
-          const playerMap = extractPlayerMapFromFormations(formations);
-          const clubNames = extractClubNames(formations);
-
-          homeName = clubNames.homeName;
-          awayName = clubNames.awayName;
-
-          if (formations.homeFormation) {
-            homeFormationType = formations.homeFormation.type || "-";
-            homeXIOverall = computeXIOverall(formations.homeFormation, playerMap);
-          }
-
-          if (formations.awayFormation) {
-            awayFormationType = formations.awayFormation.type || "-";
-            awayXIOverall = computeXIOverall(formations.awayFormation, playerMap);
-          }
-        }
+        const homeDefDuelWinRate = formatPct(homeStats.defensiveDuelsWon, homeTotalDuels, 1);
+        const awayDefDuelWinRate = formatPct(awayStats.defensiveDuelsWon, awayTotalDuels, 1);
 
         rows.push([
-          match.matchId, new Date(match.date).toISOString(), homeName, awayName,
+          match.matchId, new Date(match.date).toISOString(), formationInfo.homeName, formationInfo.awayName,
           `${homeStats.goals}-${awayStats.goals}`, homeStats.goals, awayStats.goals,
-          homeStats.xG.toFixed(2), awayStats.xG.toFixed(2),
+          formatFixed(homeStats.xG, 2), formatFixed(awayStats.xG, 2),
           homeStats.shots, awayStats.shots, homeStats.shotsOnTarget, awayStats.shotsOnTarget,
           homeShotAcc, awayShotAcc, homePossession, awayPossession,
           homeStats.passes, awayStats.passes, homePassAcc, awayPassAcc,
@@ -313,7 +281,7 @@
           homeStats.shotsBlocked, awayStats.shotsBlocked, homeStats.ownGoals, awayStats.ownGoals,
           homeStats.fouls, awayStats.fouls, homeStats.yellowCards, awayStats.yellowCards,
           homeStats.redCards, awayStats.redCards, homeStats.avgRating, awayStats.avgRating,
-          homeFormationType, awayFormationType, homeXIOverall, awayXIOverall,
+          formationInfo.homeFormationType, formationInfo.awayFormationType, formationInfo.homeXIOverall, formationInfo.awayXIOverall,
         ]);
       });
 
