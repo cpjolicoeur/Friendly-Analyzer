@@ -641,6 +641,7 @@
         renderPlayerDetail(derived.playerStats);
         renderMatches();
       } else {
+        derivedCache = { teamStats: null, playerStats: null };
         document.getElementById("overview-section").classList.remove("visible");
         document.getElementById("matches-section").classList.remove("visible");
         document.getElementById("save-analysis-btn").disabled = true;
