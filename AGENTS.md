@@ -138,6 +138,13 @@ Because there are no formal configs, follow the existing style in `friendly-anal
 
 ---
 
+## Version control
+- Use Jujutsu (`jj`) for all version control tasks.
+- Do not run Git commands directly.
+- Examples: `jj status`, `jj diff`, `jj log`, `jj commit`.
+
+---
+
 ## When in doubt
 - Match surrounding code.
 - Keep changes minimal and reversible.
