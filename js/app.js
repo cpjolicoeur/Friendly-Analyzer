@@ -112,6 +112,30 @@
       }
     }
 
+    const MAX_CONCURRENT_MATCH_REQUESTS = 5;
+
+    async function mapWithConcurrency(items, limit, mapper) {
+      const results = new Array(items.length);
+      let nextIndex = 0;
+
+      async function worker() {
+        while (nextIndex < items.length) {
+          const currentIndex = nextIndex;
+          nextIndex += 1;
+          results[currentIndex] = await mapper(items[currentIndex], currentIndex);
+        }
+      }
+
+      const workerCount = Math.min(limit, items.length);
+      const workers = [];
+      for (let i = 0; i < workerCount; i++) {
+        workers.push(worker());
+      }
+
+      await Promise.all(workers);
+      return results;
+    }
+
     async function loadMatches() {
       const clubIdInput = document.getElementById("club-id").value.trim();
       const limitInput = document.getElementById("game-limit").value;
@@ -141,36 +165,48 @@
 
         setStatus(`Loading ${matchesData.length} match reports and formations...`, "loading");
 
-        const matchReports = [];
+        const totalMatches = matchesData.length;
+        let completed = 0;
         playerNamesCache = {};
 
-        for (let i = 0; i < matchesData.length; i++) {
-          try {
-            const matchId = matchesData[i].id;
-            const report = await fetchMatchReport(matchId);
-            const formations = await fetchMatchFormations(matchId);
+        const matchReports = await mapWithConcurrency(
+          matchesData,
+          MAX_CONCURRENT_MATCH_REQUESTS,
+          async (matchData) => {
+            const matchId = matchData.id;
+            try {
+              const [report, formations] = await Promise.all([
+                fetchMatchReport(matchId),
+                fetchMatchFormations(matchId),
+              ]);
 
-            if (formations) {
-              const names = extractPlayerNamesFromFormations(formations);
-              Object.assign(playerNamesCache, names);
+              if (formations) {
+                const names = extractPlayerNamesFromFormations(formations);
+                Object.assign(playerNamesCache, names);
+              }
+
+              const match = {
+                matchId: matchId,
+                date: matchData.startDate || new Date().toISOString(),
+                report: report,
+                formations: formations,
+              };
+              match.summary = deriveMatchSummary(match);
+              return match;
+            } catch (e) {
+              console.error(`Failed to load match ${matchId}:`, e);
+              return null;
+            } finally {
+              completed += 1;
+              if (completed % 10 === 0 || completed === totalMatches) {
+                setStatus(`Loaded ${completed}/${totalMatches} matches...`, "loading");
+              }
             }
-
-            matchReports.push({
-              matchId: matchId,
-              date: matchesData[i].startDate || new Date().toISOString(),
-              report: report,
-              formations: formations,
-            });
-
-            if ((i + 1) % 10 === 0 || i === matchesData.length - 1) {
-              setStatus(`Loaded ${i + 1}/${matchesData.length} matches...`, "loading");
-            }
-          } catch (e) {
-            console.error(`Failed to load match ${matchesData[i].id}:`, e);
           }
-        }
+        );
 
-        allMatches = matchReports;
+        allMatches = matchReports.filter((match) => match);
+        markDerivedDirty();
         renderAll();
         setStatus(`Successfully loaded ${allMatches.length} matches!`, "success");
       } catch (e) {
@@ -195,22 +231,28 @@
       setStatus(`Loading match ${matchIdInput}...`, "loading");
 
       try {
-        const report = await fetchMatchReport(matchIdInput);
-        const formations = await fetchMatchFormations(matchIdInput);
+        const [report, formations] = await Promise.all([
+          fetchMatchReport(matchIdInput),
+          fetchMatchFormations(matchIdInput),
+        ]);
 
         if (formations) {
           const names = extractPlayerNamesFromFormations(formations);
           Object.assign(playerNamesCache, names);
         }
 
-        allMatches.push({
+        const match = {
           matchId: matchIdInput,
           date: new Date().toISOString(),
           report: report,
           formations: formations,
-        });
+        };
+        match.summary = deriveMatchSummary(match);
+
+        allMatches.push(match);
 
         document.getElementById("match-id-input").value = "";
+        markDerivedDirty();
         renderAll();
         setStatus(`Successfully added match ${matchIdInput}!`, "success");
       } catch (e) {
@@ -225,6 +267,7 @@
       }
 
       allMatches = allMatches.filter((m) => m.matchId !== matchId);
+      markDerivedDirty();
       renderAll();
       setStatus(`Deleted match ${matchId}`, "success");
     }
@@ -249,8 +292,11 @@
       ]);
 
       allMatches.forEach((match) => {
-        const summary = deriveMatchSummary(match);
+        const summary = match.summary || deriveMatchSummary(match);
         if (!summary) return;
+        if (!match.summary) {
+          match.summary = summary;
+        }
 
         const homeStats = summary.homeStats;
         const awayStats = summary.awayStats;

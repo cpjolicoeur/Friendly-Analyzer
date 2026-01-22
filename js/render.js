@@ -6,6 +6,10 @@
       }
     }
 
+    function markDerivedDirty() {
+      derivedCache.dirty = true;
+    }
+
     function openSaveModal() {
       if (allMatches.length === 0) {
         alert("No data to save. Please load matches first.");
@@ -229,7 +233,7 @@
     }
 
     function renderPlayerDetail(playerAggregates) {
-      const aggregates = playerAggregates || derivedCache.playerStats || calculatePlayerStats();
+      const aggregates = playerAggregates || getDerivedState().playerStats;
       if (!aggregates) return;
 
       const players = sortPlayers(aggregates);
@@ -341,8 +345,11 @@
       container.innerHTML = "";
 
       allMatches.forEach((match) => {
-        const summary = deriveMatchSummary(match);
+        const summary = match.summary || deriveMatchSummary(match);
         if (!summary) return;
+        if (!match.summary) {
+          match.summary = summary;
+        }
 
         const homeStats = summary.homeStats;
         const awayStats = summary.awayStats;
@@ -622,9 +629,14 @@
     }
 
     function getDerivedState() {
+      if (!derivedCache.dirty && derivedCache.teamStats && derivedCache.playerStats) {
+        return derivedCache;
+      }
+
       derivedCache = {
         teamStats: calculateTeamStats(),
         playerStats: calculatePlayerStats(),
+        dirty: false,
       };
       return derivedCache;
     }
@@ -641,7 +653,7 @@
         renderPlayerDetail(derived.playerStats);
         renderMatches();
       } else {
-        derivedCache = { teamStats: null, playerStats: null };
+        derivedCache = { teamStats: null, playerStats: null, dirty: true };
         document.getElementById("overview-section").classList.remove("visible");
         document.getElementById("matches-section").classList.remove("visible");
         document.getElementById("save-analysis-btn").disabled = true;

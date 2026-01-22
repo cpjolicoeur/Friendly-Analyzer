@@ -17,4 +17,4 @@
     let hiddenPlayerRows = new Set();
     let hiddenPlayerCols = new Set();
     let currentMatchFilter = "all";
-    let derivedCache = { teamStats: null, playerStats: null };
+    let derivedCache = { teamStats: null, playerStats: null, dirty: true };
