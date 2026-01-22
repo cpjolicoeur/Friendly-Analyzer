@@ -238,11 +238,14 @@
       });
 
       try {
-        squadId = await fetchSquadIdFromClubId(clubId);
+        const clubInfo = await fetchClubInfoFromClubId(clubId);
+        squadId = clubInfo.squadId;
+        clubName = clubInfo.clubName || null;
+        const clubDisplayName = clubInfo.clubName || `Club ${clubId}`;
         console.log(`[Club ${clubId}] Found squad ID: ${squadId}`);
 
         setStatus(`Found squad ${squadId}! Loading match IDs...`, "loading", {
-          detail: "Step 2 of 3 • Gathering match list",
+          detail: `Step 2 of 3 • Gathering match list${clubDisplayName ? ` for ${clubDisplayName}` : ""}`,
           progress: 5,
         });
 

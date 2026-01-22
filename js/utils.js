@@ -54,6 +54,28 @@
       return { homeName, awayName };
     }
 
+    function normalizeTeamName(name) {
+      if (!name) return "";
+      return String(name).toLowerCase().replace(/[^a-z0-9]/g, "");
+    }
+
+    function resolveClubSide(homeName, awayName, clubName, reportHomeName, reportAwayName) {
+      const target = normalizeTeamName(clubName);
+      if (!target) return "unknown";
+
+      const homeCandidates = [homeName, reportHomeName].filter(Boolean).map(normalizeTeamName);
+      const awayCandidates = [awayName, reportAwayName].filter(Boolean).map(normalizeTeamName);
+
+      const matchesName = (candidate) => {
+        if (!candidate) return false;
+        return candidate === target || candidate.includes(target) || target.includes(candidate);
+      };
+
+      if (homeCandidates.some(matchesName)) return "home";
+      if (awayCandidates.some(matchesName)) return "away";
+      return "unknown";
+    }
+
     function extractFormationInfo(formations) {
       let homeFormationType = "-";
       let awayFormationType = "-";

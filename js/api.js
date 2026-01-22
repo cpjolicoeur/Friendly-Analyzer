@@ -1,19 +1,42 @@
-    async function fetchSquadIdFromClubId(clubId) {
+    async function fetchClubInfoFromClubId(clubId) {
       const url = `${API_BASE}/clubs/${clubId}`;
       const response = await fetch(url);
       if (!response.ok) throw new Error(`Failed to fetch club ${clubId}: ${response.status}`);
 
       const text = await response.text();
+      let clubData = null;
+      let clubName = null;
+      let squadId = null;
+
+      try {
+        clubData = JSON.parse(text);
+        clubName = clubData?.name || clubData?.club?.name || clubData?.data?.name || null;
+        squadId = clubData?.squadId || clubData?.squad?.id || clubData?.squads?.[0]?.id || null;
+      } catch (e) {
+        clubData = null;
+      }
+
       const pattern = ':[{"id":';
       const index = text.indexOf(pattern);
 
-      if (index === -1) throw new Error("Squad ID not found in club data");
+      if (index === -1 && !squadId) throw new Error("Squad ID not found in club data");
 
-      const afterPattern = text.substring(index + pattern.length);
-      const match = afterPattern.match(/^(\d+)/);
+      if (!squadId) {
+        const afterPattern = text.substring(index + pattern.length);
+        const match = afterPattern.match(/^(\d+)/);
 
-      if (!match) throw new Error("Could not parse squad ID");
-      return match[1];
+        if (!match) throw new Error("Could not parse squad ID");
+        squadId = match[1];
+      }
+
+      if (!clubName) {
+        const nameMatch = text.match(/"name"\s*:\s*"([^"]+)"/);
+        if (nameMatch) {
+          clubName = nameMatch[1];
+        }
+      }
+
+      return { squadId: String(squadId), clubName };
     }
 
     async function fetchMatchIds(squadId, limit) {

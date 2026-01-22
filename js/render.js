@@ -429,6 +429,11 @@
         const formationInfo = summary.formationInfo;
         const homeName = formationInfo.homeName;
         const awayName = formationInfo.awayName;
+        const reportHomeName = match.report?.home?.name || null;
+        const reportAwayName = match.report?.away?.name || null;
+        const clubSide = resolveClubSide(homeName, awayName, clubName, reportHomeName, reportAwayName);
+        const homeClubBadge = clubSide === "home" ? '<span class="club-tag">Your club</span>' : "";
+        const awayClubBadge = clubSide === "away" ? '<span class="club-tag">Your club</span>' : "";
         const homeFormationType = formationInfo.homeFormationType;
         const awayFormationType = formationInfo.awayFormationType;
         const homeXIOverall = formationInfo.homeXIOverall;
@@ -448,7 +453,7 @@
         matchMain.innerHTML = `
           <div class="match-header-row">
             <div class="match-title-section">
-              <div class="match-teams-title">${homeName} vs ${awayName}</div>
+              <div class="match-teams-title">${homeName} ${homeClubBadge} vs ${awayName} ${awayClubBadge}</div>
               <div class="match-meta">
                 ${new Date(match.date).toLocaleString()} | ID: ${match.matchId}
                 <a href="https://app.playmfl.com/matches/${match.matchId}" target="_blank" class="match-link">🔗 View on MFL</a>
@@ -527,22 +532,22 @@
           <div class="full-stats-title">📊 Complete Match Statistics</div>
           <div class="full-stats-grid">
             <div class="team-full-stats">
-              <h4>🏠 ${homeName}</h4>
+              <h4>🏠 ${homeName} ${homeClubBadge}</h4>
               ${renderFullTeamStats(homeStats)}
             </div>
             <div class="team-full-stats">
-              <h4>✈️ ${awayName}</h4>
+              <h4>✈️ ${awayName} ${awayClubBadge}</h4>
               ${renderFullTeamStats(awayStats)}
             </div>
           </div>
 
           <div class="players-section-title">👥 Match Players & Performance</div>
           <div class="team-players-card">
-            <h5>🏠 ${homeName} Players</h5>
+            <h5>🏠 ${homeName} Players ${homeClubBadge}</h5>
             ${renderMatchPlayers(home.playersStats, playerNamesCache)}
           </div>
           <div class="team-players-card">
-            <h5>✈️ ${awayName} Players</h5>
+            <h5>✈️ ${awayName} Players ${awayClubBadge}</h5>
             ${renderMatchPlayers(away.playersStats, playerNamesCache)}
           </div>
         `;

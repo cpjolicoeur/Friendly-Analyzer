@@ -3,6 +3,7 @@
 
     let allMatches = [];
     let clubId = null;
+    let clubName = null;
     let squadId = null;
     let playerDetailSort = { column: "rating", asc: false };
     let playerNamesCache = {};
