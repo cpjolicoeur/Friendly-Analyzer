@@ -76,6 +76,39 @@
       return "unknown";
     }
 
+    function resolveClubSideById(match, squadIdValue) {
+      if (!match || !squadIdValue) return "unknown";
+      const target = String(squadIdValue);
+
+      const homeIds = [
+        match.report?.home?.squadId,
+        match.report?.home?.squad?.id,
+        match.report?.home?.id,
+        match.report?.home?.teamId,
+        match.formations?.home?.id,
+        match.formations?.home?.squadId,
+        match.listing?.homeSquadId,
+        match.listing?.homeTeamId,
+        match.listing?.homeId,
+      ].filter((value) => value !== undefined && value !== null).map(String);
+
+      const awayIds = [
+        match.report?.away?.squadId,
+        match.report?.away?.squad?.id,
+        match.report?.away?.id,
+        match.report?.away?.teamId,
+        match.formations?.away?.id,
+        match.formations?.away?.squadId,
+        match.listing?.awaySquadId,
+        match.listing?.awayTeamId,
+        match.listing?.awayId,
+      ].filter((value) => value !== undefined && value !== null).map(String);
+
+      if (homeIds.includes(target)) return "home";
+      if (awayIds.includes(target)) return "away";
+      return "unknown";
+    }
+
     function extractFormationInfo(formations) {
       let homeFormationType = "-";
       let awayFormationType = "-";

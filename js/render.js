@@ -1,111 +1,109 @@
-    const statusState = {
-      message: "Enter a club ID to start analyzing friendly matches",
-      type: "",
-      detail: "",
-      progress: null,
-      meta: "",
-    };
+const statusState = {
+  message: "Enter a club ID to start analyzing friendly matches",
+  type: "",
+  detail: "",
+  progress: null,
+  meta: "",
+};
 
-    function renderStatus() {
-      const container = document.getElementById("status-container");
-      const statusEl = document.getElementById("status");
-      const detailEl = document.getElementById("status-detail");
-      const metaEl = document.getElementById("status-meta");
-      const progressEl = document.getElementById("status-progress-bar");
+function renderStatus() {
+  const container = document.getElementById("status-container");
+  const statusEl = document.getElementById("status");
+  const detailEl = document.getElementById("status-detail");
+  const metaEl = document.getElementById("status-meta");
+  const progressEl = document.getElementById("status-progress-bar");
 
-      if (statusEl) {
-        statusEl.textContent = statusState.message || "";
-        statusEl.className = "status-text " + statusState.type;
-      }
+  if (statusEl) {
+    statusEl.textContent = statusState.message || "";
+    statusEl.className = "status-text " + statusState.type;
+  }
 
-      if (detailEl) {
-        detailEl.textContent = statusState.detail || "";
-        detailEl.className = "status-detail " + statusState.type;
-        detailEl.style.display = statusState.detail ? "block" : "none";
-      }
+  if (detailEl) {
+    detailEl.textContent = statusState.detail || "";
+    detailEl.className = "status-detail " + statusState.type;
+    detailEl.style.display = statusState.detail ? "block" : "none";
+  }
 
-      if (metaEl) {
-        metaEl.textContent = statusState.meta || "";
-        metaEl.style.display = statusState.meta ? "block" : "none";
-      }
+  if (metaEl) {
+    metaEl.textContent = statusState.meta || "";
+    metaEl.style.display = statusState.meta ? "block" : "none";
+  }
 
-      if (progressEl) {
-        const clamped = typeof statusState.progress === "number"
-          ? Math.max(0, Math.min(100, statusState.progress))
-          : 0;
-        progressEl.style.width = `${clamped}%`;
-      }
+  if (progressEl) {
+    const clamped = typeof statusState.progress === "number" ? Math.max(0, Math.min(100, statusState.progress)) : 0;
+    progressEl.style.width = `${clamped}%`;
+  }
 
-      if (container) {
-        container.classList.remove("loading", "success", "error");
-        if (statusState.type) {
-          container.classList.add(statusState.type);
-        }
-        container.setAttribute("aria-busy", statusState.type === "loading" ? "true" : "false");
-      }
+  if (container) {
+    container.classList.remove("loading", "success", "error");
+    if (statusState.type) {
+      container.classList.add(statusState.type);
+    }
+    container.setAttribute("aria-busy", statusState.type === "loading" ? "true" : "false");
+  }
+}
+
+function setStatus(msg, type = "", options = {}) {
+  statusState.message = msg;
+  statusState.type = type || "";
+  statusState.detail = options.detail || "";
+  statusState.progress = typeof options.progress === "number" ? options.progress : null;
+  if (options.meta !== undefined) {
+    statusState.meta = options.meta || "";
+  } else if (statusState.type !== "loading") {
+    statusState.meta = "";
+  }
+  renderStatus();
+}
+
+function updateStatusProgress(progress, detail) {
+  statusState.progress = typeof progress === "number" ? progress : null;
+  if (detail !== undefined) {
+    statusState.detail = detail || "";
+  }
+  renderStatus();
+}
+
+function updateStatusMeta(meta) {
+  statusState.meta = meta || "";
+  renderStatus();
+}
+
+function markDerivedDirty() {
+  derivedCache.dirty = true;
+}
+
+function openSaveModal() {
+  if (allMatches.length === 0) {
+    alert("No data to save. Please load matches first.");
+    return;
+  }
+  document.getElementById("save-modal").classList.add("show");
+  document.getElementById("analysis-name-input").value = "";
+  document.getElementById("analysis-name-input").focus();
+}
+
+function closeSaveModal() {
+  document.getElementById("save-modal").classList.remove("show");
+}
+
+function renderSavedAnalysesList() {
+  const container = document.getElementById("saved-analyses-list");
+  container.innerHTML = "";
+
+  if (savedAnalyses.length === 0) {
+    container.innerHTML = '<p style="color: #94a3b8; text-align: center; padding: 20px;">No saved analyses yet</p>';
+    return;
+  }
+
+  savedAnalyses.forEach((analysis) => {
+    const item = document.createElement("div");
+    item.className = "saved-analysis-item";
+    if (selectedAnalysesForComparison.includes(analysis.id)) {
+      item.classList.add("selected");
     }
 
-    function setStatus(msg, type = "", options = {}) {
-      statusState.message = msg;
-      statusState.type = type || "";
-      statusState.detail = options.detail || "";
-      statusState.progress = typeof options.progress === "number" ? options.progress : null;
-      if (options.meta !== undefined) {
-        statusState.meta = options.meta || "";
-      } else if (statusState.type !== "loading") {
-        statusState.meta = "";
-      }
-      renderStatus();
-    }
-
-    function updateStatusProgress(progress, detail) {
-      statusState.progress = typeof progress === "number" ? progress : null;
-      if (detail !== undefined) {
-        statusState.detail = detail || "";
-      }
-      renderStatus();
-    }
-
-    function updateStatusMeta(meta) {
-      statusState.meta = meta || "";
-      renderStatus();
-    }
-
-    function markDerivedDirty() {
-      derivedCache.dirty = true;
-    }
-
-    function openSaveModal() {
-      if (allMatches.length === 0) {
-        alert("No data to save. Please load matches first.");
-        return;
-      }
-      document.getElementById("save-modal").classList.add("show");
-      document.getElementById("analysis-name-input").value = "";
-      document.getElementById("analysis-name-input").focus();
-    }
-
-    function closeSaveModal() {
-      document.getElementById("save-modal").classList.remove("show");
-    }
-
-    function renderSavedAnalysesList() {
-      const container = document.getElementById("saved-analyses-list");
-      container.innerHTML = "";
-
-      if (savedAnalyses.length === 0) {
-        container.innerHTML = '<p style="color: #94a3b8; text-align: center; padding: 20px;">No saved analyses yet</p>';
-        return;
-      }
-
-      savedAnalyses.forEach((analysis) => {
-        const item = document.createElement("div");
-        item.className = "saved-analysis-item";
-        if (selectedAnalysesForComparison.includes(analysis.id)) {
-          item.classList.add("selected");
-        }
-
-        item.innerHTML = `
+    item.innerHTML = `
           <div class="saved-analysis-info">
             <div class="saved-analysis-name">${analysis.name}</div>
             <div class="saved-analysis-meta">
@@ -115,56 +113,57 @@
           <button class="btn btn-danger" onclick="event.stopPropagation(); deleteAnalysis(${analysis.id})">🗑️</button>
         `;
 
-        item.addEventListener("click", (e) => {
-          if (e.target.closest(".btn-danger")) return;
-          toggleAnalysisSelection(analysis.id);
-        });
+    item.addEventListener("click", (e) => {
+      if (e.target.closest(".btn-danger")) return;
+      toggleAnalysisSelection(analysis.id);
+    });
 
-        container.appendChild(item);
-      });
-    }
+    container.appendChild(item);
+  });
+}
 
-    // FIXED: Now adds wins/draws/losses counts to the Match Record tile
-    function renderMatchRecord() {
-      const record = calculateMatchRecord();
-      const total = allMatches.length;
+// FIXED: Now adds wins/draws/losses counts to the Match Record tile
+function renderMatchRecord() {
+  const record = calculateMatchRecord();
+  const total = allMatches.length;
 
-      if (total === 0) return;
+  if (total === 0) return;
 
-      const winPct = ((record.wins / total) * 100).toFixed(1);
-      const drawPct = ((record.draws / total) * 100).toFixed(1);
-      const lossPct = ((record.losses / total) * 100).toFixed(1);
+  const winPct = ((record.wins / total) * 100).toFixed(1);
+  const drawPct = ((record.draws / total) * 100).toFixed(1);
+  const lossPct = ((record.losses / total) * 100).toFixed(1);
 
-      document.getElementById("win-percentage").textContent = `${winPct}%`;
-      document.getElementById("draw-percentage").textContent = `${drawPct}%`;
-      document.getElementById("loss-percentage").textContent = `${lossPct}%`;
-      
-      const recordSummary = document.getElementById("record-summary");
-      const existingSummary = recordSummary.querySelector(".record-counts");
-      
-      if (existingSummary) {
-        existingSummary.remove();
-      }
-      
-      const countsDiv = document.createElement("div");
-      countsDiv.className = "record-counts";
-      countsDiv.style.cssText = "margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(148, 163, 184, 0.2); display: flex; justify-content: center; gap: 30px; font-size: 13px; color: #cbd5e1;";
-      countsDiv.innerHTML = `
+  document.getElementById("win-percentage").textContent = `${winPct}%`;
+  document.getElementById("draw-percentage").textContent = `${drawPct}%`;
+  document.getElementById("loss-percentage").textContent = `${lossPct}%`;
+
+  const recordSummary = document.getElementById("record-summary");
+  const existingSummary = recordSummary.querySelector(".record-counts");
+
+  if (existingSummary) {
+    existingSummary.remove();
+  }
+
+  const countsDiv = document.createElement("div");
+  countsDiv.className = "record-counts";
+  countsDiv.style.cssText =
+    "margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(148, 163, 184, 0.2); display: flex; justify-content: center; gap: 30px; font-size: 13px; color: #cbd5e1;";
+  countsDiv.innerHTML = `
         <span><strong style="color: #4ade80;">Wins:</strong> ${record.wins}</span>
         <span><strong style="color: #eeff00;">Draws:</strong> ${record.draws}</span>
         <span><strong style="color: #ef4444;">Losses:</strong> ${record.losses}</span>
       `;
-      
-      recordSummary.appendChild(countsDiv);
-    }
 
-    function renderHomeOverview(stats) {
-      if (!stats) return;
+  recordSummary.appendChild(countsDiv);
+}
 
-      const container = document.getElementById("home-stats");
-      document.getElementById("home-overview-subtitle").textContent = `Averages across ${stats.home.matches} matches`;
+function renderHomeOverview(stats) {
+  if (!stats) return;
 
-      container.innerHTML = `
+  const container = document.getElementById("home-stats");
+  document.getElementById("home-overview-subtitle").textContent = `Averages across ${stats.home.matches} matches`;
+
+  container.innerHTML = `
         <div class="stat-item"><div class="stat-label" title="Goals per match">Goals</div><div class="stat-value">${stats.home.goals}</div></div>
         <div class="stat-item"><div class="stat-label" title="Expected Goals per match">xG</div><div class="stat-value">${stats.home.xG}</div></div>
         <div class="stat-item"><div class="stat-label" title="Shots per match">Shots</div><div class="stat-value">${stats.home.shots}</div></div>
@@ -185,21 +184,22 @@
         <div class="stat-item"><div class="stat-label" title="Red Cards per match">Red Cards</div><div class="stat-value">${stats.home.redCards}</div></div>
       `;
 
-      const homeXi = stats.home.xiOverall || { min: "-", max: "-", avg: "-" };
-      document.getElementById("home-xi-summary").innerHTML = `
+  const homeXi = stats.home.xiOverall || { min: "-", max: "-", avg: "-" };
+  document.getElementById("home-xi-summary").innerHTML = `
         <span><strong>XI Overall Min:</strong> ${homeXi.min}</span>
         <span><strong>Max:</strong> ${homeXi.max}</span>
         <span><strong>Avg:</strong> ${homeXi.avg}</span>
       `;
-    }
+}
 
-    function renderAwayOverview(stats) {
-      if (!stats) return;
+function renderAwayOverview(stats) {
+  if (!stats) return;
 
-      const container = document.getElementById("away-stats");
-      document.getElementById("away-overview-subtitle").textContent = `Opponent averages across ${stats.away.matches} matches`;
+  const container = document.getElementById("away-stats");
+  document.getElementById("away-overview-subtitle").textContent =
+    `Opponent averages across ${stats.away.matches} matches`;
 
-      container.innerHTML = `
+  container.innerHTML = `
         <div class="stat-item"><div class="stat-label" title="Goals per match">Goals</div><div class="stat-value">${stats.away.goals}</div></div>
         <div class="stat-item"><div class="stat-label" title="Expected Goals per match">xG</div><div class="stat-value">${stats.away.xG}</div></div>
         <div class="stat-item"><div class="stat-label" title="Shots per match">Shots</div><div class="stat-value">${stats.away.shots}</div></div>
@@ -220,135 +220,170 @@
         <div class="stat-item"><div class="stat-label" title="Red Cards per match">Red Cards</div><div class="stat-value">${stats.away.redCards}</div></div>
       `;
 
-      const awayXi = stats.away.xiOverall || { min: "-", max: "-", avg: "-" };
-      document.getElementById("away-xi-summary").innerHTML = `
+  const awayXi = stats.away.xiOverall || { min: "-", max: "-", avg: "-" };
+  document.getElementById("away-xi-summary").innerHTML = `
         <span><strong>XI Overall Min:</strong> ${awayXi.min}</span>
         <span><strong>Max:</strong> ${awayXi.max}</span>
         <span><strong>Avg:</strong> ${awayXi.avg}</span>
       `;
+}
+
+// SIMPLIFIED: Apply match filter using data attributes
+function applyMatchFilter() {
+  const matchItems = document.querySelectorAll(".match-item");
+
+  let visibleCount = 0;
+
+  matchItems.forEach((item) => {
+    const homeGoals = parseInt(item.dataset.homeGoals) || 0;
+    const awayGoals = parseInt(item.dataset.awayGoals) || 0;
+
+    // Determine result
+    let result;
+    if (homeGoals > awayGoals) {
+      result = "win";
+    } else if (homeGoals === awayGoals) {
+      result = "draw";
+    } else {
+      result = "loss";
     }
 
-    // SIMPLIFIED: Apply match filter using data attributes
-    function applyMatchFilter() {
-      const matchItems = document.querySelectorAll(".match-item");
-      
-      let visibleCount = 0;
-      
-      matchItems.forEach((item) => {
-        const homeGoals = parseInt(item.dataset.homeGoals) || 0;
-        const awayGoals = parseInt(item.dataset.awayGoals) || 0;
-        
-        // Determine result
-        let result;
-        if (homeGoals > awayGoals) {
-          result = "win";
-        } else if (homeGoals === awayGoals) {
-          result = "draw";
-        } else {
-          result = "loss";
-        }
-        
-        // Apply filter
-        let shouldShow = false;
-        if (currentMatchFilter === "all") {
-          shouldShow = true;
-        } else if (currentMatchFilter === "wins" && result === "win") {
-          shouldShow = true;
-        } else if (currentMatchFilter === "draws" && result === "draw") {
-          shouldShow = true;
-        } else if (currentMatchFilter === "losses" && result === "loss") {
-          shouldShow = true;
-        }
-        
-        if (shouldShow) {
-          item.classList.remove("filter-hidden");
-          visibleCount++;
-        } else {
-          item.classList.add("filter-hidden");
-        }
-      });
-
-      // Update match title count
-      const filterText = currentMatchFilter === "all" ? "" : ` (${currentMatchFilter.charAt(0).toUpperCase() + currentMatchFilter.slice(1)})`;
-      document.getElementById("matches-title").textContent = `Match History${filterText} (${visibleCount} matches)`;
+    // Apply filter
+    let shouldShow = false;
+    if (currentMatchFilter === "all") {
+      shouldShow = true;
+    } else if (currentMatchFilter === "wins" && result === "win") {
+      shouldShow = true;
+    } else if (currentMatchFilter === "draws" && result === "draw") {
+      shouldShow = true;
+    } else if (currentMatchFilter === "losses" && result === "loss") {
+      shouldShow = true;
     }
 
-    function applyHiddenColumns() {
-      const table = document.getElementById("player-detail-table");
-      if (!table) return;
+    if (shouldShow) {
+      item.classList.remove("filter-hidden");
+      visibleCount++;
+    } else {
+      item.classList.add("filter-hidden");
+    }
+  });
 
-      const allCols = ["name", "positions", "apps", "rating", "goals", "assists", "goalContribution", 
-                       "xg", "xgDiff", "conversionRate", "xgPerShot", "shots", "sot", "shotAcc", 
-                       "chancesCreated", "keyPassRate", "passes", "passAcc", "crosses", "crossAcc", 
-                       "dribbles", "dribbledPast", "defDuels", "clearances", "blocks", "shotsIntercepted", 
-                       "progressive", "fouls", "foulsSuffered", "yc", "rc", "ownGoals", "saves", "goalsConceded"];
+  // Update match title count
+  const filterText =
+    currentMatchFilter === "all"
+      ? ""
+      : ` (${currentMatchFilter.charAt(0).toUpperCase() + currentMatchFilter.slice(1)})`;
+  document.getElementById("matches-title").textContent = `Match History${filterText} (${visibleCount} matches)`;
+}
 
-      allCols.forEach((col, index) => {
-        const th = table.querySelector(`th[data-col="${col}"]`);
-        const tds = table.querySelectorAll(`tbody tr td:nth-child(${index + 1})`);
+function applyHiddenColumns() {
+  const table = document.getElementById("player-detail-table");
+  if (!table) return;
 
-        if (hiddenPlayerCols.has(col)) {
-          if (th) th.classList.add("hidden-col");
-          tds.forEach(td => td.classList.add("hidden-col"));
-        } else {
-          if (th) th.classList.remove("hidden-col");
-          tds.forEach(td => td.classList.remove("hidden-col"));
-        }
-      });
+  const allCols = [
+    "name",
+    "positions",
+    "apps",
+    "rating",
+    "goals",
+    "assists",
+    "goalContribution",
+    "xg",
+    "xgDiff",
+    "conversionRate",
+    "xgPerShot",
+    "shots",
+    "sot",
+    "shotAcc",
+    "chancesCreated",
+    "keyPassRate",
+    "passes",
+    "passAcc",
+    "crosses",
+    "crossAcc",
+    "dribbles",
+    "dribbledPast",
+    "defDuels",
+    "clearances",
+    "blocks",
+    "shotsIntercepted",
+    "progressive",
+    "fouls",
+    "foulsSuffered",
+    "yc",
+    "rc",
+    "ownGoals",
+    "saves",
+    "goalsConceded",
+  ];
+
+  allCols.forEach((col, index) => {
+    const th = table.querySelector(`th[data-col="${col}"]`);
+    const tds = table.querySelectorAll(`tbody tr td:nth-child(${index + 1})`);
+
+    if (hiddenPlayerCols.has(col)) {
+      if (th) th.classList.add("hidden-col");
+      tds.forEach((td) => td.classList.add("hidden-col"));
+    } else {
+      if (th) th.classList.remove("hidden-col");
+      tds.forEach((td) => td.classList.remove("hidden-col"));
+    }
+  });
+}
+
+function renderPlayerDetail(playerAggregates) {
+  const aggregates = playerAggregates || getDerivedState().playerStats;
+  if (!aggregates) return;
+
+  const players = sortPlayers(aggregates);
+
+  document.getElementById("player-detail-subtitle").textContent = `${players.length} unique players`;
+
+  const tbody = document.getElementById("player-detail-body");
+  tbody.innerHTML = "";
+
+  document.querySelectorAll("#player-detail-table th").forEach((th) => {
+    const indicator = th.querySelector(".sort-indicator");
+    if (indicator) indicator.remove();
+  });
+
+  const currentTh = document.querySelector(`#player-detail-table th[data-col="${playerDetailSort.column}"]`);
+  if (currentTh) {
+    const indicator = document.createElement("span");
+    indicator.className = "sort-indicator";
+    indicator.textContent = playerDetailSort.asc ? "▲" : "▼";
+    currentTh.appendChild(indicator);
+  }
+
+  players.forEach((player) => {
+    const avgRating = (player.ratingSum / player.appearances).toFixed(2);
+    const goalContribution = player.goals + player.assists;
+    const xgDiff = (player.goals - player.xG).toFixed(2);
+    const conversionRate = player.shots > 0 ? ((player.goals / player.shots) * 100).toFixed(1) : "0";
+    const xgPerShot = player.shots > 0 ? (player.xG / player.shots).toFixed(2) : "0.00";
+    const shotAcc = player.shots > 0 ? ((player.shotsOnTarget / player.shots) * 100).toFixed(1) : "0";
+    const keyPassRate = player.passes > 0 ? ((player.chancesCreated / player.passes) * 100).toFixed(1) : "0";
+    const passAcc = player.passes > 0 ? ((player.passesAccurate / player.passes) * 100).toFixed(1) : "0";
+    const crossAcc = player.crosses > 0 ? ((player.crossesAccurate / player.crosses) * 100).toFixed(1) : "0";
+    const defDuelsPct =
+      player.defensiveDuelsTotal > 0 ? ((player.defensiveDuelsWon / player.defensiveDuelsTotal) * 100).toFixed(1) : "0";
+    const progressive = player.passesAccurate + player.dribblingSuccess;
+
+    const positionsArray = Array.from(player.positions).sort((a, b) => {
+      const indexA = POSITION_ORDER.indexOf(a);
+      const indexB = POSITION_ORDER.indexOf(b);
+      return (indexA === -1 ? 999 : indexA) - (indexB === -1 ? 999 : indexB);
+    });
+    const positions = positionsArray.length > 0 ? positionsArray.join(" / ") : "-";
+
+    const tr = document.createElement("tr");
+    tr.dataset.playerId = player.playerId;
+
+    if (hiddenPlayerRows.has(player.playerId)) {
+      tr.classList.add("hidden-row");
     }
 
-    function renderPlayerDetail(playerAggregates) {
-      const aggregates = playerAggregates || getDerivedState().playerStats;
-      if (!aggregates) return;
-
-      const players = sortPlayers(aggregates);
-
-      document.getElementById("player-detail-subtitle").textContent = `${players.length} unique players`;
-
-      const tbody = document.getElementById("player-detail-body");
-      tbody.innerHTML = "";
-
-      document.querySelectorAll("#player-detail-table th").forEach((th) => {
-        const indicator = th.querySelector(".sort-indicator");
-        if (indicator) indicator.remove();
-      });
-
-      const currentTh = document.querySelector(`#player-detail-table th[data-col="${playerDetailSort.column}"]`);
-      if (currentTh) {
-        const indicator = document.createElement("span");
-        indicator.className = "sort-indicator";
-        indicator.textContent = playerDetailSort.asc ? "▲" : "▼";
-        currentTh.appendChild(indicator);
-      }
-
-      players.forEach((player) => {
-        const avgRating = (player.ratingSum / player.appearances).toFixed(2);
-        const goalContribution = player.goals + player.assists;
-        const xgDiff = (player.goals - player.xG).toFixed(2);
-        const conversionRate = player.shots > 0 ? ((player.goals / player.shots) * 100).toFixed(1) : "0";
-        const xgPerShot = player.shots > 0 ? (player.xG / player.shots).toFixed(2) : "0.00";
-        const shotAcc = player.shots > 0 ? ((player.shotsOnTarget / player.shots) * 100).toFixed(1) : "0";
-        const keyPassRate = player.passes > 0 ? ((player.chancesCreated / player.passes) * 100).toFixed(1) : "0";
-        const passAcc = player.passes > 0 ? ((player.passesAccurate / player.passes) * 100).toFixed(1) : "0";
-        const crossAcc = player.crosses > 0 ? ((player.crossesAccurate / player.crosses) * 100).toFixed(1) : "0";
-        const defDuelsPct = player.defensiveDuelsTotal > 0 ? ((player.defensiveDuelsWon / player.defensiveDuelsTotal) * 100).toFixed(1) : "0";
-        const progressive = player.passesAccurate + player.dribblingSuccess;
-
-        const positionsArray = Array.from(player.positions).sort((a, b) => {
-          const indexA = POSITION_ORDER.indexOf(a);
-          const indexB = POSITION_ORDER.indexOf(b);
-          return (indexA === -1 ? 999 : indexA) - (indexB === -1 ? 999 : indexB);
-        });
-        const positions = positionsArray.length > 0 ? positionsArray.join(" / ") : "-";
-
-        const tr = document.createElement("tr");
-        tr.dataset.playerId = player.playerId;
-        
-        if (hiddenPlayerRows.has(player.playerId)) {
-          tr.classList.add("hidden-row");
-        }
-
-        tr.innerHTML = `
+    tr.innerHTML = `
           <td>${player.playerName}</td>
           <td>${positions}</td>
           <td>${player.appearances}</td>
@@ -385,75 +420,82 @@
           <td>${player.goalsConceded}</td>
         `;
 
-        tr.addEventListener("click", () => {
-          hiddenPlayerRows.add(player.playerId);
-          tr.classList.add("hidden-row");
-        });
+    tr.addEventListener("click", () => {
+      hiddenPlayerRows.add(player.playerId);
+      tr.classList.add("hidden-row");
+    });
 
-        tbody.appendChild(tr);
-      });
+    tbody.appendChild(tr);
+  });
 
-      applyHiddenColumns();
+  applyHiddenColumns();
+}
+
+// FIXED: Now stores goals in dataset attributes for reliable filtering
+function renderMatches() {
+  const container = document.getElementById("matches-container");
+
+  if (allMatches.length === 0) {
+    container.innerHTML = '<p style="color: #94a3b8; padding: 20px;">No matches loaded</p>';
+    return;
+  }
+
+  document.getElementById("matches-title").textContent = `Match History (${allMatches.length} matches)`;
+
+  container.innerHTML = "";
+
+  allMatches.forEach((match) => {
+    const summary = match.summary || deriveMatchSummary(match);
+    if (!summary) return;
+    if (!match.summary) {
+      match.summary = summary;
     }
 
-    // FIXED: Now stores goals in dataset attributes for reliable filtering
-    function renderMatches() {
-      const container = document.getElementById("matches-container");
+    const home = match.report?.home;
+    const away = match.report?.away;
+    if (!home || !away) return;
 
-      if (allMatches.length === 0) {
-        container.innerHTML = '<p style="color: #94a3b8; padding: 20px;">No matches loaded</p>';
-        return;
-      }
+    const homeStats = summary.homeStats;
+    const awayStats = summary.awayStats;
+    const homeGoals = summary.homeGoals;
+    const awayGoals = summary.awayGoals;
+    const homePossession = summary.possession.home;
+    const awayPossession = summary.possession.away;
+    const formationInfo = summary.formationInfo;
+    const homeName = formationInfo.homeName;
+    const awayName = formationInfo.awayName;
+    const reportHomeName = match.report?.home?.name || null;
+    const reportAwayName = match.report?.away?.name || null;
+    const clubSideByName = resolveClubSide(homeName, awayName, clubName, reportHomeName, reportAwayName);
+    const clubSideById = resolveClubSideById(match, squadId);
+    const clubSide = clubSideByName !== "unknown"
+      ? clubSideByName
+      : (clubSideById !== "unknown" ? clubSideById : (match.requestedSide || "unknown"));
+    const clubLabelText = clubName || "Your club";
+    const homeClubBadge = clubSide === "home" ? `<span class="club-tag">${clubLabelText}</span>` : "";
+    const awayClubBadge = clubSide === "away" ? `<span class="club-tag">${clubLabelText}</span>` : "";
+    const homeNameDisplay = clubSide === "home" && clubName ? clubName : homeName;
+    const awayNameDisplay = clubSide === "away" && clubName ? clubName : awayName;
+    const homeFormationType = formationInfo.homeFormationType;
+    const awayFormationType = formationInfo.awayFormationType;
+    const homeXIOverall = formationInfo.homeXIOverall;
+    const awayXIOverall = formationInfo.awayXIOverall;
 
-      document.getElementById("matches-title").textContent = `Match History (${allMatches.length} matches)`;
+    const matchDiv = document.createElement("div");
+    matchDiv.className = "match-item";
+    matchDiv.dataset.matchId = match.matchId;
 
-      container.innerHTML = "";
+    // CRITICAL FIX: Store goals directly on the element for filtering
+    matchDiv.dataset.homeGoals = homeGoals;
+    matchDiv.dataset.awayGoals = awayGoals;
 
-      allMatches.forEach((match) => {
-        const summary = match.summary || deriveMatchSummary(match);
-        if (!summary) return;
-        if (!match.summary) {
-          match.summary = summary;
-        }
+    const matchMain = document.createElement("div");
+    matchMain.className = "match-main";
 
-        const home = match.report?.home;
-        const away = match.report?.away;
-        if (!home || !away) return;
-
-        const homeStats = summary.homeStats;
-        const awayStats = summary.awayStats;
-        const homeGoals = summary.homeGoals;
-        const awayGoals = summary.awayGoals;
-        const homePossession = summary.possession.home;
-        const awayPossession = summary.possession.away;
-        const formationInfo = summary.formationInfo;
-        const homeName = formationInfo.homeName;
-        const awayName = formationInfo.awayName;
-        const reportHomeName = match.report?.home?.name || null;
-        const reportAwayName = match.report?.away?.name || null;
-        const clubSide = resolveClubSide(homeName, awayName, clubName, reportHomeName, reportAwayName);
-        const homeClubBadge = clubSide === "home" ? '<span class="club-tag">Your club</span>' : "";
-        const awayClubBadge = clubSide === "away" ? '<span class="club-tag">Your club</span>' : "";
-        const homeFormationType = formationInfo.homeFormationType;
-        const awayFormationType = formationInfo.awayFormationType;
-        const homeXIOverall = formationInfo.homeXIOverall;
-        const awayXIOverall = formationInfo.awayXIOverall;
-
-        const matchDiv = document.createElement("div");
-        matchDiv.className = "match-item";
-        matchDiv.dataset.matchId = match.matchId;
-        
-        // CRITICAL FIX: Store goals directly on the element for filtering
-        matchDiv.dataset.homeGoals = homeGoals;
-        matchDiv.dataset.awayGoals = awayGoals;
-
-        const matchMain = document.createElement("div");
-        matchMain.className = "match-main";
-
-        matchMain.innerHTML = `
+    matchMain.innerHTML = `
           <div class="match-header-row">
             <div class="match-title-section">
-              <div class="match-teams-title">${homeName} ${homeClubBadge} vs ${awayName} ${awayClubBadge}</div>
+              <div class="match-teams-title">${homeNameDisplay} ${homeClubBadge} vs ${awayNameDisplay} ${awayClubBadge}</div>
               <div class="match-meta">
                 ${new Date(match.date).toLocaleString()} | ID: ${match.matchId}
                 <a href="https://app.playmfl.com/matches/${match.matchId}" target="_blank" class="match-link">🔗 View on MFL</a>
@@ -524,60 +566,63 @@
           </div>
         `;
 
-        matchDiv.appendChild(matchMain);
+    matchDiv.appendChild(matchMain);
 
-        const matchDetails = document.createElement("div");
-        matchDetails.className = "match-details";
-        matchDetails.innerHTML = `
+    const matchDetails = document.createElement("div");
+    matchDetails.className = "match-details";
+    matchDetails.innerHTML = `
           <div class="full-stats-title">📊 Complete Match Statistics</div>
           <div class="full-stats-grid">
             <div class="team-full-stats">
-              <h4>🏠 ${homeName} ${homeClubBadge}</h4>
+              <h4>🏠 ${homeNameDisplay} ${homeClubBadge}</h4>
               ${renderFullTeamStats(homeStats)}
             </div>
             <div class="team-full-stats">
-              <h4>✈️ ${awayName} ${awayClubBadge}</h4>
+              <h4>✈️ ${awayNameDisplay} ${awayClubBadge}</h4>
               ${renderFullTeamStats(awayStats)}
             </div>
           </div>
 
           <div class="players-section-title">👥 Match Players & Performance</div>
           <div class="team-players-card">
-            <h5>🏠 ${homeName} Players ${homeClubBadge}</h5>
+            <h5>🏠 ${homeNameDisplay} Players ${homeClubBadge}</h5>
             ${renderMatchPlayers(home.playersStats, playerNamesCache)}
           </div>
           <div class="team-players-card">
-            <h5>✈️ ${awayName} Players ${awayClubBadge}</h5>
+            <h5>✈️ ${awayNameDisplay} Players ${awayClubBadge}</h5>
             ${renderMatchPlayers(away.playersStats, playerNamesCache)}
           </div>
         `;
 
-        matchDiv.appendChild(matchDetails);
+    matchDiv.appendChild(matchDetails);
 
-        matchMain.addEventListener("click", (e) => {
-          if (e.target.closest(".btn-danger") || e.target.closest(".match-link")) return;
-          matchDiv.classList.toggle("expanded");
-        });
+    matchMain.addEventListener("click", (e) => {
+      if (e.target.closest(".btn-danger") || e.target.closest(".match-link")) return;
+      matchDiv.classList.toggle("expanded");
+    });
 
-        container.appendChild(matchDiv);
-      });
+    container.appendChild(matchDiv);
+  });
 
-      // CRITICAL FIX: Use setTimeout to ensure DOM is fully updated before filtering
-      setTimeout(() => {
-        applyMatchFilter();
-      }, 0);
-    }
+  // CRITICAL FIX: Use setTimeout to ensure DOM is fully updated before filtering
+  setTimeout(() => {
+    applyMatchFilter();
+  }, 0);
+}
 
-    function renderFullTeamStats(stats) {
-      if (!stats) return "<p>No stats available</p>";
+function renderFullTeamStats(stats) {
+  if (!stats) return "<p>No stats available</p>";
 
-      const passAcc = stats.passes > 0 ? ((stats.passesAccurate / stats.passes) * 100).toFixed(1) : "0";
-      const crossAcc = stats.crosses > 0 ? ((stats.crossesAccurate / stats.crosses) * 100).toFixed(1) : "0";
-      const shotAcc = stats.shots > 0 ? ((stats.shotsOnTarget / stats.shots) * 100).toFixed(1) : "0";
-      const defDuelWinRate = (stats.defensiveDuelsWon + stats.dribbledPast > 0) ? ((stats.defensiveDuelsWon / (stats.defensiveDuelsWon + stats.dribbledPast)) * 100).toFixed(1) : "0";
-      const totalDuels = stats.defensiveDuelsWon + stats.dribbledPast;
+  const passAcc = stats.passes > 0 ? ((stats.passesAccurate / stats.passes) * 100).toFixed(1) : "0";
+  const crossAcc = stats.crosses > 0 ? ((stats.crossesAccurate / stats.crosses) * 100).toFixed(1) : "0";
+  const shotAcc = stats.shots > 0 ? ((stats.shotsOnTarget / stats.shots) * 100).toFixed(1) : "0";
+  const defDuelWinRate =
+    stats.defensiveDuelsWon + stats.dribbledPast > 0
+      ? ((stats.defensiveDuelsWon / (stats.defensiveDuelsWon + stats.dribbledPast)) * 100).toFixed(1)
+      : "0";
+  const totalDuels = stats.defensiveDuelsWon + stats.dribbledPast;
 
-      return `
+  return `
         <div class="stat-row"><span class="label" title="Goals">Goals</span><span class="value">${stats.goals}</span></div>
         <div class="stat-row"><span class="label" title="Assists">Assists</span><span class="value">${stats.assists}</span></div>
         <div class="stat-row"><span class="label" title="Expected Goals">xG</span><span class="value">${stats.xG.toFixed(2)}</span></div>
@@ -598,20 +643,20 @@
         <div class="stat-row"><span class="label" title="Red Cards">Red Cards</span><span class="value">${stats.redCards}</span></div>
         <div class="stat-row"><span class="label" title="Average Player Rating">Avg Rating</span><span class="value">${stats.avgRating}</span></div>
       `;
-    }
+}
 
-    function renderMatchPlayers(playersStats, namesCache) {
-      if (!playersStats || playersStats.length === 0) {
-        return '<p style="color: #94a3b8; padding: 10px;">No player data available</p>';
-      }
+function renderMatchPlayers(playersStats, namesCache) {
+  if (!playersStats || playersStats.length === 0) {
+    return '<p style="color: #94a3b8; padding: 10px;">No player data available</p>';
+  }
 
-      const sortedPlayers = [...playersStats].sort((a, b) => {
-        const posA = POSITION_ORDER.indexOf(a.position);
-        const posB = POSITION_ORDER.indexOf(b.position);
-        return (posA === -1 ? 999 : posA) - (posB === -1 ? 999 : posB);
-      });
+  const sortedPlayers = [...playersStats].sort((a, b) => {
+    const posA = POSITION_ORDER.indexOf(a.position);
+    const posB = POSITION_ORDER.indexOf(b.position);
+    return (posA === -1 ? 999 : posA) - (posB === -1 ? 999 : posB);
+  });
 
-      let html = `
+  let html = `
         <table class="players-table">
           <thead>
             <tr>
@@ -649,17 +694,20 @@
           <tbody>
       `;
 
-      sortedPlayers.forEach((player) => {
-        const pid = String(player.playerId);
-        const name = namesCache[pid] || `Player ${pid}`;
-        const passAcc = player.passes > 0 ? ((player.passesAccurate / player.passes) * 100).toFixed(0) : "0";
-        const crossAcc = player.crosses > 0 ? ((player.crossesAccurate / player.crosses) * 100).toFixed(0) : "0";
-        const shotAcc = player.shots > 0 ? ((player.shotsOnTarget / player.shots) * 100).toFixed(0) : "0";
-        const xgPerShot = player.shots > 0 ? (player.xG / player.shots).toFixed(2) : "0.00";
-        const defDuelRate = (player.defensiveDuelsWon + player.dribbledPast > 0) ? ((player.defensiveDuelsWon / (player.defensiveDuelsWon + player.dribbledPast)) * 100).toFixed(0) : "0";
-        const progressive = player.passesAccurate + player.dribblingSuccess;
+  sortedPlayers.forEach((player) => {
+    const pid = String(player.playerId);
+    const name = namesCache[pid] || `Player ${pid}`;
+    const passAcc = player.passes > 0 ? ((player.passesAccurate / player.passes) * 100).toFixed(0) : "0";
+    const crossAcc = player.crosses > 0 ? ((player.crossesAccurate / player.crosses) * 100).toFixed(0) : "0";
+    const shotAcc = player.shots > 0 ? ((player.shotsOnTarget / player.shots) * 100).toFixed(0) : "0";
+    const xgPerShot = player.shots > 0 ? (player.xG / player.shots).toFixed(2) : "0.00";
+    const defDuelRate =
+      player.defensiveDuelsWon + player.dribbledPast > 0
+        ? ((player.defensiveDuelsWon / (player.defensiveDuelsWon + player.dribbledPast)) * 100).toFixed(0)
+        : "0";
+    const progressive = player.passesAccurate + player.dribblingSuccess;
 
-        html += `
+    html += `
           <tr>
             <td>${name}</td>
             <td>${player.position || "-"}</td>
@@ -692,44 +740,44 @@
             <td>${player.goalsConceded || 0}</td>
           </tr>
         `;
-      });
+  });
 
-      html += `
+  html += `
           </tbody>
         </table>
       `;
 
-      return html;
-    }
+  return html;
+}
 
-    function getDerivedState() {
-      if (!derivedCache.dirty && derivedCache.teamStats && derivedCache.playerStats) {
-        return derivedCache;
-      }
+function getDerivedState() {
+  if (!derivedCache.dirty && derivedCache.teamStats && derivedCache.playerStats) {
+    return derivedCache;
+  }
 
-      derivedCache = {
-        teamStats: calculateTeamStats(),
-        playerStats: calculatePlayerStats(),
-        dirty: false,
-      };
-      return derivedCache;
-    }
+  derivedCache = {
+    teamStats: calculateTeamStats(),
+    playerStats: calculatePlayerStats(),
+    dirty: false,
+  };
+  return derivedCache;
+}
 
-    function renderAll() {
-      if (allMatches.length > 0) {
-        const derived = getDerivedState();
-        document.getElementById("overview-section").classList.add("visible");
-        document.getElementById("matches-section").classList.add("visible");
-        document.getElementById("save-analysis-btn").disabled = false;
-        renderMatchRecord();
-        renderHomeOverview(derived.teamStats);
-        renderAwayOverview(derived.teamStats);
-        renderPlayerDetail(derived.playerStats);
-        renderMatches();
-      } else {
-        derivedCache = { teamStats: null, playerStats: null, dirty: true };
-        document.getElementById("overview-section").classList.remove("visible");
-        document.getElementById("matches-section").classList.remove("visible");
-        document.getElementById("save-analysis-btn").disabled = true;
-      }
-    }
+function renderAll() {
+  if (allMatches.length > 0) {
+    const derived = getDerivedState();
+    document.getElementById("overview-section").classList.add("visible");
+    document.getElementById("matches-section").classList.add("visible");
+    document.getElementById("save-analysis-btn").disabled = false;
+    renderMatchRecord();
+    renderHomeOverview(derived.teamStats);
+    renderAwayOverview(derived.teamStats);
+    renderPlayerDetail(derived.playerStats);
+    renderMatches();
+  } else {
+    derivedCache = { teamStats: null, playerStats: null, dirty: true };
+    document.getElementById("overview-section").classList.remove("visible");
+    document.getElementById("matches-section").classList.remove("visible");
+    document.getElementById("save-analysis-btn").disabled = true;
+  }
+}
