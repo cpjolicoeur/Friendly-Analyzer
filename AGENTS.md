@@ -1,8 +1,9 @@
 # AGENTS.md — Friendly-Analyzer
 
-This repository is intentionally minimal: it currently contains a single self-contained HTML file.
+This repository is intentionally minimal: it is a static browser app split into HTML, CSS, and JavaScript files.
 
-- Primary artifact: `friendly-analyzer (5).html`
+- Primary artifact: `index.html`
+- Assets: `css/app.css`, `js/*.js`
 - Runtime: browser (vanilla JS + DOM APIs)
 - External API: `https://z519wdyajg.execute-api.us-east-1.amazonaws.com/prod`
 - No Cursor rules found (`.cursor/rules/` or `.cursorrules` not present)
@@ -16,13 +17,13 @@ This repository is intentionally minimal: it currently contains a single self-co
 
 No build step is configured.
 
-- Run: open `friendly-analyzer (5).html` in a modern browser.
+- Run: open `index.html` in a modern browser.
 
 Optional (recommended for consistent browser behavior): serve the file over HTTP.
 
 - Python:
   - `python3 -m http.server 8000`
-  - then visit `http://localhost:8000/` and open `friendly-analyzer (5).html`
+  - then visit `http://localhost:8000/`
 - Node (if you already have it installed globally):
   - `npx http-server . -p 8000`
 
@@ -58,7 +59,7 @@ Not applicable (there are currently no automated tests).
 
 ## 2) Code Style Guidelines
 
-Because there are no formal configs, follow the existing style in `friendly-analyzer (5).html`.
+Because there are no formal configs, follow the existing style in `index.html`, `css/app.css`, and `js/*.js`.
 
 ### General principles
 
@@ -69,9 +70,10 @@ Because there are no formal configs, follow the existing style in `friendly-anal
 
 ### File structure & organization
 
-- The file contains:
-  - `<style>` block (CSS)
-  - `<script>` block (JavaScript)
+- The app is split into:
+  - `index.html` (structure)
+  - `css/app.css` (styles)
+  - `js/` modules loaded by `index.html`
 - Keep related logic grouped together (e.g., saved analyses functions together; match rendering together).
 - Prefer adding new helpers near similar helpers instead of scattering.
 
