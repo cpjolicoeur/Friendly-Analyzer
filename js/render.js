@@ -416,6 +416,10 @@
           match.summary = summary;
         }
 
+        const home = match.report?.home;
+        const away = match.report?.away;
+        if (!home || !away) return;
+
         const homeStats = summary.homeStats;
         const awayStats = summary.awayStats;
         const homeGoals = summary.homeGoals;
