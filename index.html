@@ -44,8 +44,20 @@
     </div>
   </div>
 
-  <div id="status-container" class="status-container">
-    <div id="status" class="status-text">Enter a club ID to start analyzing friendly matches</div>
+  <div id="status-container" class="status-container" aria-live="polite">
+    <div class="status-content">
+      <div class="status-row">
+        <div class="status-indicator" aria-hidden="true"></div>
+        <div class="status-texts">
+          <div id="status" class="status-text">Enter a club ID to start analyzing friendly matches</div>
+          <div id="status-detail" class="status-detail"></div>
+        </div>
+      </div>
+      <div class="status-progress">
+        <div id="status-progress-bar" class="status-progress-bar"></div>
+      </div>
+      <div id="status-meta" class="status-meta"></div>
+    </div>
   </div>
 
   <div id="save-modal" class="modal">

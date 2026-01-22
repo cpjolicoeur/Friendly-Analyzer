@@ -1,9 +1,74 @@
-    function setStatus(msg, type = "") {
-      const el = document.getElementById("status");
-      if (el) {
-        el.textContent = msg;
-        el.className = "status-text " + type;
+    const statusState = {
+      message: "Enter a club ID to start analyzing friendly matches",
+      type: "",
+      detail: "",
+      progress: null,
+      meta: "",
+    };
+
+    function renderStatus() {
+      const container = document.getElementById("status-container");
+      const statusEl = document.getElementById("status");
+      const detailEl = document.getElementById("status-detail");
+      const metaEl = document.getElementById("status-meta");
+      const progressEl = document.getElementById("status-progress-bar");
+
+      if (statusEl) {
+        statusEl.textContent = statusState.message || "";
+        statusEl.className = "status-text " + statusState.type;
       }
+
+      if (detailEl) {
+        detailEl.textContent = statusState.detail || "";
+        detailEl.className = "status-detail " + statusState.type;
+        detailEl.style.display = statusState.detail ? "block" : "none";
+      }
+
+      if (metaEl) {
+        metaEl.textContent = statusState.meta || "";
+        metaEl.style.display = statusState.meta ? "block" : "none";
+      }
+
+      if (progressEl) {
+        const clamped = typeof statusState.progress === "number"
+          ? Math.max(0, Math.min(100, statusState.progress))
+          : 0;
+        progressEl.style.width = `${clamped}%`;
+      }
+
+      if (container) {
+        container.classList.remove("loading", "success", "error");
+        if (statusState.type) {
+          container.classList.add(statusState.type);
+        }
+        container.setAttribute("aria-busy", statusState.type === "loading" ? "true" : "false");
+      }
+    }
+
+    function setStatus(msg, type = "", options = {}) {
+      statusState.message = msg;
+      statusState.type = type || "";
+      statusState.detail = options.detail || "";
+      statusState.progress = typeof options.progress === "number" ? options.progress : null;
+      if (options.meta !== undefined) {
+        statusState.meta = options.meta || "";
+      } else if (statusState.type !== "loading") {
+        statusState.meta = "";
+      }
+      renderStatus();
+    }
+
+    function updateStatusProgress(progress, detail) {
+      statusState.progress = typeof progress === "number" ? progress : null;
+      if (detail !== undefined) {
+        statusState.detail = detail || "";
+      }
+      renderStatus();
+    }
+
+    function updateStatusMeta(meta) {
+      statusState.meta = meta || "";
+      renderStatus();
     }
 
     function markDerivedDirty() {

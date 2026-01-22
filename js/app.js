@@ -113,6 +113,13 @@
     }
 
     const MAX_CONCURRENT_MATCH_REQUESTS = 5;
+    let loadingTimerId = null;
+    let loadingState = {
+      active: false,
+      total: 0,
+      completed: 0,
+      start: 0,
+    };
 
     async function mapWithConcurrency(items, limit, mapper) {
       const results = new Array(items.length);
@@ -136,6 +143,80 @@
       return results;
     }
 
+    function formatDuration(ms) {
+      const totalSeconds = Math.max(0, Math.floor(ms / 1000));
+      const minutes = Math.floor(totalSeconds / 60);
+      const seconds = totalSeconds % 60;
+      return `${minutes}:${seconds.toString().padStart(2, "0")}`;
+    }
+
+    function startLoadingTracker(total = 0) {
+      loadingState = {
+        active: true,
+        total: total,
+        completed: 0,
+        start: Date.now(),
+      };
+
+      if (loadingTimerId) {
+        clearInterval(loadingTimerId);
+      }
+
+      loadingTimerId = setInterval(() => {
+        if (!loadingState.active) return;
+        const elapsed = Date.now() - loadingState.start;
+        const countText = loadingState.total
+          ? `${loadingState.completed}/${loadingState.total} complete`
+          : "Starting up";
+        updateStatusMeta(`Elapsed ${formatDuration(elapsed)} • ${countText}`);
+      }, 1000);
+
+      updateStatusMeta("Elapsed 0:00 • Starting up");
+    }
+
+    function stopLoadingTracker() {
+      if (loadingTimerId) {
+        clearInterval(loadingTimerId);
+        loadingTimerId = null;
+      }
+      loadingState.active = false;
+    }
+
+    function updateLoadingProgress(completed, total) {
+      loadingState.completed = completed;
+      loadingState.total = total;
+      const percent = total ? Math.round((completed / total) * 100) : 0;
+      updateStatusProgress(percent, total ? `Loaded ${completed}/${total} matches` : "");
+    }
+
+    function setControlsLoading(isLoading) {
+      const loadBtn = document.getElementById("load-btn");
+      const addBtn = document.getElementById("add-match-btn");
+      const clubInput = document.getElementById("club-id");
+      const limitInput = document.getElementById("game-limit");
+      const matchInput = document.getElementById("match-id-input");
+
+      if (loadBtn) {
+        if (!loadBtn.dataset.originalText) {
+          loadBtn.dataset.originalText = loadBtn.textContent;
+        }
+        loadBtn.textContent = isLoading ? "Loading..." : loadBtn.dataset.originalText;
+        loadBtn.disabled = isLoading;
+      }
+
+      if (addBtn) {
+        if (!addBtn.dataset.originalText) {
+          addBtn.dataset.originalText = addBtn.textContent;
+        }
+        addBtn.textContent = isLoading ? "Please wait..." : addBtn.dataset.originalText;
+        addBtn.disabled = isLoading;
+      }
+
+      if (clubInput) clubInput.disabled = isLoading;
+      if (limitInput) limitInput.disabled = isLoading;
+      if (matchInput) matchInput.disabled = isLoading;
+    }
+
     async function loadMatches() {
       const clubIdInput = document.getElementById("club-id").value.trim();
       const limitInput = document.getElementById("game-limit").value;
@@ -148,22 +229,37 @@
       clubId = clubIdInput;
       const limit = Math.min(Math.max(1, parseInt(limitInput) || 50), 200);
 
-      setStatus(`Looking up squad ID for club ${clubId}...`, "loading");
+      setControlsLoading(true);
+      startLoadingTracker();
+      setStatus(`Looking up squad ID for club ${clubId}...`, "loading", {
+        detail: "Step 1 of 3 • Resolving club",
+        progress: 0,
+        meta: "Elapsed 0:00 • Starting up",
+      });
 
       try {
         squadId = await fetchSquadIdFromClubId(clubId);
         console.log(`[Club ${clubId}] Found squad ID: ${squadId}`);
 
-        setStatus(`Found squad ${squadId}! Loading match IDs...`, "loading");
+        setStatus(`Found squad ${squadId}! Loading match IDs...`, "loading", {
+          detail: "Step 2 of 3 • Gathering match list",
+          progress: 5,
+        });
 
         const matchesData = await fetchMatchIds(squadId, limit);
 
         if (!matchesData || matchesData.length === 0) {
+          stopLoadingTracker();
+          setControlsLoading(false);
           setStatus("No friendly matches found for this squad", "error");
           return;
         }
 
-        setStatus(`Loading ${matchesData.length} match reports and formations...`, "loading");
+        startLoadingTracker(matchesData.length);
+        setStatus(`Loading ${matchesData.length} match reports and formations...`, "loading", {
+          detail: "Step 3 of 3 • Fetching reports",
+          progress: 0,
+        });
 
         const totalMatches = matchesData.length;
         let completed = 0;
@@ -198,8 +294,8 @@
               return null;
             } finally {
               completed += 1;
-              if (completed % 10 === 0 || completed === totalMatches) {
-                setStatus(`Loaded ${completed}/${totalMatches} matches...`, "loading");
+              if (completed % 2 === 0 || completed === totalMatches) {
+                updateLoadingProgress(completed, totalMatches);
               }
             }
           }
@@ -208,9 +304,17 @@
         allMatches = matchReports.filter((match) => match);
         markDerivedDirty();
         renderAll();
-        setStatus(`Successfully loaded ${allMatches.length} matches!`, "success");
+        const duration = loadingState.start ? formatDuration(Date.now() - loadingState.start) : null;
+        stopLoadingTracker();
+        setControlsLoading(false);
+        setStatus(`Successfully loaded ${allMatches.length} matches!`, "success", {
+          detail: duration ? `Completed in ${duration}` : "",
+          progress: 100,
+        });
       } catch (e) {
         console.error("Error loading matches:", e);
+        stopLoadingTracker();
+        setControlsLoading(false);
         setStatus(`Error: ${e.message}`, "error");
       }
     }
