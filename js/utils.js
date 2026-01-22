@@ -1,3 +1,31 @@
+    function formatPct(num, den, digits = 1) {
+      if (!den || den <= 0) return (0).toFixed(digits);
+      return ((num / den) * 100).toFixed(digits);
+    }
+
+    function formatFixed(value, digits = 1) {
+      const num = Number(value);
+      if (!Number.isFinite(num)) return (0).toFixed(digits);
+      return num.toFixed(digits);
+    }
+
+    function sumPlayerStat(playersStats, key) {
+      if (!playersStats) return 0;
+      return playersStats.reduce((sum, p) => sum + (p[key] || 0), 0);
+    }
+
+    function computePossession(homePlayers, awayPlayers) {
+      const homePasses = sumPlayerStat(homePlayers, "passes");
+      const awayPasses = sumPlayerStat(awayPlayers, "passes");
+      const totalPasses = homePasses + awayPasses;
+      return {
+        home: totalPasses > 0 ? ((homePasses / totalPasses) * 100).toFixed(1) : "50.0",
+        away: totalPasses > 0 ? ((awayPasses / totalPasses) * 100).toFixed(1) : "50.0",
+        homePasses,
+        awayPasses,
+      };
+    }
+
     function getPositionSortValue(positions) {
       if (!positions || positions.size === 0) return 999;
       let minIndex = 999;
@@ -24,6 +52,64 @@
       }
 
       return { homeName, awayName };
+    }
+
+    function extractFormationInfo(formations) {
+      let homeFormationType = "-";
+      let awayFormationType = "-";
+      let homeXIOverall = 0;
+      let awayXIOverall = 0;
+      let homeName = "Home Team";
+      let awayName = "Away Team";
+
+      if (formations) {
+        const playerMap = extractPlayerMapFromFormations(formations);
+        const clubNames = extractClubNames(formations);
+
+        homeName = clubNames.homeName;
+        awayName = clubNames.awayName;
+
+        if (formations.homeFormation) {
+          homeFormationType = formations.homeFormation.type || "-";
+          homeXIOverall = computeXIOverall(formations.homeFormation, playerMap);
+        }
+
+        if (formations.awayFormation) {
+          awayFormationType = formations.awayFormation.type || "-";
+          awayXIOverall = computeXIOverall(formations.awayFormation, playerMap);
+        }
+      }
+
+      return {
+        homeFormationType,
+        awayFormationType,
+        homeXIOverall,
+        awayXIOverall,
+        homeName,
+        awayName,
+      };
+    }
+
+    function deriveMatchSummary(match) {
+      const home = match.report?.home;
+      const away = match.report?.away;
+
+      if (!home || !away) return null;
+
+      const homeStats = aggregateTeamStats(home.playersStats);
+      const awayStats = aggregateTeamStats(away.playersStats);
+      if (!homeStats || !awayStats) return null;
+      const possession = computePossession(home.playersStats, away.playersStats);
+      const formationInfo = extractFormationInfo(match.formations);
+
+      return {
+        homeStats,
+        awayStats,
+        homeGoals: homeStats.goals,
+        awayGoals: awayStats.goals,
+        possession,
+        formationInfo,
+      };
     }
 
     function calculateMatchRecord() {
