@@ -13,6 +13,7 @@ This repository is intentionally minimal: it currently contains a single self-co
 ## 1) Build / Lint / Test Commands
 
 ### Build
+
 No build step is configured.
 
 - Run: open `friendly-analyzer (5).html` in a modern browser.
@@ -26,19 +27,23 @@ Optional (recommended for consistent browser behavior): serve the file over HTTP
   - `npx http-server . -p 8000`
 
 ### Lint
+
 No lint/format tooling is configured (no ESLint/Prettier/EditorConfig, etc.).
 
 If you add linting tooling in the future, do it intentionally (new files, deps, and CI), and confirm with Mojo first.
 
 ### Tests
+
 No test framework is configured.
 
 #### Running a single test
+
 Not applicable (there are currently no automated tests).
 
 #### Manual “smoke test” checklist (use this instead)
+
 1. Open the page.
-2. Enter a Club ID and click **Load Matches**.
+2. Enter a Club ID and change "Number of Games" option to 10 matches then click **Load Matches**.
 3. Verify:
    - Status text transitions from loading → success/error.
    - Overview tiles render (match record, team stats, player table).
@@ -56,12 +61,14 @@ Not applicable (there are currently no automated tests).
 Because there are no formal configs, follow the existing style in `friendly-analyzer (5).html`.
 
 ### General principles
+
 - Make the smallest reasonable change.
 - Avoid drive-by refactors.
 - Prefer clarity over cleverness.
 - Keep the app working when loaded directly in a browser.
 
 ### File structure & organization
+
 - The file contains:
   - `<style>` block (CSS)
   - `<script>` block (JavaScript)
@@ -69,6 +76,7 @@ Because there are no formal configs, follow the existing style in `friendly-anal
 - Prefer adding new helpers near similar helpers instead of scattering.
 
 ### Formatting
+
 - Indentation: **2 spaces** in HTML/CSS/JS.
 - Quotes:
   - JavaScript strings: **double quotes** (`"`)
@@ -77,6 +85,7 @@ Because there are no formal configs, follow the existing style in `friendly-anal
 - Braces: K&R / Egyptian style (`if (...) { ... }`).
 
 ### Naming conventions
+
 - JavaScript:
   - `camelCase` for variables and functions (`loadMatches`, `playerNamesCache`).
   - `SCREAMING_SNAKE_CASE` for constants (`API_BASE`, `POSITION_ORDER`).
@@ -85,6 +94,7 @@ Because there are no formal configs, follow the existing style in `friendly-anal
   - Prefer semantic class names; avoid random abbreviations.
 
 ### JavaScript patterns
+
 - Prefer `const` by default; use `let` only when reassigned.
 - Async code:
   - Use `async/await` for fetch flows.
@@ -98,6 +108,7 @@ Because there are no formal configs, follow the existing style in `friendly-anal
   - If you must use `innerHTML`, ensure inputs are not user-controlled (avoid XSS risk).
 
 ### Error handling & user feedback
+
 - Prefer:
   - A user-facing status via `setStatus(msg, type)` for expected failures.
   - `console.error` / `console.warn` for diagnostics.
@@ -105,6 +116,7 @@ Because there are no formal configs, follow the existing style in `friendly-anal
 - Keep catch blocks meaningful (log + recover or rethrow).
 
 ### State management
+
 - Current pattern is global state in the `<script>`:
   - `allMatches`, `clubId`, `squadId`, caches, sort state, hidden row/col sets, etc.
 - If adding more state:
@@ -112,6 +124,7 @@ Because there are no formal configs, follow the existing style in `friendly-anal
   - Keep state transitions explicit.
 
 ### CSS conventions
+
 - The CSS uses:
   - Flexbox/Grid for layout
   - RGBA for transparency
@@ -120,17 +133,20 @@ Because there are no formal configs, follow the existing style in `friendly-anal
 - Avoid introducing CSS frameworks unless explicitly requested.
 
 ### Performance & correctness
+
 - Avoid unnecessary repeated computation on large match sets:
   - If you add expensive calculations, consider caching results keyed on `allMatches`.
 - Be careful with numeric conversions (`parseInt`, `toFixed`) and missing data (`?.` + defaults).
 
 ### External dependencies
+
 - There are currently none.
 - Do not add new dependencies (npm packages, CDNs) without explicit approval from Mojo.
 
 ---
 
 ## Repo-specific notes
+
 - The app calls a production API (`API_BASE`). Treat it as an external dependency:
   - Handle transient failures gracefully.
   - Avoid spamming requests (don’t add tight loops without delays/backoff).
@@ -139,6 +155,7 @@ Because there are no formal configs, follow the existing style in `friendly-anal
 ---
 
 ## Version control
+
 - Use Jujutsu (`jj`) for all version control tasks.
 - Do not run Git commands directly.
 - Examples: `jj status`, `jj diff`, `jj log`, `jj commit`.
@@ -146,6 +163,7 @@ Because there are no formal configs, follow the existing style in `friendly-anal
 ---
 
 ## When in doubt
+
 - Match surrounding code.
 - Keep changes minimal and reversible.
 - Ask Mojo before introducing new tooling, file splits, or framework migrations.
